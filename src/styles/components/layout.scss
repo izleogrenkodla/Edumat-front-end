@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  // background-color: #14141A;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  &--small {
+    max-width: 1000px;
+  }
+
+  &--medium {
+    max-width: 1200px;
+  }
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
