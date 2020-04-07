@@ -1,0 +1,156 @@
+.footer {
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: space-around;
+    // border-top-right-radius: 100px;
+    // border-top-left-radius: 100px;
+    text-align: left;
+    padding: 50px 75px;
+    color: #131330;
+}
+
+.footer__container {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__here-we-are,
+.footer__about-as,
+.footer__help,
+.footer__newsletter {
+    font-size: 20px;
+    font-weight: lighter;
+    margin-bottom: 15px;
+    display: flex;
+    font-weight: 600;
+}
+
+.footer__icon-we-are-container {
+  align-self: flex-start;
+}
+
+.footer__icon-we-are-container{
+  margin-bottom: 15px
+}
+
+.footer__icon-we-are {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.footer__cookies {
+    font-size: 12px;
+    text-align: left;
+}
+
+.footer__about-as-list,
+.footer__help-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 15px;
+}
+
+.footer__about-as-list li,
+.footer__help-list li {
+    cursor: pointer;
+    text-align: left;
+    margin: 5px 0;
+}
+
+.newsletter-input {
+    border: 1px solid #C4C4C4;
+    border-radius: 55px;   
+    overflow: hidden;
+    display: flex;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.newsletter-input__input-text {
+    border: 0px;
+    background-color: #F5F5F5;
+    padding: 18px 15px;
+    width: 100%;
+    text-align: left;
+    &::placeholder{
+      color: #C4C4C4;
+    }
+}
+
+.newsletter-input__input-submit {
+    border: 0px;
+    background-color: #131330;
+    color: #fff;
+    border-radius: 55px;
+    padding: 10px 20px;
+    transition: .2s;
+    border: 1px solid #131330;
+    cursor: pointer;
+}
+
+.newsletter-input__input-submit:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.footer__newsletter-cancel {
+    font-size: 12px;
+    width: 70%;
+    text-align: left;
+}
+.footer__cookies--rwd{
+    display: none;
+}
+@media(max-width:1200px){
+    .footer{
+        padding: 10%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        border-radius: 0;
+    }
+    .footer__container {
+        width: 95%;
+    }
+    .footer__cookies{
+        display: none;
+    }
+    .footer__cookies--rwd{
+        display: block;
+        grid-column-start:2 ;
+        grid-column-end: 3;
+        grid-row-start:1 ;
+        grid-row-end:2 ;
+        text-align: left;
+        font-size: .42em;
+        font-weight: 500;
+    }
+    .footer__here-we-are,.footer__help, .footer__about-as{
+        font-size: .8em;
+        font-weight: 500;
+        text-align: left;
+    }
+    .footer__icon-we-are-container{
+        margin-top: 10px;
+    }
+    .footer__newsletter-container{
+        display: none;
+    }
+    .footer__about-as-list,.footer__help-list{
+        margin-top: 10px;
+        font-size: .65em;
+        
+        li{
+            margin-top: 5px;
+            text-align: left;
+        }
+    }
+    .footer__icon-we-are-container{
+        padding-right: 35px;
+    }
+    .footer__icon-we-are{
+        height: 20px;
+    }
+}

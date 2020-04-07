@@ -1,0 +1,98 @@
+// @import "../../global.scss;
+
+.userProfileNavMobile
+    width: 90vw
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 40px 10px 15px
+    .userProfileNav__myAccountBtn
+        font-weight: bold
+        font-size: 25px
+        display: flex
+        .userProfileNav__arrow
+            width: 25px
+            margin-left: 20px
+    .userProfileNav__avatar
+        border-radius: 50%
+        width: 50px
+
+.userProfileNavDesktop
+    display: none
+
+@media ( min-width: 1200px )
+    .userProfileNavMobile
+        display: none
+    .userProfileNavDesktop
+        display: block
+        background-color: #fff
+        padding: 10px 0px
+        margin-bottom: 20px
+        width: 100vw
+        .userProfileNavDesktop__wraper
+            width: 90vw
+            display: flex
+            justify-content: space-between
+            align-items: center
+            .userProfileNavDesktop__logo
+                display: flex
+                align-items: center
+                img
+                    width: 30px
+                p
+                    margin-left: 20px
+                    font-size: 20px
+            .userProfileNavDesktop__other
+                display: flex
+                align-items: center
+                form
+                    width: 400px
+                    height: 40px
+                    border: 1px solid rgba(216,216,216, .5)
+                    border-radius: 10px
+                    padding: 0 20px
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    input
+                        border: 0
+                        text-align: left
+                        width: 350px
+                        font-style: italic
+                    button
+                        border: 0
+                        background: transparent
+                        display: flex
+                        justify-content: flex-end
+                        align-items: center
+                        img
+                            width: 18px
+                .userProfileNavDesktop__profile
+                    display: flex
+                    align-items: center
+                    .userProfileNavDesktop__bell
+                        margin-left: 40px
+                        position: relative
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        img
+                            width: 25px
+                        &::before
+                            content: ''
+                            position: absolute
+                            top: 5px
+                            left: -10px
+                            width: 9px
+                            height: 9px
+                            background-color: #FF4B50
+                            border-radius: 100%
+                    .userProfileNavDesktop__avatar
+                        margin-left: 20px
+                        width: 35px
+                    p
+                        font-weight: 600
+                        margin-left: 10px
+                    .userProfileNavDesktop__arrow
+                        width: 20px
+                        margin-left: 10px

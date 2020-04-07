@@ -1,0 +1,159 @@
+.userProfileStatistics
+    width: 90%
+    padding-top: 20px
+    h2
+        font-weight: 600
+    .userProfileStatistics__button
+        display: flex
+        justify-content: space-between
+        background-color: transparent
+        border: 0
+        width: 90%
+        margin: 25px auto 10px
+        font-size: 15px
+        font-weight: 600
+        .userProfileStatistics__arrowLeft
+            width: 10px
+        &.userProfileStatistics__button--marginTop
+            margin: 40px auto 10px
+    hr
+        width: 90%
+        margin: 0 auto
+        border: 0
+        height: 1px
+        background-color: #707070
+        opacity: .3
+    .userProfileStatistics__sectionHeader
+        text-align: left
+        width: 90%
+        margin: 10px auto 0px
+        padding: 10px 0px
+        font-weight: 600
+    .ad
+        background-color: #707070
+        text-align: center
+        padding: 40px 0px
+    .userProfileStatistics__arrowTop
+        transform: rotate(-90deg)
+    .userProfileStatistics__arrowBottom
+        transform: rotate(90deg)
+    .userProfileStatistics__container
+        margin-top: 20px
+        margin-bottom: 20px
+        border-radius: 20px
+        box-shadow: 0 0 30px 0px rgba(204,204,204,.6)
+        .userProfileStatistics__rank
+            border-radius: 20px
+            box-shadow: 0 0 30px 0px rgba(204,204,204,.6)
+            .userProfileStatistics__rankElement
+                .userProfileStatistics__rankElementTitle
+                    display: flex
+                    justify-content: space-between
+                    width: 90%
+                    margin: 0 auto
+                    padding: 30px 0px 10px
+                    font-weight: 600
+                .userProfileStatistics__progressBar
+                    background-color: #E5EAF6
+                    border-radius: 100px
+                    width: 90%
+                    margin: 0 auto
+                    height: 10px
+                    position: relative
+                    &::before
+                        content: ''
+                        position: absolute
+                        left: 0
+                        top: 0
+                        border-radius: 100px
+                        height: 100%
+                        width: 80%
+                        background-color: #5E7DFF
+            .userProfileStatistics__currentRank
+                display: flex
+                justify-content: center
+                align-items: center
+                padding: 20px 0px
+                font-weight: 600
+                p
+                    margin-left: 10px
+                .gold
+                    color: #F9CF1E
+        .userProfileStatistics__answerAwards
+            width: 90%
+            display: flex
+            justify-content: center
+            flex-wrap: wrap
+            padding-top: 20px
+            margin: 0 auto
+            .userProfileStatistics__award
+                width: 33%
+                display: flex
+                justify-content: center
+                align-items: center
+                img
+                    width: 110%
+        .userProfileStatistics__activityContainer
+            padding-bottom: 20px
+            .userProfileStatistics__activity
+                width: 90%
+                margin: 0 auto
+                background-color: #E5EAF6
+                border-radius: 15px
+                margin-top: 20px
+                padding: 15px
+                h2
+                    font-size: 21px
+                    text-align: left
+                    font-weight: bold
+                    span
+                        color: #5E7DFF
+                p
+                    text-align: left
+                    margin-top: 20px
+                    font-size: 15px
+        .userProfileStatistics__upcomingEvents
+            margin-top: 15px
+            padding-bottom: 20px
+            .userProfileStatistics__event
+                width: 90%
+                padding: 10px 15px
+                border-radius: 20px
+                margin: 10px auto
+                display: flex
+                justify-content: left
+                align-items: center
+                .userProfileStatistics__eventDate
+                    border-right: 1px solid rgba(112,112,112, .3)
+                    padding-right: 10px
+                    margin-right: 10px
+                    p
+                        font-size: 13px
+                    .userProfileStatistics__eventDay
+                        position: relative
+                        z-index: 2
+                        margin-bottom: 5px
+                        font-size: 12px
+                        &::before
+                            content: ''
+                            position: absolute
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%, -50%)
+                            width: 25px
+                            height: 25px
+                            border-radius: 100%
+                            background-color: #E9E9E9
+                            z-index: -1
+                &.userProfileStatistics__event--active
+                    border: 1px solid #5E7DFF
+                    color: #5E7DFF
+                    .userProfileStatistics__eventDate
+                        .userProfileStatistics__eventDay
+                            color: #fff
+                            &::before
+                                background-color: #5E7DFF
+
+@media ( min-width: 1200px )
+    .userProfile__mobile
+        display: none

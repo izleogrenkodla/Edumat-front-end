@@ -1,0 +1,90 @@
+.rankPanelBestUsers
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 90%
+    margin: 15px auto 0
+    max-width: 770px
+    .rankPanelBestUsers__id
+        margin-right: 15px
+        position: relative
+        z-index: 2
+        &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            border-radius: 35%
+            background-color: rgba(188,188,188, .2)
+            width: 30px
+            height: 30px
+            z-index: -1
+    .rankPanelBestUsers__container
+        border-radius: 100px
+        border: 2px solid rgba(112,112,112, .3)
+        display: flex
+        align-items: center
+        justify-content: space-between
+        flex-grow: 1
+        padding: 5px 10px
+        .rankPanelBestUsers__userInfo
+            display: flex
+            align-items: center
+            .rankPanelBestUsers__avatar
+                width: 30px
+                margin-right: 5px
+            .rankPanelBestUsers__text
+                display: flex
+                align-items: center
+                .rankPanelBestUsers__username
+                    font-weight: 600
+                    font-size: 14px
+                    margin-right: 5px
+                hr
+                    height: 30px
+                    width: 1px
+                    border: 0
+                    background-color: #C7C7C7
+                    margin-right: 5px
+                .rankPanelBestUsers__score
+                    font-size: 14px
+        .rankPanelBestUsers__awards
+            display: flex
+            justify-content: space-around
+            align-items: center
+            img
+                width: 30px
+        button 
+            display: none
+
+@media ( min-width: 1200px )
+    .rankPanelBestUsers
+        .rankPanelBestUsers__id
+        .rankPanelBestUsers__container
+            .rankPanelBestUsers__userInfo
+                .rankPanelBestUsers__avatar
+                    width: 40px
+                    margin-right: 20px
+                .rankPanelBestUsers__text
+                    .rankPanelBestUsers__username
+                        font-size: 16px
+                        margin-right: 15px
+                    hr
+                        height: 40px
+                        margin-right: 15px
+                    .rankPanelBestUsers__score
+                        font-size: 16px
+            .rankPanelBestUsers__awards
+                img
+                    width: 40px
+            button
+                display: block
+                border: 0
+                color: #fff
+                padding: 8px 35px
+                text-align: center
+                background-image: linear-gradient(#3C5BDF, #5B7AFF)
+                border-radius: 100px
+                font-weight: 600
+                font-size: 12px

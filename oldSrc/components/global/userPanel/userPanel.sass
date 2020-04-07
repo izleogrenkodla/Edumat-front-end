@@ -1,0 +1,31 @@
+.userProfile
+    background-color: #F5F5F5
+    overflow: hidden
+    .userProfile__aside
+        width: 90vw
+        margin: 0 auto
+    .userProfile__alwaysShow
+        display: block
+    .userProfile__mobileHide
+        display: none
+
+@media ( min-width: 1200px )
+    .userProfile
+        background-color: #F5F5F5
+        .userProfile__wraper
+            width: 90vw
+            .userProfile__container
+                width: 100%
+                display: flex
+                .userProfile__mainContent
+                    flex-grow: 1
+                    display: block
+                    h2
+                        font-size: 30px
+                        margin-top: 30px
+                .userProfile__aside
+                    width: 30%
+                    max-width: 400px
+                    margin: 0
+        .userProfile__mobileHide
+            display: block

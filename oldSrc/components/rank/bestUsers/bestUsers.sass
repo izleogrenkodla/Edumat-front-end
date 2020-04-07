@@ -1,0 +1,36 @@
+.rankPanel__bestUsers
+    width: 90%
+    border-radius: 20px
+    margin: 80px auto 0
+    background-color: #fff
+    padding: 30px 0
+    h2
+        width: 90%
+        text-align: left
+        margin: 0 auto
+        font-size: 16px
+    .rankPanel__headerLine
+        width: 90%
+        margin: 10px auto 0
+        border: 0
+        height: 1px
+        background-color: rgba(188,188,188, .3)
+    .rankPanel__arrowTop
+        transform: rotate(-90deg)
+        margin-top: 10px
+    .rankPanel__arrowBottom
+        transform: rotate(90deg)
+        margin-top: 15px
+    .rankPanel__desktopOnly
+        display: none
+
+@media ( min-width: 1200px )
+    .rankPanel__bestUsers
+        margin: 100px auto 0
+        h2,
+        .rankPanel__headerLine,
+        .rankPanel__arrowTop,
+        .rankPanel__arrowBottom
+            display: none
+        .rankPanel__desktopOnly
+            display: block

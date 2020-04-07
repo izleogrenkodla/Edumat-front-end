@@ -1,0 +1,119 @@
+.account {
+    padding: 0px 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.account__img-box {
+    width: 600px;
+    overflow: hidden;
+    max-height: 650px;
+    margin-right: 50px;
+}
+
+.account__description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    text-align: left;
+    h2 {
+        margin-top: 50px;
+        font-size: 63px;
+        color: #000;
+        text-align: left;
+    }
+    p {
+        margin-top: 10px;
+        font-size: 20px;
+        text-align: left;
+    }
+}
+
+
+
+.account__account-plus-list {
+    padding: 0px;
+    margin-top: 30px;
+}
+/* bardzo slabe nazwenistwo klas nie moge sie polapac co do czego */
+.account__account-plus {
+    margin-top: 15px;
+    list-style: none;
+    font-size: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.account__dot {
+    height: 22px;
+    width: auto;
+    margin-right: 25px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account__button-register {
+    margin-top: 30px;
+    width: 180px;
+    padding: 10px 0;
+    border-radius: 45px;
+    background-color: #3C5BDF;
+    border: 2px solid #3C5BDF;
+    color: #fff;
+    transition: .2s;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,.3);
+}
+.account--rwd{
+    display: none;
+}
+@media(max-width:1200px){
+    .account{
+        display: none;
+    }
+    .account--rwd{
+        position: relative;
+        border-radius: 25px;
+        padding: 20px 6%;
+        margin: 10% auto;
+        width: 80%;
+        display: block;
+        background-color: #D9F0FF;
+        h2{
+            margin: 0px;
+            font-size: 1.5em;
+            text-align: left;
+        }
+        p{
+            margin-top: 4px;
+            font-size: .61em;
+            text-align: left;
+            font-weight: 500;
+        }
+    }
+    .account__account-plus-list{
+        margin-top: 15px;
+    }
+    .account__account-plus{
+        margin-top: 10px;
+        font-size: .65em;
+        font-weight: 500;
+    }
+    .account__dot {
+        height: 12px;
+    }
+    .account--rwd__arrow{
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        height: 15px;
+        width: auto;
+    }
+}

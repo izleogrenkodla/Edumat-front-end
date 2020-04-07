@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30.014" height="29.844" viewBox="0 0 30.014 29.844">
+  <g id="right-triangle" transform="translate(0.514 0.514)">
+    <g id="Group_211" data-name="Group 211">
+      <path id="Path_270" data-name="Path 270" d="M28.67.992a.536.536,0,0,0-.583.115L.158,28.866a.536.536,0,0,0,.378.916H28.464A.536.536,0,0,0,29,29.246V1.487A.536.536,0,0,0,28.67.992ZM1.835,28.71,27.929,2.775V7.151H26.2a.536.536,0,1,0,0,1.072h1.73v2.768H26.2a.536.536,0,1,0,0,1.072h1.73v2.679H26.2a.536.536,0,1,0,0,1.072h1.73v2.723H26.213a.536.536,0,1,0,0,1.072h1.715v2.724H26.2a.536.536,0,1,0,0,1.072h1.73V28.71Z" transform="translate(0 -0.951)" fill="#5e7dff" stroke="#5e7dff" stroke-width="1"/>
+      <path id="Path_271" data-name="Path 271" d="M170.308,162.07a.536.536,0,0,0-.583.115l-7.458,7.413a.536.536,0,0,0,.378.916H170.1a.536.536,0,0,0,.536-.536v-7.413A.536.536,0,0,0,170.308,162.07Zm-.742,7.372h-5.623l5.623-5.589Z" transform="translate(-147.632 -147.645)" fill="#5e7dff" stroke="#5e7dff" stroke-width="1"/>
+    </g>
+    <g id="Group_212" data-name="Group 212" transform="translate(25.677 25.16)">
+      <path id="Path_272" data-name="Path 272" d="M288.072,283.771a.536.536,0,0,1,0-1.072H290.3a.536.536,0,0,1,0,1.072Z" transform="translate(-287.536 -282.699)" fill="#5e7dff" stroke="#5e7dff" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

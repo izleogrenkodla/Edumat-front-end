@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.4" height="14.205" viewBox="0 0 24.4 14.205">
+  <defs>
+    <clipPath id="clip">
+      <use xlink:href="#fill"/>
+    </clipPath>
+    <clipPath id="clip-2">
+      <use xlink:href="#fill-2"/>
+    </clipPath>
+  </defs>
+  <g id="Group_38" data-name="Group 38" transform="translate(0 14.205) rotate(-90)">
+    <g id="Rectangle_36" data-name="Rectangle 36" transform="translate(2.332 10.194) rotate(45)" fill="#131330" stroke="#131330" stroke-width="5">
+      <rect id="fill" width="16.791" height="3.298" rx="1.649" stroke="none"/>
+      <path d="M0,0.7981796264648438h16.791017532348633M14.291017532348633,0v3.2981796264648438M16.791017532348633,2.5h-16.791017532348633M2.5,3.2981796264648438v-3.2981796264648438" fill="none" clip-path="url(#clip)"/>
+    </g>
+    <g id="Rectangle_37" data-name="Rectangle 37" transform="translate(14.205 2.332) rotate(135)" fill="#131330" stroke="#131330" stroke-width="5">
+      <rect id="fill-2" width="16.791" height="3.298" rx="1.649" stroke="none"/>
+      <path d="M0,0.7981481552124023h16.790977478027344M14.290977478027344,0v3.2981481552124023M16.790977478027344,2.5h-16.790977478027344M2.5,3.2981481552124023v-3.2981481552124023" fill="none" clip-path="url(#clip-2)"/>
+    </g>
+  </g>
+</svg>

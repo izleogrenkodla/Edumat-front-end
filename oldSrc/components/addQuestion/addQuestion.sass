@@ -1,0 +1,94 @@
+@import "../global.scss"
+
+.addQuestionSection
+    width: 100vw
+    height: 100vh
+    overflow: hidden
+    .addQuestionSection__container
+        width: 90%
+        max-width: 400px
+        margin: 0 auto
+        position: relative
+        top: 40%
+        transform: translateY(-50%)
+        .addQuestionSection__header
+            text-align: left
+            color: #5E7DFF
+            font-size: 25px
+        .addQuestionSection__closeBtn
+            position: absolute
+            right: 20px
+            top: -40px
+            transform: trasnalte(-50%, -50%)
+            width: 40px
+            height: 40px
+            border: 0
+            background-color: #fff
+            cursor: pointer
+            outline: none
+            &::before,
+            &::after
+                content: ''
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                width: 100%
+                height: 8px
+                border-radius: 50px
+                background-color: #000
+            &::before
+                transform: translateY(-50%) rotate(45deg)
+            &::after
+                transform: translateY(-50%) rotate(-45deg)
+
+        .addQuestionSection__form
+            textarea
+                text-align: left
+                width: 100%
+                min-width: 100%
+                max-width: 100% 
+                min-height: 100px
+                margin-top: 30px
+                border-radius: 20px
+                background-color: #F5F5F5
+                border: 0
+                padding: 15px
+                color: #000
+                background-image: url('./img/paraph.png')
+                background-size: 15px
+                background-repeat: no-repeat
+                background-position: 13px 15px
+                text-indent: 20px
+                &::-webkit-input-placeholder
+                    color: #000
+                &:-ms-input-placeholder
+                    color: #000
+                &::placeholder
+                    color: #000
+                &.empty
+                    background-image: none
+                &:focus
+                    outline: none
+            select
+                margin-top: 10px
+                display: block
+                width: 200px
+                border-radius: 45px
+                background-color: #F5F5F5
+                border: 0
+                padding: 8px 20px
+                color: #000
+                appearance: none
+                background-image: url('./img/selectArrow.png')
+                background-size: 15px
+                background-repeat: no-repeat
+                background-position: 95% 50%
+                &:focus
+                    outline: none
+            button
+                padding: 10px 30px
+                border-radius: 45px
+                margin-top: 40px
+                border: 1px solid #000
+                &:hover
+                    border: 1px solid $mainColor
