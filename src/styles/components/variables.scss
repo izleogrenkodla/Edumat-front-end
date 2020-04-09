@@ -19,9 +19,19 @@ $text-color-normal--medium: #D4CDF8;
 
 $background-dark: #0D0D10;
 
-$ui-error: rgb(209, 81, 81);
+:root {
+  --text-color: #131330;
+  --text-color--medium: rgba(196, 196, 196);
+  --text-color--low: rgba(204, 204, 204, 0.45);
 
-$time: 0.2s;
-$time--short: 0.1s;
-$time--medium: 0.3s;
-$time--long: 0.4s;
+  --border: #131330;
+  --border--accent: rgba(204, 204, 204, 0.45);
+
+  --link: #3C5BDF;
+
+  --ui-error: rgb(209, 81, 81);
+
+  --time: 0.4s;
+  --time--short: 0.2s;
+  --time--long: 0.6s;
+}
