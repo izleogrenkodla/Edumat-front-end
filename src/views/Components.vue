@@ -1,16 +1,23 @@
 <template>
   <main class="components container components__container">
-    <h1>Skończone komponenty</h1>
+    <h1>Components</h1>
     <div class="components__row">
-      <h2 class="components__heading">Inputy</h2>
+      <h2 class="components__heading">Inputs</h2>
       <base-input
         v-model="input"
-        placeholder="Adres email"
+        placeholder="Adres email default"
         rules="required|email"
         class="components__input"
       />
+      <base-input
+        v-model="inputTwo"
+        placeholder="Adres email + search icon"
+        rules="required|email"
+        class="components__input"
+        searchIcon
+      />
        <base-input
-        v-model="input"
+        v-model="inputThree"
         placeholder="Adres email + label"
         rules="required|email"
         label="Adres email"
@@ -201,6 +208,8 @@ export default {
   name: 'Components',
   data: () => ({
     input: '',
+    inputTwo: '',
+    inputThree: '',
   }),
 };
 </script>
@@ -208,6 +217,12 @@ export default {
 <style lang="scss">
   .components {
     margin: 150px auto 0 auto;
+
+    h1 {
+      font-size: 26px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
 
     &__container {
       max-width: 800px;
