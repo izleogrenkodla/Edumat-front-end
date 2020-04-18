@@ -70,7 +70,7 @@ export default {
       type: Boolean,
       required: false,
       default: false,
-    }
+    },
   },
   methods: {
     updateValue(event) {

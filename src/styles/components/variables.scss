@@ -20,16 +20,25 @@ $text-color-normal--medium: #D4CDF8;
 $background-dark: #0D0D10;
 
 :root {
+  --primary-color: #5E7DFF;
+  --primary-color--medium: #3C5BDF;
+  --primary-color--dark: #131330;
+
   --text-color: #131330;
-  --text-color--medium: rgba(196, 196, 196);
+  --text-color--medium: rgb(196, 196, 196);
   --text-color--low: rgba(204, 204, 204, 0.45);
+  --text-color--accent: #FFFFFF;
 
   --border: #131330;
   --border--accent: rgba(204, 204, 204, 0.45);
 
-  --link: #3C5BDF;
-
-  --ui-error: rgb(209, 81, 81);
+  --acent-color: #ECECEC;
+  --acent-color--dark: #C7C7C7;
+  --acent-color--light: #F4F4F4;
+  
+  --ui-error: #FF4B50;
+  --ui-warning: #F9CF1E;
+  --ui-success: #24D4A5;
 
   --time: 0.4s;
   --time--short: 0.2s;
