@@ -2,6 +2,7 @@
   <main class="components container components__container">
     <h1>Skończone komponenty</h1>
     <div class="components__row">
+      <h2 class="components__heading">Inputy</h2>
       <base-input
         v-model="input"
         placeholder="Adres email"
@@ -16,20 +17,191 @@
         class="components__input"
       />
     </div>
+    <div class="components__row">
+      <h2 class="components__heading">small buttons</h2>
+      <div class="components__listing">
+        <base-button
+          size="small"
+        >
+          Default
+        </base-button>
+        <base-button
+          type="primary"
+          size="small"
+        >
+          Default primary
+        </base-button>
+        <base-button
+          type="secondary"
+          size="small"
+        >
+          Default secondary
+        </base-button>
+        <base-button
+          outline
+          size="small"
+        >
+          Outline default
+        </base-button>
+        <base-button
+          type="primary"
+          outline
+          size="small"
+        >
+          Outline primary
+        </base-button>
+        <base-button
+          type="secondary"
+          outline
+          size="small"
+        >
+          Outline secondary
+        </base-button>
+        <base-button
+          text
+          size="small"
+        >
+          Text default
+        </base-button>
+        <base-button
+          type="primary"
+          text
+          size="small"
+        >
+          Text primary
+        </base-button>
+        <base-button
+          type="secondary"
+          text
+          size="small"
+        >
+          Text secondary
+        </base-button>
+      </div>
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Medium buttons</h2>
+      <div class="components__listing">
+        <base-button>
+          Default
+        </base-button>
+        <base-button
+          type="primary"
+        >
+          Default primary
+        </base-button>
+        <base-button
+          type="secondary"
+        >
+          Default secondary
+        </base-button>
+        <base-button
+          outline
+        >
+          Outline default
+        </base-button>
+        <base-button
+          type="primary"
+          outline
+        >
+          Outline primary
+        </base-button>
+        <base-button
+          type="secondary"
+          outline
+        >
+          Outline secondary
+        </base-button>
+        <base-button
+          text
+        >
+          Text default
+        </base-button>
+        <base-button
+          type="primary"
+          text
+        >
+          Text primary
+        </base-button>
+        <base-button
+          type="secondary"
+          text
+        >
+          Text secondary
+        </base-button>
+      </div>
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Large buttons</h2>
+      <div class="components__listing">
+        <base-button
+          size="big"
+        >
+          Default
+        </base-button>
+        <base-button
+          type="primary"
+          size="big"
+        >
+          Default primary
+        </base-button>
+        <base-button
+          type="secondary"
+          size="big"
+        >
+          Default secondary
+        </base-button>
+        <base-button
+          outline
+          size="big"
+        >
+          Outline default
+        </base-button>
+        <base-button
+          type="primary"
+          outline
+          size="big"
+        >
+          Outline primary
+        </base-button>
+        <base-button
+          type="secondary"
+          outline
+          size="big"
+        >
+          Outline secondary
+        </base-button>
+        <base-button
+          text
+          size="big"
+        >
+          Text default
+        </base-button>
+        <base-button
+          type="primary"
+          text
+          size="big"
+        >
+          Text primary
+        </base-button>
+        <base-button
+          type="secondary"
+          text
+          size="big"
+        >
+          Text secondary
+        </base-button>
+      </div>
+    </div>
   </main>
 </template>
 
 <script>
-const BaseInput = () => import('@/components/BaseInput/BaseInput.vue');
-
 export default {
   name: 'Components',
   data: () => ({
     input: '',
   }),
-  components: {
-    BaseInput,
-  },
 };
 </script>
 
@@ -38,15 +210,30 @@ export default {
     margin: 150px auto 0 auto;
 
     &__container {
-      max-width: 600px;
+      max-width: 800px;
     }
 
     &__row {
-      margin: 3rem 0;
+      margin: 5rem 0;
     }
 
     &__input {
       margin: 0 0 2rem 0
+    }
+
+    &__listing {
+      display: flex;
+      flex-wrap: wrap;
+
+      & > * {
+        margin: 0 1rem 1rem 0;
+      }
+    }
+
+    &__heading {
+      margin: 0 0 2rem 0;
+      text-transform: uppercase;
+      font-weight: bold;
     }
   }
 </style>
