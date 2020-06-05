@@ -199,6 +199,8 @@
           Text secondary
         </base-button>
       </div>
+      <h2 class="components__heading">Tabs</h2>
+      <tabs/>
     </div>
   </main>
 </template>
