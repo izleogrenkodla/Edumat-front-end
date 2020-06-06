@@ -200,6 +200,26 @@
         </base-button>
       </div>
     </div>
+    <div class="components__row">
+      <h2 class="components__heading">Tabs</h2>
+      <tabs :data="tabsData" :perRow="3" />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Tabs align left</h2>
+      <tabs 
+        :data="tabsData"
+        :perRow="3"
+        align="left"
+      />
+    </div>
+     <div class="components__row">
+      <h2 class="components__heading">Tabs align right</h2>
+      <tabs 
+        :data="tabsData"
+        :perRow="3"
+        align="right"
+      />
+    </div>
   </main>
 </template>
 
@@ -210,6 +230,9 @@ export default {
     input: '',
     inputTwo: '',
     inputThree: '',
+    tabsData: [
+      'Tab 1', 'Tab 2', 'Tab 3',
+    ],
   }),
 };
 </script>
