@@ -1,37 +1,50 @@
-.tab-button {
+.base-tab-button {
   background: none;
   border: none;
   outline: none;
-  padding: 10px 100px;
+  padding: 10px 16px;
   position: relative;
 	font-size: 19px;
   color: var(--acent-color--dark);
-  width: 50%;
   transition: color var(--time);
 
-  &:hover, &:focus{
+  &:hover, &:focus {
     color: var(--text-color);
   }
 
-  &::before{
+  &::before {
     content: "";
     transform: scale(0);
   }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--active {
+    color: var(--text-color);
+
+    &::before {
+      transform: scale(1);
+      transition: transform var(--time);
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--primary-color);
+      border-radius: 40px;
+    }
+  }
 }
 
-.tab-button.isActive {
-  color: var(--text-color);
-  
-  &::before {
-    transform: scale(1);
-    transition: transform var(--time);
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: var(--primary-color);
-    border-radius: 40px;
+@media screen and (max-width: 768px) {
+  .base-tab-button {
+    font-size: 16px;
   }
 }

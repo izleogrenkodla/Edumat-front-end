@@ -1,6 +1,11 @@
 <template>
-  <button 
-    :class="[ {isActive }, 'tab-button']" 
+  <button
+    class="base-tab-button"
+    :class="[
+      isActive ? 'base-tab-button--active' : '',
+      align === 'left' ? 'base-tab-button--left' : '',
+      align === 'right' ? 'base-tab-button--right' : '',
+    ]"
     @click="$emit('setActive')"
   >
     <slot></slot>
@@ -16,8 +21,13 @@ export default {
       default: false,
       required: false,
     },
+    align: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
 };
 </script>
 
-<style lang="scss" scoped src="./TabButton.scss"/>
+<style lang="scss" scoped src="./TabButton.scss" />

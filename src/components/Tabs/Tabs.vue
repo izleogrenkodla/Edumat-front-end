@@ -1,10 +1,12 @@
 <template>
-  <div class="tabs">
+  <div class="base-tabs">
     <tab-button
       v-for="(tab, index) in data"
       :key="tab"
       @setActive="currentTab = index"
       :isActive="currentTab === index"
+      :align="align"
+      :style="{ flex: `${ 100 / perRow }%` }"
     >
       {{ tab }}
     </tab-button>
@@ -14,15 +16,25 @@
 <script>
 export default {
   name: 'Tabs',
-  props: {
-    data: {
-      type: Array,
-      required: true,
-    },
-  },
   data: () => ({
     currentTab: 0,
   }),
+  props: {
+    data: {
+      type: Array,
+      required: false,
+    },
+    perRow: {
+      type: Number,
+      required: false,
+      default: 2,
+    },
+    align: {
+      type: String,
+      required: false,
+      default: '',
+    },
+  },
 };
 </script>
 
