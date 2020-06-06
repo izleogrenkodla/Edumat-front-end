@@ -1,7 +1,7 @@
 <template>
   <div class="tabs">
     <tab-button
-      v-for="(tab, index) in tabs"
+      v-for="(tab, index) in data"
       :key="tab"
       @setActive="currentTab = index"
       :isActive="currentTab === index"
@@ -14,12 +14,16 @@
 <script>
 export default {
   name: 'Tabs',
-  data() {
-    return {
-      currentTab: 0,
-      tabs: ['Tab1', 'Tab2'],
-    };
+  props: {
+    data: {
+      type: Array,
+      required: true,
+    },
   },
+  data: () => ({
+    currentTab: 0,
+  }),
 };
 </script>
+
 <style lang="scss" scoped src="./Tabs.scss" />

@@ -1,5 +1,8 @@
 <template>
-  <button :class="[{isActive}, 'tab-button']" @click="$emit('setActive')">
+  <button 
+    :class="[ {isActive }, 'tab-button']" 
+    @click="$emit('setActive')"
+  >
     <slot></slot>
   </button>
 </template>
@@ -16,4 +19,5 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped src="./TabButton.scss"/>

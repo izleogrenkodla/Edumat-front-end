@@ -8,9 +8,11 @@
   color: var(--acent-color--dark);
   width: 50%;
   transition: color var(--time);
+
   &:hover, &:focus{
     color: var(--text-color);
   }
+
   &::before{
     content: "";
     transform: scale(0);
@@ -19,6 +21,7 @@
 
 .tab-button.isActive {
   color: var(--text-color);
+  
   &::before {
     transform: scale(1);
     transition: transform var(--time);

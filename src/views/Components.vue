@@ -199,8 +199,10 @@
           Text secondary
         </base-button>
       </div>
+    </div>
+    <div class="components__row">
       <h2 class="components__heading">Tabs</h2>
-      <tabs/>
+      <tabs :data="tabsData" />
     </div>
   </main>
 </template>
@@ -212,6 +214,9 @@ export default {
     input: '',
     inputTwo: '',
     inputThree: '',
+    tabsData: [
+      'Tab 1', 'Tab 2', 'Tab 3',
+    ],
   }),
 };
 </script>
