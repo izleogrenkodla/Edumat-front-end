@@ -199,6 +199,10 @@
           Text secondary
         </base-button>
       </div>
+      <div class="components__gray">
+        <h2 class="components__heading">Dropdown</h2>
+        <dropdown/>
+      </div>
     </div>
   </main>
 </template>
@@ -249,6 +253,12 @@ export default {
       margin: 0 0 2rem 0;
       text-transform: uppercase;
       font-weight: bold;
+    }
+    &__gray {
+      background-color: #F5F5F5;
+      width: 100%;
+      height: 500px;
+      padding: 50px;
     }
   }
 </style>
