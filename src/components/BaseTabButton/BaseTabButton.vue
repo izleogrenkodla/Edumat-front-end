@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'TabButton',
+  name: 'BaseTabButton',
   props: {
     isActive: {
       type: Boolean,
@@ -30,4 +30,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="./TabButton.scss" />
+<style lang="scss" scoped src="./BaseTabButton.scss" />

@@ -202,11 +202,11 @@
     </div>
     <div class="components__row">
       <h2 class="components__heading">Tabs</h2>
-      <tabs :data="tabsData" :perRow="3" />
+      <base-tabs :data="tabsData" :perRow="3" />
     </div>
     <div class="components__row">
       <h2 class="components__heading">Tabs align left</h2>
-      <tabs 
+      <base-tabs 
         :data="tabsData"
         :perRow="3"
         align="left"
@@ -214,7 +214,7 @@
     </div>
      <div class="components__row">
       <h2 class="components__heading">Tabs align right</h2>
-      <tabs 
+      <base-tabs 
         :data="tabsData"
         :perRow="3"
         align="right"
