@@ -204,6 +204,40 @@
         <dropdown :items="dropdownItems" />
       </div>
     </div>
+    <div class="components__row">
+      <h2 class="components__heading">Tabs</h2>
+      <base-tabs :data="tabsData" :perRow="3" />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Tabs align left</h2>
+      <base-tabs 
+        :data="tabsData"
+        :perRow="3"
+        align="left"
+      />
+    </div>
+     <div class="components__row">
+      <h2 class="components__heading">Tabs align right</h2>
+      <base-tabs 
+        :data="tabsData"
+        :perRow="3"
+        align="right"
+      />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Toggle switch with text</h2>
+      <base-toggle-switch>
+        Toogle switch
+      </base-toggle-switch>
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Toggle switch without text</h2>
+      <base-toggle-switch />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Large Toggle switch without text</h2>
+      <base-toggle-switch size="big"/>
+    </div>
   </main>
 </template>
 
@@ -215,6 +249,9 @@ export default {
     inputTwo: '',
     inputThree: '',
     dropdownItems: ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'],
+    tabsData: [
+      'Tab 1', 'Tab 2', 'Tab 3',
+    ],
   }),
 };
 </script>

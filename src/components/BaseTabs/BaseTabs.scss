@@ -1,0 +1,14 @@
+.base-tabs {
+  border-bottom: 2px solid rgba(#707070, 0.08);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .base-tabs {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
