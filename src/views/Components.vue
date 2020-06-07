@@ -222,17 +222,29 @@
     </div>
     <div class="components__row">
       <h2 class="components__heading">Toggle switch with text</h2>
-      <base-toggle-switch>
+      <base-checkbox type="switch">
         Toogle switch
-      </base-toggle-switch>
+      </base-checkbox>
     </div>
     <div class="components__row">
       <h2 class="components__heading">Toggle switch without text</h2>
-      <base-toggle-switch />
+      <base-checkbox type="switch" />
     </div>
     <div class="components__row">
       <h2 class="components__heading">Large Toggle switch without text</h2>
-      <base-toggle-switch size="big"/>
+      <base-checkbox type="switch" size="big" />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Checkbox with text</h2>
+      <base-checkbox type="checkbox">Checkbox with text</base-checkbox>
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Checkbox without text</h2>
+      <base-checkbox type="checkbox" />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Large Checkbox without text</h2>
+      <base-checkbox type="checkbox" size="big" />
     </div>
   </main>
 </template>
