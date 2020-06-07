@@ -5,7 +5,7 @@
       class="dropdown__active-option dropdown__item"
       @click="isActive = !isActive"
       :style="{
-        borderRadius: isActive ? `25px 25px 0 0` : '25px',
+        borderRadius: isActive ? `25px 25px 0 0` : '25px'
       }"
     >
       {{ activeOption }}
@@ -29,6 +29,7 @@
         class="dropdown__item"
         type="button"
         :disabled="!isActive"
+        :style="{ cursor: isActive ? 'pointer' : 'default' }"
         @click="handleClick(item)"
       >
         {{ item }}
