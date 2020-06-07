@@ -210,6 +210,10 @@
       <h2 class="components__heading">Toggle switch without text</h2>
       <base-toggle-switch />
     </div>
+    <div class="components__row">
+      <h2 class="components__heading">Large Toggle switch without text</h2>
+      <base-toggle-switch size="big"/>
+    </div>
   </main>
 </template>
 
