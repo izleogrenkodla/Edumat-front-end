@@ -1,14 +1,11 @@
 <template>
-  <div class="dropdown">
+  <div class="dropdown" @keyup.esc="close">
     <button
       type="button"
       class="dropdown__active-option dropdown__item"
       @click="isActive = !isActive"
       :style="{
         borderRadius: isActive ? `25px 25px 0 0` : '25px',
-        transition: isActive
-          ? 'border-radius var(--time)'
-          : 'border-radius var(--time) var(--time--short)'
       }"
     >
       {{ activeOption }}
@@ -25,12 +22,13 @@
         </g>
       </svg>
     </button>
-    <div class="dropdown__content" :style="{ transform: isActive ? `scaleY(1)` : 'scaleY(0)' }">
+    <div class="dropdown__content" :style="{ opacity: isActive ? 1 : 0 }">
       <button
         v-for="item in items"
         :key="item"
         class="dropdown__item"
         type="button"
+        :disabled="!isActive"
         @click="handleClick(item)"
       >
         {{ item }}
@@ -42,18 +40,36 @@
 <script>
 export default {
   name: 'Dropdown',
-  data() {
-    return {
-      items: ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'],
-      activeOption: 'Default option',
-      isActive: false,
-    };
-  },
+  data: () => ({
+    activeOption: 'Default option',
+    isActive: false,
+  }),
   methods: {
-    handleClick(item) {
-      this.activeOption = item;
+    close() {
       this.isActive = false;
     },
+    handleClick(item) {
+      this.activeOption = item;
+      this.close();
+    },
+    handleOutsideClick({ target }) {
+      const isClickInside = this.$el.contains(target);
+      if (!isClickInside) {
+        this.close();
+      }
+    },
+  },
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    },
+  },
+  mounted() {
+    document.addEventListener('click', this.handleOutsideClick);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.handleOutsideClick);
   },
 };
 </script>

@@ -201,7 +201,7 @@
       </div>
       <div class="components__gray">
         <h2 class="components__heading">Dropdown</h2>
-        <dropdown/>
+        <dropdown :items="dropdownItems" />
       </div>
     </div>
   </main>
@@ -214,6 +214,7 @@ export default {
     input: '',
     inputTwo: '',
     inputThree: '',
+    dropdownItems: ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'],
   }),
 };
 </script>

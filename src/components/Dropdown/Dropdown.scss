@@ -5,8 +5,7 @@
     border-radius: 25px;
     position: relative;
     box-shadow: 0 10px 20px rgba(#000, .16);
-    transition: transform var(--time);
-    transform-origin: top;
+    transition: opacity var(--time);
   }
 
   &__item {
@@ -48,7 +47,7 @@
 		display: flex;
 		justify-content: space-between;
     align-items: center;
-    
+    transition: border-radius var(--time--short);
 		&::before {
 			display: none;
 		}
