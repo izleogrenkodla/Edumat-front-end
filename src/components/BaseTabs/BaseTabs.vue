@@ -1,6 +1,6 @@
 <template>
   <div class="base-tabs">
-    <tab-button
+    <base-tab-button
       v-for="(tab, index) in data"
       :key="tab"
       @setActive="currentTab = index"
@@ -9,13 +9,13 @@
       :style="{ flex: `${ 100 / perRow }%` }"
     >
       {{ tab }}
-    </tab-button>
+    </base-tab-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Tabs',
+  name: 'BaseTabs',
   data: () => ({
     currentTab: 0,
   }),
@@ -38,4 +38,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="./Tabs.scss" />
+<style lang="scss" scoped src="./BaseTabs.scss" />

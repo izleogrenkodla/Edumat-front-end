@@ -202,11 +202,11 @@
     </div>
     <div class="components__row">
       <h2 class="components__heading">Tabs</h2>
-      <tabs :data="tabsData" :perRow="3" />
+      <base-tabs :data="tabsData" :perRow="3" />
     </div>
     <div class="components__row">
       <h2 class="components__heading">Tabs align left</h2>
-      <tabs 
+      <base-tabs 
         :data="tabsData"
         :perRow="3"
         align="left"
@@ -214,11 +214,25 @@
     </div>
      <div class="components__row">
       <h2 class="components__heading">Tabs align right</h2>
-      <tabs 
+      <base-tabs 
         :data="tabsData"
         :perRow="3"
         align="right"
       />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Toggle switch with text</h2>
+      <base-toggle-switch>
+        Toogle switch
+      </base-toggle-switch>
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Toggle switch without text</h2>
+      <base-toggle-switch />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Large Toggle switch without text</h2>
+      <base-toggle-switch size="big"/>
     </div>
   </main>
 </template>

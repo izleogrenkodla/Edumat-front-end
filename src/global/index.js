@@ -1,13 +1,17 @@
 import Vue from 'vue';
-import BaseButton from '@/components/BaseButton/BaseButton.vue';
-import BaseInput from '@/components/BaseInput/BaseInput.vue';
-import TabButton from '@/components/TabButton/TabButton.vue';
-import Tabs from '@/components/Tabs/Tabs.vue';
 import { ValidationProvider, ValidationObserver } from 'vee-validate/dist/vee-validate.full';
 
-Vue.component('base-button', BaseButton);
-Vue.component('base-input', BaseInput);
-Vue.component('tabs', Tabs);
-Vue.component('tab-button', TabButton);
+// Dynamic import of our components
+const components = require.context('@/components/', true);
+components.keys().map(component => {
+  if (!component.endsWith('.vue')) {
+    return;
+  }
+
+  const componentName = component.split('/').pop().replace(/\.vue$/, '');
+  Vue.component(componentName, components(component).default);
+});
+
+// Components from libraries
 Vue.component('validation-provider', ValidationProvider);
 Vue.component('validation-observer', ValidationObserver);
