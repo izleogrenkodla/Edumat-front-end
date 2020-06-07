@@ -201,8 +201,14 @@
       </div>
     </div>
     <div class="components__row">
-      <h2 class="components__heading">Toggle switch</h2>
-      <toggle-switch>Toogle switch</toggle-switch>
+      <h2 class="components__heading">Toggle switch with text</h2>
+      <base-toggle-switch>
+        Toogle switch
+      </base-toggle-switch>
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Toggle switch without text</h2>
+      <base-toggle-switch />
     </div>
   </main>
 </template>
