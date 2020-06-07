@@ -4,7 +4,7 @@
   outline: none;
   padding: 10px 16px;
   position: relative;
-	font-size: 19px;
+  font-size: 19px;
   color: var(--acent-color--dark);
   transition: color var(--time);
 
@@ -14,22 +14,30 @@
 
   &::before {
     content: "";
-    transform: scale(0);
+    transform: scaleX(0);
   }
 
   &--left {
     text-align: left;
+    
+    &::before {
+      transform-origin: left;
+    }
   }
 
   &--right {
     text-align: right;
+
+    &::before {
+      transform-origin: right;
+    }
   }
 
   &--active {
     color: var(--text-color);
 
     &::before {
-      transform: scale(1);
+      transform: scaleX(1);
       transition: transform var(--time);
       content: "";
       position: absolute;
