@@ -1,15 +1,17 @@
 import Vue from 'vue';
-import BaseButton from '@/components/BaseButton/BaseButton.vue';
-import BaseInput from '@/components/BaseInput/BaseInput.vue';
-import BaseTabButton from '@/components/BaseTabButton/BaseTabButton.vue';
-import BaseTabs from '@/components/BaseTabs/BaseTabs.vue';
 import { ValidationProvider, ValidationObserver } from 'vee-validate/dist/vee-validate.full';
-import BaseToggleSwitch from '@/components/BaseToggleSwitch/BaseToggleSwitch.vue';
 
-Vue.component('base-button', BaseButton);
-Vue.component('base-input', BaseInput);
-Vue.component('base-tabs', BaseTabs);
-Vue.component('base-tab-button', BaseTabButton);
+// Dynamic import of our components
+const components = require.context('@/components/', true);
+components.keys().map(component => {
+  if (!component.endsWith('.vue')) {
+    return;
+  }
+
+  const componentName = component.split('/').pop().replace(/\.vue$/, '');
+  Vue.component(componentName, components(component).default);
+});
+
+// Components from libraries
 Vue.component('validation-provider', ValidationProvider);
 Vue.component('validation-observer', ValidationObserver);
-Vue.component('base-toggle-switch', BaseToggleSwitch);
