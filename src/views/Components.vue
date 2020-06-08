@@ -199,6 +199,57 @@
           Text secondary
         </base-button>
       </div>
+      <div class="components__row components__row--dropdowns">
+        <h2 class="components__heading">Dropdown</h2>
+        <base-dropdown
+          text="Normal version!"
+          helpfulText="Normalna lista"
+        >
+          <base-dropdown-item>
+            siema!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!!
+          </base-dropdown-item>
+        </base-dropdown>
+        <base-dropdown
+          text="Empty!"
+          helpfulText="Pusta lista"
+        />
+        <base-dropdown
+          text="Gray version!"
+          grayBackground
+          helpfulText="Szara lista"
+        >
+          <base-dropdown-item>
+            siema!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!!
+          </base-dropdown-item>
+        </base-dropdown>
+        <base-dropdown
+          text="with border!"
+          hasBorder
+          helpfulText="Ramkowa lista"
+        >
+          <base-dropdown-item>
+            siema!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!!
+          </base-dropdown-item>
+        </base-dropdown>
+      </div>
     </div>
     <div class="components__row">
       <h2 class="components__heading">Tabs</h2>
@@ -206,7 +257,7 @@
     </div>
     <div class="components__row">
       <h2 class="components__heading">Tabs align left</h2>
-      <base-tabs 
+      <base-tabs
         :data="tabsData"
         :perRow="3"
         align="left"
@@ -214,7 +265,7 @@
     </div>
      <div class="components__row">
       <h2 class="components__heading">Tabs align right</h2>
-      <base-tabs 
+      <base-tabs
         :data="tabsData"
         :perRow="3"
         align="right"
@@ -244,6 +295,7 @@ export default {
     input: '',
     inputTwo: '',
     inputThree: '',
+    dropdownItems: ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'],
     tabsData: [
       'Tab 1', 'Tab 2', 'Tab 3',
     ],
@@ -267,6 +319,23 @@ export default {
 
     &__row {
       margin: 5rem 0;
+
+      &--dropdowns {
+        background-color: #F5F5F5;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 2rem;
+
+        .components__heading {
+          width: 100%;
+        }
+
+        & > div {
+          margin: 0 1rem 8rem 1rem;
+        }
+      }
     }
 
     &__input {
@@ -286,6 +355,12 @@ export default {
       margin: 0 0 2rem 0;
       text-transform: uppercase;
       font-weight: bold;
+    }
+    &__gray {
+      background-color: #F5F5F5;
+      width: 100%;
+      height: 500px;
+      padding: 50px;
     }
   }
 </style>
