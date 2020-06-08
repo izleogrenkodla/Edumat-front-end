@@ -199,9 +199,21 @@
           Text secondary
         </base-button>
       </div>
-      <div class="components__gray">
+      <div class="components__row">
         <h2 class="components__heading">Dropdown</h2>
-        <dropdown :items="dropdownItems" />
+        <base-dropdown
+          text="Click me!"
+        >
+          <base-dropdown-item>
+            siema!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!!
+          </base-dropdown-item>
+        </base-dropdown>
       </div>
     </div>
     <div class="components__row">

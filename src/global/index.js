@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import { ValidationProvider, ValidationObserver } from 'vee-validate/dist/vee-validate.full';
-import Dropdown from '@/components/Dropdown/Dropdown.vue';
 
 // Dynamic import of our components
 const components = require.context('@/components/', true);
@@ -16,4 +15,3 @@ components.keys().map(component => {
 // Components from libraries
 Vue.component('validation-provider', ValidationProvider);
 Vue.component('validation-observer', ValidationObserver);
-Vue.component('dropdown', Dropdown);

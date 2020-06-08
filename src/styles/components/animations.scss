@@ -9,3 +9,15 @@
     opacity: 0;
   }
 }
+
+.dropdown-fade {
+  will-change: opacity;
+
+  &-enter-active, &-leave-active {
+    transition: all var(--time) ease-out;
+  }
+
+  &-enter, &-leave-to {
+    opacity: 0;
+  }
+}
