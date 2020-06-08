@@ -199,10 +199,45 @@
           Text secondary
         </base-button>
       </div>
-      <div class="components__row">
+      <div class="components__row components__row--dropdowns">
         <h2 class="components__heading">Dropdown</h2>
         <base-dropdown
-          text="Click me!"
+          text="Normal version!"
+          helpfulText="Normalna lista"
+        >
+          <base-dropdown-item>
+            siema!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!!
+          </base-dropdown-item>
+        </base-dropdown>
+        <base-dropdown
+          text="Empty!"
+          helpfulText="Pusta lista"
+        />
+        <base-dropdown
+          text="Gray version!"
+          grayBackground
+          helpfulText="Szara lista"
+        >
+          <base-dropdown-item>
+            siema!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!
+          </base-dropdown-item>
+          <base-dropdown-item>
+            siema!!!
+          </base-dropdown-item>
+        </base-dropdown>
+        <base-dropdown
+          text="with border!"
+          hasBorder
+          helpfulText="Ramkowa lista"
         >
           <base-dropdown-item>
             siema!
@@ -222,7 +257,7 @@
     </div>
     <div class="components__row">
       <h2 class="components__heading">Tabs align left</h2>
-      <base-tabs 
+      <base-tabs
         :data="tabsData"
         :perRow="3"
         align="left"
@@ -230,7 +265,7 @@
     </div>
      <div class="components__row">
       <h2 class="components__heading">Tabs align right</h2>
-      <base-tabs 
+      <base-tabs
         :data="tabsData"
         :perRow="3"
         align="right"
@@ -284,6 +319,23 @@ export default {
 
     &__row {
       margin: 5rem 0;
+
+      &--dropdowns {
+        background-color: #F5F5F5;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 2rem;
+
+        .components__heading {
+          width: 100%;
+        }
+
+        & > div {
+          margin: 0 1rem 8rem 1rem;
+        }
+      }
     }
 
     &__input {

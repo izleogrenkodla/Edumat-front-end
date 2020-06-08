@@ -32,12 +32,20 @@
     border: none;
     background-color: var(--background--accent);
     outline: none;
-    transition: border-radius var(--time--short);
+    transition: background-color var(--time--short);
     font-size: 14px;
     z-index: 2;
+
+    &--gray {
+      background-color: var(--text-color--medium);
+    }
+
+    &--bordered {
+      border: 1px solid var(--text-color--medium);
+    }
     
     &--active {
-      background-color: var(--primary-color--medium);
+      background-color: var(--text-color--medium);
     }
 	}
 }

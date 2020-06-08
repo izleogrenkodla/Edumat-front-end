@@ -1,6 +1,6 @@
 <template>
-  <div 
-    class="base-dropdown" 
+  <div
+    class="base-dropdown"
     @keyup.esc="close"
   >
     <button
@@ -12,6 +12,10 @@
         hasBorder ? 'base-dropdown__button--bordered' : '',
       ]"
       @click="isActive = !isActive"
+      aria-controls="base-dropdown__content"
+      :aria-label="helpfulText"
+      :title="helpfulText"
+      :aria-expanded="isActive ? 'true' : 'false'"
     >
       {{ text }}
       <svg
@@ -28,15 +32,22 @@
       </svg>
     </button>
     <transition name="dropdown-fade">
-      <ul 
+      <ul
         class="base-dropdown__content"
         v-if="isActive && hasSlot"
+        aria-label="Kontent listy"
       >
         <slot></slot>
       </ul>
-      <base-dropdown-item v-else-if="isActive && !hasSlot">
-        No content
-      </base-dropdown-item>
+      <ul
+        class="base-dropdown__content"
+        v-else-if="isActive && !hasSlot"
+        aria-label="Kontent listy"
+      >
+        <base-dropdown-item @click="close()">
+          No content
+        </base-dropdown-item>
+      </ul>
     </transition>
   </div>
 </template>
@@ -44,6 +55,11 @@
 <script>
 export default {
   name: 'BaseDropdown',
+  provide() {
+    return {
+      dropdown: this,
+    };
+  },
   data: () => ({
     activeOption: null,
     isActive: false,
@@ -64,6 +80,11 @@ export default {
       required: false,
       default: false,
     },
+    helpfulText: {
+      type: String,
+      required: false,
+      default: 'Otwórz listę',
+    },
   },
   computed: {
     hasSlot() {
@@ -77,10 +98,6 @@ export default {
   methods: {
     close() {
       this.isActive = false;
-    },
-    handleClick(item) {
-      this.activeOption = item;
-      this.close();
     },
     handleOutsideClick({ target }) {
       const isClickInside = this.$el.contains(target);

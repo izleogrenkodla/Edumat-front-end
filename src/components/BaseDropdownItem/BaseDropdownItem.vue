@@ -1,7 +1,7 @@
 <template>
-  <li 
+  <li
     class="base-dropdown-item"
-    @click="$emit('click')"
+    @click="$emit('click'), handleClick()"
     @blur="$emit('blur')"
   >
     <slot></slot>
@@ -11,7 +11,13 @@
 <script>
 export default {
   name: 'BaseDropdownItem',
-}
+  inject: ['dropdown'],
+  methods: {
+    handleClick() {
+      this.dropdown.close();
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped src="./BaseDropdownItem.scss" />
