@@ -273,17 +273,43 @@
     </div>
     <div class="components__row">
       <h2 class="components__heading">Toggle switch with text</h2>
-      <base-toggle-switch>
+      <base-checkbox type="switch" v-model="checkboxChecked">
         Toogle switch
-      </base-toggle-switch>
+      </base-checkbox>
     </div>
     <div class="components__row">
       <h2 class="components__heading">Toggle switch without text</h2>
-      <base-toggle-switch />
+      <base-checkbox type="switch" v-model="checkboxChecked2" />
     </div>
     <div class="components__row">
       <h2 class="components__heading">Large Toggle switch without text</h2>
-      <base-toggle-switch size="big"/>
+      <base-checkbox
+        type="switch"
+        size="big"
+        v-model="checkboxChecked3"
+      />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Required checkbox with text</h2>
+      <base-checkbox
+        type="checkbox"
+        required
+        v-model="checkboxChecked4"
+      >
+        Checkbox with text
+      </base-checkbox>
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Checkbox without text</h2>
+      <base-checkbox type="checkbox" v-model="checkboxChecked5" />
+    </div>
+    <div class="components__row">
+      <h2 class="components__heading">Large Checkbox without text</h2>
+      <base-checkbox
+        type="checkbox"
+        size="big"
+        v-model="checkboxChecked6"
+      />
     </div>
   </main>
 </template>
@@ -299,6 +325,12 @@ export default {
     tabsData: [
       'Tab 1', 'Tab 2', 'Tab 3',
     ],
+    checkboxChecked: false,
+    checkboxChecked2: false,
+    checkboxChecked3: false,
+    checkboxChecked4: false,
+    checkboxChecked5: false,
+    checkboxChecked6: false,
   }),
 };
 </script>
