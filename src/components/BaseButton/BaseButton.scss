@@ -49,6 +49,21 @@
     }
   }
 
+  &--white {
+    background-color: var(--background--accent);
+    color: var(--text-color);
+    &.base-button {
+      &--outline {
+        color: var(--background--accent);
+        border-color: var(--background--accent);
+        background-color: transparent;
+      }
+      &--text {
+        color: var(--background--accent);
+      }
+    }
+  }
+
   &--text {
     border-color: transparent;
     background-color: transparent;

@@ -199,6 +199,24 @@
           Text secondary
         </base-button>
       </div>
+      <div class="components__row components__row--white-buttons">
+        <h2 class="components__heading">White buttons</h2>
+        <base-button white>
+          Default white
+        </base-button>
+        <base-button
+          outline
+          white
+        >
+          Outline white
+        </base-button>
+        <base-button
+          text
+          white
+        >
+          Text white
+        </base-button>
+      </div>
       <div class="components__row components__row--dropdowns">
         <h2 class="components__heading">Dropdown</h2>
         <base-dropdown
@@ -367,6 +385,16 @@ export default {
         & > div {
           margin: 0 1rem 8rem 1rem;
         }
+      }
+      &--white-buttons {
+        background-color: var(--text-color);
+        padding: 30px;
+        h2 {
+          color: #fff
+        }
+         & > * {
+        margin: 0 1rem 1rem 0;
+      }
       }
     }
 

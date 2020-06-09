@@ -52,6 +52,11 @@ export default {
       required: false,
       default: false,
     },
+    white: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
     componentType() {
@@ -67,6 +72,7 @@ export default {
         this.disabled ? 'base-button--disabled' : '',
         this.outline ? 'base-button--outline' : '',
         this.text ? 'base-button--text' : '',
+        this.white ? 'base-button--white' : '',
       ];
     },
   },
