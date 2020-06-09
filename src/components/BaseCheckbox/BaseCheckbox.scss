@@ -9,7 +9,8 @@
   }
 
   &__checkbox {
-    display: none;
+    opacity: 0;
+    position: absolute;
   }
 
   &__wrapper {
