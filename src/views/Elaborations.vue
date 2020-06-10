@@ -42,8 +42,9 @@ export default {
   &__content {
     display: grid;
     grid-gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(472px, 1fr));
-    @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+
+    @media screen and (max-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
     }
   }

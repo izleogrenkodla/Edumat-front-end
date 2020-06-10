@@ -1,11 +1,12 @@
 .base-user-header {
-  background: linear-gradient(
-    var(--primary-color),
-    var(--primary-color--medium)
-  );
+  background: url('/img/layout/Header_Opracowania.svg')  no-repeat;
+  background-size: cover;
+  background-position: bottom;
   color: var(--background--accent);
   border-radius: 24px;
-  padding: 2rem;
+  padding: 3rem;
+  margin-top: 30px;
+  
   &__text,
   &__subtext {
     font-size: 32px;
@@ -14,7 +15,12 @@
       font-size: 24px;
     }
   }
+
   &__text {
     font-weight: bold;
+  }
+
+  &__subtext {
+    margin-bottom: 2rem;
   }
 }
