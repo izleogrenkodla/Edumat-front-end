@@ -355,8 +355,7 @@ export default {
 
 <style lang="scss">
   .components {
-    margin: 150px auto 0 auto;
-
+    margin: 0 auto;
     h1 {
       font-size: 26px;
       font-weight: bold;

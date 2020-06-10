@@ -3,9 +3,13 @@
     :is="componentType"
     :disabled="disabled"
     :class="classes"
+    :to="url ? url : false"
+    :title="title"
+    :aria-label="title"
     @click="$emit('click')"
     @focus="$emit('focus')"
     class="base-button"
+
   >
     <p class="base-button__text">
       <slot></slot>
@@ -56,6 +60,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    title: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
   computed: {

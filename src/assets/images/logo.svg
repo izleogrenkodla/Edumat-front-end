@@ -1,0 +1,12 @@
+<svg id="Strona_główna_Logo_" data-name="Strona główna (Logo)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="199.218" height="53.857" viewBox="0 0 199.218 53.857">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#a1a3ff"/>
+      <stop offset="1" stop-color="#6d63ef"/>
+    </linearGradient>
+  </defs>
+  <g id="Logo">
+    <path id="Path_22" data-name="Path 22" d="M206.814,107.038,189.39,96.951l-17.605,10.087v33.621l17.605,10.149,17.423-10.149V127.4l-17.423,10.27-6.175-3.547,23.6-13.569Zm-23.474,13.693v-6.969l6.051-3.362,6.051,3.362Z" transform="translate(-171.785 -96.951)" fill="url(#linear-gradient)"/>
+    <text id="edumat.pl" transform="translate(57.218 37.372)" fill="#18183d" font-size="32" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">edumat.pl</tspan></text>
+  </g>
+</svg>
