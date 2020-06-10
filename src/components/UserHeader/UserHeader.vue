@@ -1,14 +1,14 @@
 <template>
-  <header class="base-user-header">
-    <h1 class="base-user-header__text">{{ header }}</h1>
-    <h2 class="base-user-header__subtext">{{ subHeader }}</h2>
-    <base-button class="base-user-header__button" outline white>{{ textButton }}</base-button>
+  <header class="user-header">
+    <h1 class="user-header__text">{{ header }}</h1>
+    <h2 class="user-header__subtext">{{ subHeader }}</h2>
+    <base-button class="user-header__button" outline white>{{ textButton }}</base-button>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'BaseUserHeader',
+  name: 'UserHeader',
   data() {
     return {};
   },
@@ -30,4 +30,4 @@ export default {
   methods: {},
 };
 </script>
-<style lang="scss" scoped src="./BaseUserHeader.scss" />
+<style lang="scss" scoped src="./UserHeader.scss" />

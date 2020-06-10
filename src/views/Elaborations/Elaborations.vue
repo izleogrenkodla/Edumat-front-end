@@ -1,6 +1,6 @@
 <template>
   <main class="elaborations__container container">
-    <base-user-header header="Miło Cię widzieć!" subHeader="Zaraz wszystko ogarniesz!" />
+    <user-header header="Miło Cię widzieć!" subHeader="Zaraz wszystko ogarniesz!" />
     <h1 class="elaborations__header">Opracowania</h1>
     <div class="elaborations__content">
       <base-dropdown
@@ -10,7 +10,7 @@
         listOnTop
       >
         <template v-slot:button>
-          <base-elaboration-topic :topic="topic"/>
+          <elaboration-topic :topic="topic"/>
         </template>
         <template v-slot:items>
           <base-dropdown-item v-for="lesson in topic.lessons" :key="lesson">
@@ -30,23 +30,4 @@ export default {
   data: () => ({ topics }),
 };
 </script>
-<style lang="scss" scoped>
-.elaborations {
-  &__header {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 3rem 0;
-  }
-
-  &__content {
-    display: grid;
-    grid-gap: 2.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-
-    @media screen and (max-width: 768px) {
-      grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
-    }
-  }
-}
-</style>
+<style lang="scss" scoped src="./Elaborations.scss"/>

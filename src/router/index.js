@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/opracowania',
     name: 'Elaborations',
-    component: () => import(/* webpackChunkName: "components" */ '../views/Elaborations.vue'),
+    component: () => import(/* webpackChunkName: "elaborations-page" */ '../views/Elaborations/Elaborations.vue'),
   },
 ];
 

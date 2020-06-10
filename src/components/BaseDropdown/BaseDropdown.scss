@@ -26,6 +26,10 @@
 
     &--big {
       width: 2rem;
+      
+      @media screen and (max-width: 480px){
+        width: 1.5rem;
+      }
     }
   }
 
