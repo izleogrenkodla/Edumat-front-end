@@ -33,7 +33,7 @@ export default {
 <style lang="scss" scoped>
 .elaborations {
   &__header {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
     margin: 3rem 0;
@@ -41,7 +41,7 @@ export default {
 
   &__content {
     display: grid;
-    grid-gap: 40px;
+    grid-gap: 2.5rem;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 
     @media screen and (max-width: 768px) {
