@@ -17,7 +17,12 @@
       :title="helpfulText"
       :aria-expanded="isActive ? 'true' : 'false'"
     >
-      {{ text }}
+      <template v-if="hasHeaderSlot">
+        <slot name="header"></slot>
+      </template>
+      <template v-else>
+        {{ text }}
+      </template>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16.944"
@@ -93,6 +98,15 @@ export default {
       }
 
       return false;
+    },
+    hasHeaderSlot() {
+      if (this.$slots) {
+        if (this.$slots.header) {
+          return true;
+        }
+      }
+
+      return false;
     }
   },
   methods: {
@@ -116,4 +130,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="./BaseDropdown.scss" />
+<style lang="scss" src="./BaseDropdown.scss" />

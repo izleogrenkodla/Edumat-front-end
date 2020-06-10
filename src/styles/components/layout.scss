@@ -3,7 +3,12 @@
 }
 
 html {
-  // background-color: #14141A;
+  background-color: var(--background--medium);
+}
+
+.app-page {
+  margin: 85px 0 0 0;
+  padding: 2rem 0 0 0;
 }
 
 .container {
@@ -27,4 +32,10 @@ html {
 
 button {
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
 }

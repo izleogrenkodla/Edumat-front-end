@@ -1,12 +1,11 @@
 <template>
-  <div class="container home">
-    Edumat
+  <div class="container">
+    search results
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
+  name: 'SearchResults',
 };
 </script>

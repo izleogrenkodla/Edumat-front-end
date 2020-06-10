@@ -6,7 +6,11 @@
     tag="div"
     class="base-input"
   >
-    <label class="base-input__label" :for="name">
+    <label
+      v-if="label"
+      class="base-input__label"
+      :for="name"
+    >
       {{ label }}
     </label>
     <input

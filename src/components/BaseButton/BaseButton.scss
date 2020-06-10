@@ -15,7 +15,7 @@
   color: var(--text-color--accent);
   border-color: var(--text-color--acent);
   transition: all var(--time);
-  outline-color: var(--primary-color);
+  outline: none;
 
   &:hover, &:focus {
     cursor: pointer;
