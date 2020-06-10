@@ -3,11 +3,9 @@
     <img
       class="elaboration-topic__image"
       :src="`/img/math-symbols/${topic.section}.svg`"
-      alt=""
+      :alt="topic.section"
     />
-    <div class="elaboration-topic__text">
-      <p class="elaboration-topic__text__name">{{ topic.name }}</p>
-    </div>
+    <p class="elaboration-topic__name">{{ topic.name }}</p>
   </div>
 </template>
 

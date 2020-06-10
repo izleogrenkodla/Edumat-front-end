@@ -1,6 +1,7 @@
 <template>
   <li
     class="base-dropdown-item"
+    :class="classes"
     @click="$emit('click'), handleClick()"
     @blur="$emit('blur')"
   >
@@ -11,6 +12,13 @@
 <script>
 export default {
   name: 'BaseDropdownItem',
+  props: {
+    classes: {
+      type: [String, Array],
+      required: false,
+      default: '',
+    },
+  },
   inject: ['dropdown'],
   methods: {
     handleClick() {

@@ -4,6 +4,10 @@
     font-weight: bold;
     text-align: center;
     margin: 3rem 0;
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__content {
@@ -12,7 +16,12 @@
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 
     @media screen and (max-width: 768px) {
+      margin-top: 2rem;
       grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
     }
+  }
+  
+  &__base-dropdown-item {
+      font-weight: 600;
   }
 }

@@ -13,7 +13,12 @@
           <elaboration-topic :topic="topic"/>
         </template>
         <template v-slot:items>
-          <base-dropdown-item v-for="lesson in topic.lessons" :key="lesson">
+          <base-dropdown-item
+            v-for="lesson in topic.lessons"
+            :key="lesson"
+            classes="elaborations__base-dropdown-item"
+            @click="$router.push(lesson)"
+          >
             {{ lesson }}
           </base-dropdown-item>
         </template>
