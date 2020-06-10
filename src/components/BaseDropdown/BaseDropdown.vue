@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="base-dropdown"
-    @keyup.esc="close"
-  >
+  <div class="base-dropdown" @keyup.esc="close">
     <button
       type="button"
       class="base-dropdown__button"
@@ -10,6 +7,7 @@
         grayBackground ? 'base-dropdown__button--gray' : '',
         isActive ? 'base-dropdown__button--active' : '',
         hasBorder ? 'base-dropdown__button--bordered' : '',
+        listOnTop && isActive ? 'base-dropdown__button--active--on-top' : ''
       ]"
       @click="isActive = !isActive, $emit('click')"
       aria-controls="base-dropdown__content"
@@ -26,10 +24,10 @@
       <svg
         v-if="hasArrow"
         xmlns="http://www.w3.org/2000/svg"
-        width="16.944"
-        height="9.865"
+        viewBox="0 0 16.944 9.865"
         class="base-dropdown__arrow"
-        :style="{ transform: isActive ? `rotate(180deg)` : 'rotate(0)' }"
+        :class="bigArrow ? 'base-dropdown__arrow--big' : ''"
+        :style="{ transform }"
       >
         <g transform="rotate(90 8.472 8.472)" fill="#131330">
           <rect width="11.661" height="2.29" rx="1.145" transform="rotate(135 3.13 6.393)" />
@@ -40,10 +38,11 @@
     <transition name="dropdown-fade">
       <ul
         class="base-dropdown__content"
+        :class="listOnTop ? 'base-dropdown__content--on-top' : ''"
         v-if="isActive && hasSlot"
         aria-label="Kontent listy"
       >
-        <slot></slot>
+        <slot name="items"></slot>
       </ul>
       <ul
         class="base-dropdown__content"
@@ -74,7 +73,7 @@ export default {
     text: {
       type: String,
       required: false,
-      default: 'Select'
+      default: 'Select',
     },
     grayBackground: {
       type: Boolean,
@@ -96,11 +95,21 @@ export default {
       required: false,
       default: 'Otwórz listę',
     },
+    bigArrow: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    listOnTop: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
     hasSlot() {
-      if (this.$slots.default) {
-        return this.$slots.default.length > 0;
+      if (this.$slots.items) {
+        return this.$slots.items.length > 0;
       }
 
       return false;
@@ -113,7 +122,20 @@ export default {
       }
 
       return false;
-    }
+    },
+    transform() {
+      if (this.bigArrow) {
+        if (this.isActive) {
+          return 'rotate(0deg)';
+        }
+        return 'rotate(-90deg)';
+      }
+
+      if (this.isActive) {
+        return 'rotate(180deg)';
+      }
+      return 'rotate(0deg)';
+    },
   },
   methods: {
     close() {

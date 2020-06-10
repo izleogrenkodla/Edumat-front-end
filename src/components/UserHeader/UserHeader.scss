@@ -1,0 +1,33 @@
+.user-header {
+  background: url('/img/layout/Header_Opracowania.svg')  no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  color: var(--background--accent);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  margin-top: 2rem;
+  
+  @media screen and (max-width: 500px) {
+    padding: 2rem;
+    &__subtext {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__text,
+  &__subtext {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__text {
+    font-weight: bold;
+  }
+
+  &__subtext {
+    margin-bottom: 2rem;
+  }
+}

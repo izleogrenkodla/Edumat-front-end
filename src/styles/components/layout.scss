@@ -9,13 +9,15 @@ html {
 .app-page {
   margin: 85px 0 0 0;
   padding: 2rem 0 0 0;
+  background-color: #F5F5F5;
 }
 
 .container {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
+  position: relative;
 
   &--small {
     max-width: 1000px;

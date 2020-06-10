@@ -1,0 +1,34 @@
+{
+  "topics": [
+    {
+      "section": "całka",
+      "name": "Całki",
+      "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
+    },
+    {
+      "section": "geometria na płaszczyźnie",
+      "name": "Funkcja liniowa",
+      "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
+    },
+    {
+      "section": "granica",
+      "name": "Granice",
+      "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
+    },
+    {
+      "section": "zbiory",
+      "name": "Zbiory",
+      "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
+    },
+    {
+      "section": "wartość",
+      "name": "Wartość bezwzględna",
+      "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
+    },
+    {
+      "section": "wymierna",
+      "name": "Funkcja wymierna",
+      "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
+    }
+  ]
+}

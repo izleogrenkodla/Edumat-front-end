@@ -223,6 +223,7 @@
           text="Normal version!"
           helpfulText="Normalna lista"
         >
+        <template v-slot:items>
           <base-dropdown-item>
             siema!
           </base-dropdown-item>
@@ -232,6 +233,7 @@
           <base-dropdown-item>
             siema!!!
           </base-dropdown-item>
+        </template>
         </base-dropdown>
         <base-dropdown
           text="Empty!"
@@ -242,6 +244,7 @@
           grayBackground
           helpfulText="Szara lista"
         >
+        <template v-slot:items>
           <base-dropdown-item>
             siema!
           </base-dropdown-item>
@@ -251,12 +254,14 @@
           <base-dropdown-item>
             siema!!!
           </base-dropdown-item>
+        </template>
         </base-dropdown>
         <base-dropdown
           text="with border!"
           hasBorder
           helpfulText="Ramkowa lista"
         >
+        <template v-slot:items>
           <base-dropdown-item>
             siema!
           </base-dropdown-item>
@@ -266,6 +271,7 @@
           <base-dropdown-item>
             siema!!!
           </base-dropdown-item>
+        </template>
         </base-dropdown>
       </div>
     </div>
