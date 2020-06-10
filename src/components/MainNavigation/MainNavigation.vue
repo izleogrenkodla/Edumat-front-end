@@ -13,6 +13,11 @@
             alt="Edumat"
             class="main-navigation__logo"
           />
+          <img
+            src="@/assets/images/mobile-logo.svg"
+            alt="Edumat"
+            class="main-navigation__logo main-navigation__logo--mobile"
+          />
         </router-link>
       </div>
       <div class="main-navigation__column main-navigation__column--right">
