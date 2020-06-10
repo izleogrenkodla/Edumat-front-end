@@ -3,37 +3,31 @@
     {
       "section": "całka",
       "name": "Całki",
-      "level": "Materiał na",
       "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
     },
     {
       "section": "geometria na płaszczyźnie",
       "name": "Funkcja liniowa",
-      "level": "Matura podstawowa",
       "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
     },
     {
       "section": "granica",
       "name": "Granice",
-      "level": "Matura rozszerzona",
       "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
     },
     {
       "section": "zbiory",
       "name": "Zbiory",
-      "level": "Szkoła podstawowa",
       "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
     },
     {
       "section": "wartość",
       "name": "Wartość bezwzględna",
-      "level": "Materiał na",
       "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
     },
     {
       "section": "wymierna",
       "name": "Funkcja wymierna",
-      "level": "Materiał na",
       "lessons": ["Lekcja1", "Lekcja2", "Lekcja3", "Lekcja4", "Lekcja5"]
     }
   ]

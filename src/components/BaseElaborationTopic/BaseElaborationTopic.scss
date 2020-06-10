@@ -10,54 +10,18 @@
   }
 
   &__text {
-  
     &__name {
       font-weight: bold;
       font-size: 21px;
       text-align: left;
-    }
-
-    &__level {
-      font-size: 11px;
-      text-align: left;
-      border-radius: 10px;
-      padding: 3px 12px;
-      width: fit-content;
-      margin-top: 5px;
-      white-space: nowrap;
-  
-      &--primary-school {
-        background-color: #fef0db;
-        color: #ffa920;
-      }
-
-      &--basic {
-        background-color: #dbfede;
-        color: #6cb82a;
-      }
-
-      &--extended {
-        background-color: #dbe9fe;
-        color: #467dff;
-      }
-
-      &--extra {
-        background-color: #fedbdb;
-        color: #ff4646;
-      }
     }
   }
   @media screen and (max-width: 768px) {
     padding: 0;
   
     &__text {
-
       &__name {
         font-size: 13px;
-      }
-  
-      &__level {
-        font-size: 8px;
       }
     }
   }
