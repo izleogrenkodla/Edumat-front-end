@@ -9,10 +9,10 @@
         bigArrow
         listOnTop
       >
-        <template v-slot:header>
+        <template slot="header">
           <elaboration-topic :topic="topic"/>
         </template>
-        <template v-slot:items>
+        <template slot="items">
           <base-dropdown-item
             v-for="lesson in topic.lessons"
             :key="lesson"

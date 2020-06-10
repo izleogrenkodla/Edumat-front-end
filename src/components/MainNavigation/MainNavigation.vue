@@ -72,18 +72,20 @@
                 </transition>
               </div>
             </template>
-            <base-dropdown-item>
-              Wiadomość 1
-            </base-dropdown-item>
-            <base-dropdown-item>
-              Wiadomość 2
-            </base-dropdown-item>
-            <base-dropdown-item>
-              Wiadomość 3
-            </base-dropdown-item>
-            <base-dropdown-item>
-              Wiadomość 4
-            </base-dropdown-item>
+            <template slot="items">
+              <base-dropdown-item>
+                Wiadomość 1
+              </base-dropdown-item>
+              <base-dropdown-item>
+                Wiadomość 2
+              </base-dropdown-item>
+              <base-dropdown-item>
+                Wiadomość 3
+              </base-dropdown-item>
+              <base-dropdown-item>
+                Wiadomość 4
+              </base-dropdown-item>
+            </template>
           </base-dropdown>
           <base-dropdown
             helpfulText="Ustawienia"
@@ -101,15 +103,17 @@
                 </p>
               </div>
             </span>
-            <base-dropdown-item>
-              Mój profil
-            </base-dropdown-item>
-            <base-dropdown-item>
-              Ranking
-            </base-dropdown-item>
-            <base-dropdown-item @click="logout()">
-              Logout
-            </base-dropdown-item>
+            <template slot="items">
+              <base-dropdown-item>
+                Mój profil
+              </base-dropdown-item>
+              <base-dropdown-item>
+                Ranking
+              </base-dropdown-item>
+              <base-dropdown-item @click="logout()">
+                Logout
+              </base-dropdown-item>
+            </template>
           </base-dropdown>
         </div>
       </div>
