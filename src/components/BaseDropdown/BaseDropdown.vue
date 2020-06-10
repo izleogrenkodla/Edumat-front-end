@@ -11,7 +11,7 @@
         isActive ? 'base-dropdown__button--active' : '',
         hasBorder ? 'base-dropdown__button--bordered' : '',
       ]"
-      @click="isActive = !isActive"
+      @click="isActive = !isActive, $emit('click')"
       aria-controls="base-dropdown__content"
       :aria-label="helpfulText"
       :title="helpfulText"
@@ -24,6 +24,7 @@
         {{ text }}
       </template>
       <svg
+        v-if="hasArrow"
         xmlns="http://www.w3.org/2000/svg"
         width="16.944"
         height="9.865"
@@ -84,6 +85,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    hasArrow: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
     helpfulText: {
       type: String,

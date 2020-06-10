@@ -52,7 +52,41 @@
           v-else
         >
           <base-dropdown
-            helpfulText="Normalna lista"
+            helpfulText="Wiadomości"
+            class="main-navigation__messages"
+            :hasArrow="false"
+            @click="openedMessages = true"
+          >
+            <template slot="header">
+              <div class="main-navigation__messages-wrapper">
+                <img
+                  class="main-navigation__messages-icon"
+                  alt=""
+                  src="@/assets/icons/message.svg"
+                />
+                <transition name="dropdown-fade">
+                  <span
+                    class="main-navigation__messages-label"
+                    v-if="!openedMessages"
+                  />
+                </transition>
+              </div>
+            </template>
+            <base-dropdown-item>
+              Wiadomość 1
+            </base-dropdown-item>
+            <base-dropdown-item>
+              Wiadomość 2
+            </base-dropdown-item>
+            <base-dropdown-item>
+              Wiadomość 3
+            </base-dropdown-item>
+            <base-dropdown-item>
+              Wiadomość 4
+            </base-dropdown-item>
+          </base-dropdown>
+          <base-dropdown
+            helpfulText="Ustawienia"
             class="main-navigation__dropdown"
           >
             <span slot="header">
@@ -89,6 +123,7 @@ export default {
   data: () => ({
     search: '',
     isLogged: false,
+    openedMessages: false,
   }),
   methods: {
     searchQuery() {
@@ -99,7 +134,7 @@ export default {
     },
     logout() {
       this.isLogged = false;
-    }
+    },
   },
 };
 </script>
