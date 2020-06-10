@@ -2,16 +2,20 @@
   <header class="user-header">
     <h1 class="user-header__text">{{ header }}</h1>
     <h2 class="user-header__subtext">{{ subHeader }}</h2>
-    <base-button class="user-header__button" outline white>{{ textButton }}</base-button>
+    <base-button
+      class="user-header__button"
+      outline
+      white
+      @click="$router.go(-1)"
+      v-if="$route.path !== '/'"
+      >{{ textButton }}</base-button
+    >
   </header>
 </template>
 
 <script>
 export default {
   name: 'UserHeader',
-  data() {
-    return {};
-  },
   props: {
     header: {
       type: String,
@@ -27,7 +31,6 @@ export default {
       default: 'Wróć',
     },
   },
-  methods: {},
 };
 </script>
 <style lang="scss" scoped src="./UserHeader.scss" />
