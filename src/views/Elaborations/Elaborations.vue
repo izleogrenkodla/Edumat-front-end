@@ -1,7 +1,12 @@
 <template>
-  <main class="elaborations__container container">
-    <user-header header="Miło Cię widzieć!" subHeader="Zaraz wszystko ogarniesz!" />
-    <h1 class="elaborations__header">Opracowania</h1>
+  <main class="elaborations__container container container--medium">
+    <user-header
+      header="Miło Cię widzieć!"
+      subHeader="Zaraz wszystko ogarniesz!"
+    />
+    <h1 class="elaborations__header">
+      Opracowania
+    </h1>
     <div class="elaborations__content">
       <base-dropdown
         v-for="topic in topics"
