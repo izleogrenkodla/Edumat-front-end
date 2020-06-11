@@ -9,7 +9,10 @@
       <section class="main-layout__content">
         <slot></slot>
       </section>
-      <main-sidebar class="main-layout__sidebar" />
+      <main-sidebar
+        v-if="isLogged"
+        class="main-layout__sidebar"
+      />
     </div>
   </div>
 </template>

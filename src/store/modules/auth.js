@@ -13,7 +13,7 @@ export default {
         rankingPlace: 1,
       };
     },
-    LOGOUT() {
+    LOGOUT(state) {
       state.isLogged = false;
       state.user = null;
     },
