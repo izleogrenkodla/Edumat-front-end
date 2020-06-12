@@ -12,7 +12,6 @@
         v-for="topic in topics"
         :key="topic.name"
         bigArrow
-        listOnTop
         accordion
       >
         <template slot="header">

@@ -18,15 +18,12 @@
       max-height: 0;
       overflow: hidden;
       position: static;
-      transition: max-height var(--time);
-      
+      transition: max-height var(--time), padding var(--time);
+      padding: 0;
       &--active {
+        padding: 35px 0 0 0;
         max-height: 100vh;
       }
-    }
-
-    &--on-top {
-      z-index: 3;
     }
   }
 
@@ -69,10 +66,6 @@
 
     &--active {
       box-shadow: 0 5px 20px rgba(#000, 0.06);
-
-      &--on-top {
-        z-index: 4;
-      }
     }
   }
 }

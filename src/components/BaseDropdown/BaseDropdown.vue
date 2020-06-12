@@ -7,7 +7,6 @@
         grayBackground ? 'base-dropdown__button--gray' : '',
         isActive ? 'base-dropdown__button--active' : '',
         hasBorder ? 'base-dropdown__button--bordered' : '',
-        listOnTop && isActive ? 'base-dropdown__button--active--on-top' : ''
       ]"
       @click="(isActive = !isActive), $emit('click')"
       aria-controls="base-dropdown__content"
@@ -39,7 +38,6 @@
       <ul
         class="base-dropdown__content"
         :class="[
-          listOnTop ? 'base-dropdown__content--on-top' : '',
           accordion ? 'base-dropdown__content--accordion' : '',
           accordion && isActive ? 'base-dropdown__content--accordion--active' : ''
         ]"
@@ -100,11 +98,6 @@ export default {
       default: 'Otwórz listę',
     },
     bigArrow: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    listOnTop: {
       type: Boolean,
       required: false,
       default: false,
