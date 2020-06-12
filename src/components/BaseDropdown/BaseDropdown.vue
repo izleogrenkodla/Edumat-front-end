@@ -9,7 +9,7 @@
         hasBorder ? 'base-dropdown__button--bordered' : '',
         listOnTop && isActive ? 'base-dropdown__button--active--on-top' : ''
       ]"
-      @click="isActive = !isActive, $emit('click')"
+      @click="(isActive = !isActive), $emit('click')"
       aria-controls="base-dropdown__content"
       :aria-label="helpfulText"
       :title="helpfulText"
@@ -38,8 +38,12 @@
     <transition name="dropdown-fade">
       <ul
         class="base-dropdown__content"
-        :class="listOnTop ? 'base-dropdown__content--on-top' : ''"
-        v-if="isActive && hasSlot"
+        :class="[
+          listOnTop ? 'base-dropdown__content--on-top' : '',
+          accordion ? 'base-dropdown__content--accordion' : '',
+          accordion && isActive ? 'base-dropdown__content--accordion--active' : ''
+        ]"
+        v-if="(isActive && hasSlot) || accordion"
         aria-label="Kontent listy"
       >
         <slot name="items"></slot>
@@ -101,6 +105,11 @@ export default {
       default: false,
     },
     listOnTop: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    accordion: {
       type: Boolean,
       required: false,
       default: false,

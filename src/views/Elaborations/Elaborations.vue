@@ -13,6 +13,7 @@
         :key="topic.name"
         bigArrow
         listOnTop
+        accordion
       >
         <template slot="header">
           <elaboration-topic :topic="topic"/>
