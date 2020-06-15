@@ -120,7 +120,7 @@ export default {
   mounted() {
     document.addEventListener('click', this.handleOutsideClick);
     // scrollHeight list + padding-top size
-    this.listHeight = this.$ref.list.scrollHeight + 35;
+    this.listHeight = this.$refs.list.scrollHeight + 35;
   },
   beforeDestroy() {
     document.removeEventListener('click', this.handleOutsideClick);
