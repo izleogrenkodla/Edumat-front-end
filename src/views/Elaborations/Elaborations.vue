@@ -17,14 +17,14 @@
           <elaboration-topic :topic="topic"/>
         </template>
         <template slot="items">
-          <base-dropdown-item
+          <base-accordion-item
             v-for="lesson in topic.lessons"
             :key="lesson"
-            classes="elaborations__base-dropdown-item"
+            classes="elaborations__base-accordion-item"
             @click="$router.push(lesson)"
           >
             {{ lesson }}
-          </base-dropdown-item>
+          </base-accordion-item>
         </template>
       </base-accordion>
     </div>

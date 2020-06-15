@@ -46,9 +46,9 @@
       aria-label="Kontent listy"
       :aria-hidden="isActive ? 'false' : 'true'"
     >
-      <base-dropdown-item @click="close()">
+      <base-accordion-item @click="close()">
         No content
-      </base-dropdown-item>
+      </base-accordion-item>
     </ul>
   </div>
 </template>
@@ -58,7 +58,7 @@ export default {
   name: 'BaseAccordion',
   provide() {
     return {
-      dropdown: this,
+      accordion: this,
     };
   },
   data: () => ({
