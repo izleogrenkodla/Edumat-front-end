@@ -36,6 +36,7 @@
       v-if="hasSlot"
       aria-label="Kontent listy"
       :aria-hidden="isActive ? 'false' : 'true'"
+      ref="list"
     >
       <slot name="items"></slot>
     </ul>
@@ -119,7 +120,7 @@ export default {
   mounted() {
     document.addEventListener('click', this.handleOutsideClick);
     // scrollHeight list + padding-top size
-    this.listHeight = this.$el.children[1].scrollHeight + 35;
+    this.listHeight = this.$ref.list.scrollHeight + 35;
   },
   beforeDestroy() {
     document.removeEventListener('click', this.handleOutsideClick);
