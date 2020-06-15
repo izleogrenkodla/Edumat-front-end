@@ -24,6 +24,11 @@ const routes = [
     name: 'Elaborations',
     component: () => import(/* webpackChunkName: "elaborations-page" */ '../views/Elaborations/Elaborations.vue'),
   },
+  {
+    path: '/opracowanie/:topic',
+    name: 'Elaboration',
+    component: () => import(/* webpackChunkName: "elaboration-page" */ '../views/Elaboration/Elaboration.vue'),
+  },
 ];
 
 const router = new VueRouter({

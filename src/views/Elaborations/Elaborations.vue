@@ -21,7 +21,7 @@
             v-for="lesson in topic.lessons"
             :key="lesson"
             classes="elaborations__base-accordion-item"
-            @click="$router.push(lesson)"
+            @click="$router.push(`/opracowanie/${lesson}`)"
           >
             {{ lesson }}
           </base-accordion-item>

@@ -1,0 +1,70 @@
+.elaboration {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__section {
+    background-color: var(--background--accent);
+    border-radius: 12px;
+    padding: 3rem;
+    margin: 3rem 0;
+
+    @media screen and (max-width: 768px) {
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+    }
+
+    &__header {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+
+      &__wrapper {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__icon {
+        height: 3rem;
+        margin-right: 0.5rem;
+      }
+
+      &__counter {
+        border-radius: 25px;
+        border: 2px solid var(--border);
+        color: var(--text-color);
+        padding:0 1.5rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        height: 2.5rem;
+      }
+    }
+  }
+
+  &__test {
+    &__tabs {
+      margin: 3rem 3rem 0;
+      padding: 0;
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+
+      button:first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
