@@ -1,0 +1,52 @@
+.base-accordion {
+  position: relative;
+  min-width: 250px;
+  display: inline-block;
+
+  &__content {
+    margin: -25px 0 0 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 20px rgba(#000, 0.16);
+    background-color: var(--background--accent);
+    z-index: 1;
+    overflow: hidden;
+    transition: all var(--time) ease-in-out;
+    padding: 0;
+    
+    &--active {
+      padding: 35px 0 0 0;
+    }
+  }
+
+  &__arrow {
+    transition: transform var(--time);
+    width: 2rem;
+
+    @media screen and (max-width: 480px) {
+      width: 1.5rem;
+    }
+  }
+
+  &__button {
+    position: relative;
+    border-radius: 12px;
+    width: 100%;
+    padding: 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    background-color: var(--background--accent);
+    outline: none;
+    transition: background-color var(--time--short);
+    font-size: 14px;
+    z-index: 2;
+
+    &--active {
+      box-shadow: 0 5px 20px rgba(#000, 0.06);
+    }
+  }
+}

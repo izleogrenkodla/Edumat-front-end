@@ -8,11 +8,10 @@
       Opracowania
     </h1>
     <div class="elaborations__content">
-      <base-dropdown
+      <base-accordion
         v-for="topic in topics"
         :key="topic.name"
-        bigArrow
-        listOnTop
+        :helpfulText="topic.name"
       >
         <template slot="header">
           <elaboration-topic :topic="topic"/>
@@ -27,7 +26,7 @@
             {{ lesson }}
           </base-dropdown-item>
         </template>
-      </base-dropdown>
+      </base-accordion>
     </div>
   </main>
 </template>
