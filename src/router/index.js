@@ -17,7 +17,9 @@ const routes = [
   {
     path: '/wyniki-wyszukiwania',
     name: 'SearchResults',
-    component: () => import(/* webpackChunkName: "search-results-page" */ '../views/SearchResults/SearchResults.vue'),
+    component: () => import(
+      /* webpackChunkName: "search-results-page" */ '../views/SearchResults/SearchResults.vue'
+    ),
   },
   {
     path: '/opracowania',
@@ -25,9 +27,21 @@ const routes = [
     component: () => import(/* webpackChunkName: "elaborations-page" */ '../views/Elaborations/Elaborations.vue'),
   },
   {
-    path: '/opracowanie/:topic',
+    path: '/opracowanie/:slug',
     name: 'Elaboration',
     component: () => import(/* webpackChunkName: "elaboration-page" */ '../views/Elaboration/Elaboration.vue'),
+    props: true,
+    beforeEnter: (to, from, next) => {
+      const isValid = (param) => {
+        const elaborations = ['cyfry-i-liczby'];
+        return elaborations.includes(param);
+      };
+      if (!isValid(to.params.slug)) {
+        next({ name: 'Home' }); // TODO 404 page
+      } else {
+        next();
+      }
+    },
   },
 ];
 

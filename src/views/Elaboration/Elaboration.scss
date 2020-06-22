@@ -7,6 +7,17 @@
     h1 {
       font-weight: bold;
       font-size: 1.5rem;
+      width: 100%;
+
+      @media screen and (max-width: 768px) {
+        text-align: center;
+      }
+    }
+
+    &__button {
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
   }
 
@@ -15,6 +26,21 @@
     border-radius: 12px;
     padding: 3rem;
     margin: 3rem 0;
+    text-align: justify;
+
+    &__image {
+      margin: auto;
+      display: block;
+      max-width: 100%;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      font-weight: bold;
+    }
 
     @media screen and (max-width: 768px) {
       margin: 1.5rem 0;
@@ -25,6 +51,7 @@
       font-weight: bold;
       display: flex;
       align-items: center;
+      margin-bottom: 2rem;
 
       &__wrapper {
         display: flex;
@@ -40,13 +67,17 @@
         border-radius: 25px;
         border: 2px solid var(--border);
         color: var(--text-color);
-        padding:0 1.5rem;
+        width: 5.5rem;
         font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 14px;
         height: 2.5rem;
+
+        @media screen and (max-width: 480px) {
+          display: none;
+        }
       }
     }
   }
@@ -55,15 +86,36 @@
     &__tabs {
       margin: 3rem 3rem 0;
       padding: 0;
+
+      @media screen and (max-width: 480px) {
+        margin: 0;
+      }
     }
 
     &__buttons {
       display: flex;
       justify-content: center;
-      margin: 3rem 0;
+    }
 
-      button:first-child {
+    &__button {
+      min-width: auto;
+
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
+
+      &:first-child {
         margin-right: 1rem;
+      }
+
+      span {
+        @media screen and (max-width: 480px) {
+          display: none;
+        }
+      }
+
+      &:disabled {
+        opacity: 0.5;
       }
     }
   }

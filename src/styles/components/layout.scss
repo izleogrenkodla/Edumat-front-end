@@ -10,6 +10,7 @@ html {
   margin: 85px 0 0 0;
   padding: 2rem 0 0 0;
   background-color: #F5F5F5;
+  line-height: 1.4;
 }
 
 .container {
@@ -34,6 +35,10 @@ html {
 
 button {
   cursor: pointer;
+}
+
+.katex {
+  white-space: normal !important;
 }
 
 @media screen and (max-width: 768px) {

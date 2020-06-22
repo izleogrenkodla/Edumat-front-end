@@ -6,7 +6,7 @@
       align === 'left' ? 'base-tab-button--left' : '',
       align === 'right' ? 'base-tab-button--right' : '',
     ]"
-    @click="$emit('setActive')"
+    @click="$emit('click')"
   >
     <slot></slot>
   </button>

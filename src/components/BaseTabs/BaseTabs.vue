@@ -3,10 +3,10 @@
     <base-tab-button
       v-for="(tab, index) in data"
       :key="tab"
-      @setActive="currentTab = index"
-      :isActive="currentTab === index"
+      :isActive="activeTab === index"
       :align="align"
-      :style="{ flex: `${ 100 / perRow }%` }"
+      :style="{ flex: `${100 / perRow}%` }"
+      @click="handleClick(index)"
     >
       {{ tab }}
     </base-tab-button>
@@ -16,9 +16,6 @@
 <script>
 export default {
   name: 'BaseTabs',
-  data: () => ({
-    currentTab: 0,
-  }),
   props: {
     data: {
       type: Array,
@@ -33,6 +30,16 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+    activeTab: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+  },
+  methods: {
+    handleClick(index) {
+      this.$emit('click', index);
     },
   },
 };

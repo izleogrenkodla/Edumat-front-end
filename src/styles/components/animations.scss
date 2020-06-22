@@ -33,3 +33,18 @@
     opacity: 0;
   }
 }
+.elaboration-tab-transition {
+  will-change: transform;
+
+  &-enter-active, &-leave-active {
+    transition: all var(--time) ease-out;
+  }
+
+  &-enter {
+    transform: translateX(-100%);
+  }
+  &-leave-to{
+    transform: translateX(100%);
+
+  }
+}

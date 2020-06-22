@@ -6307,6 +6307,13 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+katex@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.11.1.tgz#df30ca40c565c9df01a466a00d53e079e84ffaa2"
+  integrity sha512-5oANDICCTX0NqYIyAiFCCwjQ7ERu3DQG2JFHLbYOf+fXaMoH8eg/zOq5WSYJsKMi/QebW+Eh3gSM+oss1H/bww==
+  dependencies:
+    commander "^2.19.0"
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -10220,6 +10227,13 @@ vue-jest@^3.0.5:
     source-map "^0.5.6"
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.6.0"
+
+vue-katex@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/vue-katex/-/vue-katex-0.4.0.tgz#3e794ceba337617e8e920c6bf78023736318ed39"
+  integrity sha512-BMNsjqZQRiZm/EZ9jM0xusZxT4lHTlTAowz7ujhfr7aepKC72LAbab/2syWYYP5XENyPp1VZa08Xt+U6kEiRrQ==
+  dependencies:
+    deepmerge "^4.2.2"
 
 vue-loader@^15.9.1:
   version "15.9.1"
