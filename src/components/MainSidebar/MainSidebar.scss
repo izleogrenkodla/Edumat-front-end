@@ -3,8 +3,30 @@
   width: 320px;
   min-width: 320px;
   background-color: var(--background--accent);
-  border-radius: 25px;
-  padding: 2rem;
-  height: 1000px;
+  border-radius: 1.5rem;
+  padding: 1rem 0;
   margin: 0 0 0 2rem;
+
+  &__row {
+    padding: 2rem;
+
+    &--profile {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 1.5rem;
+    }
+
+    &--badges {
+      padding: 1rem 2rem 0 2rem;
+    }
+
+    &--full {
+      width: 100%;
+      border-top: 1px solid rgba(#707070, 0.19);
+    }
+  }
+
+  &__button {
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+  }
 }

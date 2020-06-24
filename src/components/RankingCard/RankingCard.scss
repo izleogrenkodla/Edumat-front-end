@@ -1,0 +1,26 @@
+.ranking-card {
+  position: relative;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 1.7rem 0 0 0;
+
+    &-icon {
+      margin: 0 0.8rem 0 0;
+    }
+
+    &-text {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 18px;
+      color: var(--text-color);
+
+      span {
+        color: var(--ui-warning);
+      }
+    }
+  }
+}

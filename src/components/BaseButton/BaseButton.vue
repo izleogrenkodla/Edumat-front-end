@@ -14,11 +14,12 @@
     <p class="base-button__text">
       <slot></slot>
     </p>
-    <!-- <img
+    <img
+      v-if="icon"
       class="base-button__icon"
       alt=""
-      src="~/assets/icons/play.png"
-    /> -->
+      :src="`/img/icons/${icon}.svg`"
+    />
   </component>
 </template>
 
@@ -61,10 +62,24 @@ export default {
       required: false,
       default: false,
     },
+    icon: {
+      type: String,
+      required: false,
+    },
     title: {
       type: String,
       required: false,
       default: '',
+    },
+    fullWidth: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    borderBottom: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   computed: {
@@ -82,6 +97,9 @@ export default {
         this.outline ? 'base-button--outline' : '',
         this.text ? 'base-button--text' : '',
         this.white ? 'base-button--white' : '',
+        this.icon ? 'base-button--icon-mode' : '',
+        this.fullWidth ? 'base-button--full-width' : '',
+        this.borderBottom ? 'base-button--border-bottom' : '',
       ];
     },
   },

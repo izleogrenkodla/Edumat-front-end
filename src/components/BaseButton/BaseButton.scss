@@ -91,4 +91,25 @@
     font-size: 13px;
     min-width: 130px;
   }
+
+  &--icon-mode {
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+
+  &--full-width {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  &--border-bottom {
+    border-bottom: 1px solid rgba(#707070, 0.19);
+    border-radius: 0;
+    padding: 1.2rem 0;
+
+  }
+
+  &__icon {
+    margin: 0 0 0 1rem;
+  }
 }
