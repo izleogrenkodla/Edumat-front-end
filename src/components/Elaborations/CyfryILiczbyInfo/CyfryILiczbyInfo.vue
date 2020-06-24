@@ -1,5 +1,5 @@
 <template>
-  <div v-katex:auto>
+  <div v-katex:auto class="elaboration__content">
     <p>
       Można przypuszczać, że zalążki matematyki nie wiązały się z pytaniami, jaki jest sinus kąta
       tworzonego przez drzewo figowca, dom sąsiada i sadzawkę, czy też jaka propozycja funkcji
@@ -43,44 +43,27 @@
     />
     <p>
       Pytanie, jaką liczbę stworzyliśmy? I o co chodzi z tym systemem pozycyjnym i dziesiątkowym?
-    </p>
-    <p>
       Pozycyjność systemu oznacza, że <strong>pozycja</strong> cyfry w liczbie specyfikuje wyrażaną
-      przez nią wartość.
-    </p>
-    <p>
-      Dziesiątkowość zaś, że kolejne cyfry oznaczają liczbę wielokrotności kolejnych potęg
-      dziesiątki skrywanych na tych pozycjach.
-    </p>
-    <p>Uff, ale czyli co dokładnie? Spójrzmy:</p>
-    <p>
-      Najmniejszą wartość ma cyfra jedności, każdorazowo najbardziej po prawej stronie; i od niej
-      zaczniemy rozkodowywanie naszej liczby 14732. U nas najbardziej po prawej jest cyfra dwa.
-      Oznacza ona… dwa. Ni mniej, ni więcej.
-    </p>
-    <p>
-      Następna w kolejce jest trójka, cyfra dziesiątek. Cyfra dziesiątek oznacza, ile dziesiątek
-      dołożymy do naszej liczby. Ile? A no trzy. Mamy więc \(3*10\)
-    </p>
-    <p>
-      Kolejna, siódemka, oznacza, jak i nazwa wskazuje, cyfrę setek. Zapisujemy więc: siedem setek,
-      czyli \(7*100\).
-    </p>
-    <p>
-      Cztery na miejscu cyfry tysięcy musi więc znaczyć \(4 * 1000\), jeśli mamy być konsekwentni, a
-      ostatnia jedynka to skrótowy zapis wyrażenia \(1 * 10000\). Czym ostatecznie była nasza
-      liczba? Sumą wszystkich rozkodowań kolejnych cyfr. Innymi (matematycznymi!) słowy:
+      przez nią wartość. Dziesiątkowość zaś, że kolejne cyfry oznaczają liczbę wielokrotności
+      kolejnych potęg dziesiątki skrywanych na tych pozycjach. Uff, ale czyli co dokładnie?
+      Spójrzmy: Najmniejszą wartość ma cyfra jedności, każdorazowo najbardziej po prawej stronie; i
+      od niej zaczniemy rozkodowywanie naszej liczby 14732. U nas najbardziej po prawej jest cyfra
+      dwa. Oznacza ona… dwa. Ni mniej, ni więcej. Następna w kolejce jest trójka, cyfra dziesiątek.
+      Cyfra dziesiątek oznacza, ile dziesiątek dołożymy do naszej liczby. Ile? A no trzy. Mamy więc
+      \(3*10\) Kolejna, siódemka, oznacza, jak i nazwa wskazuje, cyfrę setek. Zapisujemy więc:
+      siedem setek, czyli \(7*100\). Cztery na miejscu cyfry tysięcy musi więc znaczyć \(4 * 1000\),
+      jeśli mamy być konsekwentni, a ostatnia jedynka to skrótowy zapis wyrażenia \(1 * 10000\).
+      Czym ostatecznie była nasza liczba? Sumą wszystkich rozkodowań kolejnych cyfr. Innymi
+      (matematycznymi!) słowy:
     </p>
     \[14732 = 1 * 10000 + 4 * 1000 + 7 * 100 + 2 * 10 + 3\]
     <p>
       Zauważ, że im dalej przesuwaliśmy się w lewo liczby, tym te cyfry niosły ze sobą większe
-      znaczenie, gdyż wyrażały coraz większe wielokrotności dziesiątki.
-    </p>
-    <p>
-      Gdybyś więc chciał napisać, że zależy Ci na kimś akurat czternaście tysięcy siedemset
-      trzydzieści dwa razy bardziej, napisz po prostu 14732. Oczywiście, możesz również zakodować w
-      tym dziesiątkowym systemie pozycyjnym liczbę, która odpowiada mierze Twoich uczuć, skoro już
-      znasz prawidła tego zapisu. Pomogą Ci w tym jeszcze te zadania:
+      znaczenie, gdyż wyrażały coraz większe wielokrotności dziesiątki. Gdybyś więc chciał napisać,
+      że zależy Ci na kimś akurat czternaście tysięcy siedemset trzydzieści dwa razy bardziej,
+      napisz po prostu 14732. Oczywiście, możesz również zakodować w tym dziesiątkowym systemie
+      pozycyjnym liczbę, która odpowiada mierze Twoich uczuć, skoro już znasz prawidła tego zapisu.
+      Pomogą Ci w tym jeszcze te zadania:
     </p>
   </div>
 </template>
