@@ -7,8 +7,8 @@
       Prawidłowa odpowiedź to: <strong>{{ answer.goodAnswer }}</strong>
     </p>
     <div class="elaboration-solution__image" v-if="solution.img">
-      <p class="elaboration-solution__image__description">
-        <slot name="image-description">{{ solution.img.description }}</slot>
+      <p class="elaboration-solution__image__description" v-katex:auto :key="currentTask">
+        {{ solution.img.description }}
       </p>
       <img
         :src="solution.img.src"
@@ -16,8 +16,8 @@
         class="elaboration-solution__image__content"
       />
     </div>
-    <p class="elaboration-solution__comment">
-      <slot name="comment">{{ solution.comment }}</slot>
+    <p class="elaboration-solution__comment" v-katex:auto :key="currentTask">
+      {{ solution.comment }}
     </p>
   </section>
 </template>
@@ -38,6 +38,10 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+    currentTask: {
+      type: Number,
+      required: true,
     },
   },
   computed: {

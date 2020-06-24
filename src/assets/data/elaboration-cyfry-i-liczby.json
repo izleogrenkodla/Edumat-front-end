@@ -3,12 +3,12 @@
     "header": "Cyfry i liczby",
     "tasks": [
       {
-        "question": "Ile wynosi cyfra tysięcy liczby 235677? ",
+        "question": "Ile wynosi cyfra tysięcy liczby 235677?",
         "answers": ["5", "6", "7", "2"],
         "goodAnswer": "5"
       },
       {
-        "question": "W zapisie dziesiętnym, dwanaście tysięcy trzysta sześć to: ",
+        "question": "W zapisie dziesiętnym, dwanaście tysięcy trzysta sześć to:",
         "answers": ["20336", "1236", "12306", "120003006"],
         "goodAnswer": "12306"
       },
@@ -23,7 +23,7 @@
         "comment": "Oczywiście, jest to cyfra 5. Pamiętaj, że przypisując cyfrom w liczbie miana „cyfry jedności”, „cyfry dziesiątek” itd., musisz zacząć tę czynność od prawej strony liczby."
       },
       {
-        "comment": "Choć odpowiedź D była kusząca, to C koduje liczbę z polecenia. 12306 = 1 * 10000 + 2 * 1000 + 3 * 100 + 0 * 10 + 6 Mamy więc dziesięć tysięcy, no i do tego jeszcze dwa tysiące, czyli dwanaście tysięcy. Trzy setki to nic innego jak trzysta. Do szczęścia nie trzeba nam nic więcej niż znajdująca się najbardziej z prawej strony liczby szóstka."
+        "comment": "Choć odpowiedź D była kusząca, to C koduje liczbę z polecenia. \\(12306 = 1 * 10000 + 2 * 1000 + 3 * 100 + 0 * 10 + 6\\) Mamy więc dziesięć tysięcy, no i do tego jeszcze dwa tysiące, czyli dwanaście tysięcy. Trzy setki to nic innego jak trzysta. Do szczęścia nie trzeba nam nic więcej niż znajdująca się najbardziej z prawej strony liczby szóstka."
       },
       {
         "comment": "Tysiąc dwieście trzynaście to 1213. Jedynka pojawia się dwa razy, w tym na miejscu, którego dotyczyło zapytanie. Na inne pytanie zasługuje za to obecność czwórki wśród odpowiedzi…"

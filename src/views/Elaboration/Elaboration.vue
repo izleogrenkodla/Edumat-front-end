@@ -54,12 +54,14 @@
           :task="topic.tasks[currentTask - 1]"
           v-if="currentTab === 0"
           @answer="handleAnswer"
+          :currentTask="currentTask"
         />
         <elaboration-solution
           :solution="topic.solutions[currentTask - 1]"
           v-else
           :isGoodAnswer="isGoodAnswer"
           :goodAnswer="topic.tasks[currentTask - 1].goodAnswer"
+          :currentTask="currentTask"
         />
       </transition>
       <div class="elaboration__test__buttons">
