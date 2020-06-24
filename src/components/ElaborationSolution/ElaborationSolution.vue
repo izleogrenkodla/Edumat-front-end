@@ -1,6 +1,8 @@
 <template>
   <section class="elaboration-solution">
-    <p class="elaboration-solution__answer" :style="{ color: answer.color }">{{ answer.text }}</p>
+    <p class="elaboration-solution__answer" :style="{ color: answer.color }">
+      {{ answer.text }}
+    </p>
     <p v-if="!isGoodAnswer" class="elaboration-solution__good-answer">
       Prawidłowa odpowiedź to: <strong>{{ answer.goodAnswer }}</strong>
     </p>
@@ -19,7 +21,6 @@
     </p>
   </section>
 </template>
-
 <script>
 export default {
   name: 'ElaborationSolution',
@@ -43,14 +44,14 @@ export default {
     answer() {
       if (this.isGoodAnswer) {
         return {
-          text: 'Dobrze',
-          color: getComputedStyle(document.documentElement).getPropertyValue('--ui-success'),
+          text: 'Brawo, udało Ci się',
+          color: getComputedStyle(document.documentElement).getPropertyValue('--primary-color'),
         };
       }
       if (this.isGoodAnswer === false) {
         return {
-          text: 'Ups!',
-          color: getComputedStyle(document.documentElement).getPropertyValue('--ui-error'),
+          text: 'Nie tym razem!',
+          color: getComputedStyle(document.documentElement).getPropertyValue('--ui-warning'),
           goodAnswer: this.goodAnswer,
         };
       }

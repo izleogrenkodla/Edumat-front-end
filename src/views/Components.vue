@@ -219,7 +219,9 @@
       <h2 class="components__heading">Radio</h2>
       <base-radio name="components" v-model="radioChecked" radioValue="1">Radio 1</base-radio>
       <base-radio name="components" v-model="radioChecked" radioValue="2">Radio 2</base-radio>
-      <base-radio name="components" v-model="radioChecked" radioValue="3">Radio 3</base-radio>
+      <base-radio name="components" v-model="radioChecked" radioValue="3" size="big">
+        Big Radio 3
+      </base-radio>
     </div>
   </main>
 </template>

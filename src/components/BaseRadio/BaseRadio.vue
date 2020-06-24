@@ -1,6 +1,5 @@
 <template>
   <label class="base-radio__label" :for="radioID">
-    <slot></slot>
     <div class="base-radio__wrapper">
       <input
         type="radio"
@@ -11,8 +10,9 @@
         :value="radioValue"
         @change="updateValue($event.target.value)"
       />
-      <div class="base-radio__dot"></div>
+      <div class="base-radio__dot" :class="classes"></div>
     </div>
+    <slot></slot>
   </label>
 </template>
 
@@ -44,6 +44,9 @@ export default {
   computed: {
     radioID() {
       return uuid();
+    },
+    classes() {
+      return [this.size === 'big' ? 'base-radio__dot--big' : ''];
     },
   },
   methods: {

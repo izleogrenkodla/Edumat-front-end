@@ -4,6 +4,8 @@
   align-items: center;
   padding: 2rem 3rem;
   text-align: center;
+  min-height: 500px;
+  justify-content: center;
 
   @media screen and (max-width: 768px) {
     padding: 1rem;
@@ -23,9 +25,21 @@
   }
 
   &__answers {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    width: 100%;
+    margin-top: 2rem;
     justify-content: center;
+    justify-items: center;
+    
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    @media screen and (max-width: 476px) {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
   }
 
   &__answer {

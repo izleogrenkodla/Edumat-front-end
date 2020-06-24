@@ -85,6 +85,8 @@
 </template>
 
 <script>
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
 import Vue from 'vue';
 import VueKatex from 'vue-katex';
 import 'katex/dist/katex.min.css';
@@ -111,12 +113,14 @@ export default {
       if (this.currentTask > 1) {
         this.currentTask -= 1;
         this.currentTab = 0;
+        this.isGoodAnswer = null;
       }
     },
     nextTask() {
       if (this.currentTask < this.amountOfTasks) {
         this.currentTask += 1;
         this.currentTab = 0;
+        this.isGoodAnswer = null;
       }
     },
     handleAnswer(isGoodAnswer) {
