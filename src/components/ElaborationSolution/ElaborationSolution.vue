@@ -55,7 +55,7 @@ export default {
           goodAnswer: this.goodAnswer,
         };
       }
-      return '';
+      return { goodAnswer: this.goodAnswer };
     },
   },
 };
