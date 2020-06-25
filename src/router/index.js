@@ -43,6 +43,16 @@ const routes = [
       }
     },
   },
+  {
+    path: '/logowanie',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login-page" */ '../views/Login/Login.vue'),
+  },
+  {
+    path: '/rejestracja',
+    name: 'Registration',
+    component: () => import(/* webpackChunkName: "registration-page" */ '../views/Registration/Registration.vue'),
+  },
 ];
 
 const router = new VueRouter({

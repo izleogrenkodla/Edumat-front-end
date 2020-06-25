@@ -16,6 +16,12 @@
   border-color: var(--text-color--acent);
   transition: all var(--time);
   outline: none;
+  
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &:hover, &:focus {
     cursor: pointer;

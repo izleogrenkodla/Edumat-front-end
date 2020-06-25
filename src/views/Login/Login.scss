@@ -1,0 +1,41 @@
+.login {
+  &__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    display: block;
+    text-align: center;
+    margin-top: 3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+
+    @media screen and (max-width: 476px) {
+      margin: 1rem 0;
+    }
+  }
+
+  &__logo {
+    width: 300px;
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+    
+    &--mobile {
+      display: none;
+      margin-bottom: 2rem;
+      width: 2rem;
+      
+      @media screen and (max-width: 1024px) {
+        display: block;
+      }
+    }
+  }
+}
