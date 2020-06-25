@@ -73,17 +73,31 @@
               </div>
             </template>
             <template slot="items">
-              <base-dropdown-item>
-                Wiadomość 1
-              </base-dropdown-item>
-              <base-dropdown-item>
-                Wiadomość 2
-              </base-dropdown-item>
-              <base-dropdown-item>
-                Wiadomość 3
-              </base-dropdown-item>
-              <base-dropdown-item>
-                Wiadomość 4
+              <base-dropdown-item 
+                class="main-navigation__message"
+                v-for="message in messages"
+                :key="message.id"
+              >
+                <router-link
+                  :to="message.link"
+                  :aria-label="message.title"
+                  :title="message.title"
+                  class="main-navigation__message-link"
+                >
+                  <img
+                    class="main-navigation__message-avatar"
+                    alt=""
+                    src="/img/sidebar/prof.svg"
+                  />
+                  <div class="main-navigation__message-content">
+                    <h4 class="main-navigation__message-heading">
+                      {{ messageHeading(message) }}
+                    </h4>
+                    <p class="main-navigation__message-text">
+                      {{ message.description }}
+                    </p>
+                  </div>
+                </router-link>  
               </base-dropdown-item>
             </template>
           </base-dropdown>
@@ -99,19 +113,33 @@
                   src="https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg"
                 />
                 <p class="main-navigation__user-name">
-                  Pieseł Piesełowski
+                  {{ user.name }}
                 </p>
               </div>
             </span>
-            <template slot="items">
-              <base-dropdown-item>
-                Mój profil
+            <template slot="items" class="xd">
+              <base-dropdown-item
+                v-for="item in menu"
+                :key="item.name"
+              >
+                <router-link
+                  :to="item.link"
+                  :title="item.name"
+                  :aria-label="item.name"
+                  class="main-navigation__dropdown-link"
+                >
+                  {{ item.name }}
+                </router-link>
               </base-dropdown-item>
-              <base-dropdown-item>
-                Ranking
-              </base-dropdown-item>
-              <base-dropdown-item @click="logout()">
-                Logout
+              <base-dropdown-item divinder>
+                <button
+                  @click="logout()"
+                  title="Wyloguj się"
+                  aria-label="Wyloguj się"
+                  class="main-navigation__dropdown-link main-navigation__dropdown-link--logout"
+                >
+                  Wyloguj
+                </button>
               </base-dropdown-item>
             </template>
           </base-dropdown>
@@ -122,14 +150,88 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'MainNavigation',
   data: () => ({
     search: '',
     isLogged: false,
     openedMessages: false,
+    menu: [
+      {
+        name: 'Moje konto',
+        link: '/moje-konto',
+      },
+      {
+        name: 'Ustawienia konta',
+        link: '/ustawienia konta',
+      },
+      {
+        name: 'Abonament',
+        link: '/abonament',
+        divider: false,
+      },
+      {
+        name: 'Moje pytania',
+        link: '/moje-pytania',
+        divider: false,
+      },
+      {
+        name: 'Moje odpowiedzi',
+        link: '/moje-odpowiedzi',
+        divider: false,
+      },
+      {
+        name: 'Moje kursy',
+        link: '/moje-Kursy',
+      },
+    ],
+    messages: [
+      {
+        id: 1,
+        category: 'Edumat.pl',
+        title: 'Nowy artykuł',
+        description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+        date: '12.04.2020',
+        opened: false,
+        author: 'Admin Adminowski',
+        authorAvatar: 'prof',
+        link: '/'
+      },
+      {
+        id: 2,
+        category: 'Edumat.pl',
+        title: 'Nowe opcje!',
+        description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+        date: '21.03.2020',
+        opened: false,
+        author: 'Admin Adminowski',
+        authorAvatar: 'prof',
+        link: '/'
+      },
+      {
+        id: 3,
+        category: 'Edumat.pl',
+        title: 'Gotowy na konkurs?',
+        description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+        date: '01.01.2020',
+        opened: false,
+        author: 'Admin Adminowski',
+        authorAvatar: 'prof',
+        link: '/'
+      },
+    ],
   }),
+  computed: {
+    ...mapState({
+      user: state => state.auth.user,
+    }),
+  },
   methods: {
+    messageHeading(message) {
+      return `${ message.category } | ${ message.title } • ${ message.date }`
+    },
     searchQuery() {
       this.$router.push('/wyniki-wyszukiwania');
     },

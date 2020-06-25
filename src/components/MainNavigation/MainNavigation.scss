@@ -65,6 +65,47 @@
     max-width: 320px;
     height: 60px;
 
+    &-link {
+      width: 100%;
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 12px;
+      color: var(--text-color);
+      padding: 0.8rem 1rem;
+      transition: all var(--time);
+      border-radius: 0.6rem;
+
+      &--logout {
+        color: var(--primary-color);
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 12px;
+        margin: 1rem 0 0 0;
+        text-align: center;
+        outline: none;
+        border: none;
+        background-color: var(--background--accent);
+        border-radius: 25px;
+
+        &:hover, &:focus {
+          background-color: var(--background--low);
+          color: var(--primary-color);
+        }
+      }
+
+      &:hover, &:focus {
+        background-color: var(--background--low);
+        color: var(--primary-color);
+      }
+    }
+
+    .base-dropdown-item {
+      margin: 0 0 1rem 0;
+      padding: 0 1rem;
+    }
+
     .base-dropdown__button {
       height: 60px;
 
@@ -99,13 +140,65 @@
     }
 
     .base-dropdown__content {
+      top: 80px;
       border-radius: 25px;
       width: 250px;
       left: 50%;
       transform: translateX(-50%);
-      // z-index: 10;
-      // top: 96px;
+      z-index: 10;
+      width: 450px;
+      padding: 20px 0;
+    }
 
+    .base-dropdown__button--active {
+      box-shadow: none;
+    }
+  }
+
+  &__message {
+    position: relative;
+    margin: 0;
+    padding: 0 1rem;
+    
+
+    &-link {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.8rem 0.7rem;
+      margin: 0;
+      transition: background-color var(--time);
+      border-radius: 0.6rem;
+
+      &:hover, &:focus {
+        background-color: var(--background--low);
+
+        .main-navigation__message-heading {
+          color: var(--primary-color);
+        }
+      }
+    }
+
+    &-avatar {
+      margin: 0 1.5rem 0 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    &-heading {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
+      color: var(--text-color);
+      margin: 0 0 0.4rem 0;
+      transition: color var(--time);
+    }
+
+    &-text {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 18px;
+      color: var(--text-color);
     }
   }
 
@@ -124,6 +217,16 @@
       font-size: 14px;
       padding: 0 3rem 0 1rem;
       transition: color var(--time);
+    }
+
+    &-link {
+      display: block;
+      padding: 0.8rem 1rem;
+      width: 100%;
+      color: var(--text-color);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 12px;
     }
   }
 }
