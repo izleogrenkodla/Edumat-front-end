@@ -2,7 +2,7 @@
   <form class="login-form">
     <h1 class="login-form__header">{{ header }}</h1>
     <p>
-      {{ text }} <a :href="href" class="login-form__link">{{ link }}</a>
+      {{ text }} <router-link :to="href" class="login-form__link">{{ link }}</router-link>
     </p>
     <base-input
       v-model="input"
@@ -46,13 +46,12 @@ export default {
       return this.purpose === 'login' ? 'Nie masz konta?' : 'Masz już konto?';
     },
     href() {
-      return this.purpose === 'login' ? '/#/rejestracja' : '/#/logowanie';
+      return this.purpose === 'login' ? '/rejestracja' : '/logowanie';
     },
     link() {
       return this.purpose === 'login' ? 'Utwórz konto' : 'Zaloguj się';
     },
   },
-  methods: {},
 };
 </script>
 <style lang="scss" scoped src="./LoginForm.scss" />

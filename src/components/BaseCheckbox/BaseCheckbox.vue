@@ -16,7 +16,7 @@
           type="checkbox"
           class="base-checkbox__checkbox"
           :id="checkboxID"
-          :value="value"
+          :checked="value"
           @change="updateValue($event.target.checked)"
         />
         <div
