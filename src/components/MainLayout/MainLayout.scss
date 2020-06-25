@@ -1,0 +1,14 @@
+.main-layout {
+  position: relative;
+  margin: 2rem 0 0 0;
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 980px;
+  }
+}

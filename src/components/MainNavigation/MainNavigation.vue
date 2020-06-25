@@ -135,9 +135,11 @@ export default {
     },
     login() {
       this.isLogged = true;
+      this.$store.dispatch('auth/login');
     },
     logout() {
       this.isLogged = false;
+      this.$store.dispatch('auth/logout');
     },
   },
 };
