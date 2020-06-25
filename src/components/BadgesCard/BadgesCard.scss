@@ -1,0 +1,9 @@
+.badges-card {
+  position: relative;
+
+  &__list {
+    margin: 2rem 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
