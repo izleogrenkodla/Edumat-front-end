@@ -19,9 +19,12 @@
       padding: 1rem 2rem 0 2rem;
     }
 
-    &--full {
-      width: 100%;
+    &--categories {
       border-top: 1px solid rgba(#707070, 0.19);
+    }
+
+    &--courses {
+      padding: 1rem 2rem 2rem;
     }
   }
 

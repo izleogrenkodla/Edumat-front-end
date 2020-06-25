@@ -6,10 +6,10 @@
     <div class="main-sidebar__row main-sidebar__row--badges">
       <badges-card :badges="user.badges" />
     </div>
-    <div class="main-sidebar__row">
+    <div class="main-sidebar__row main-sidebar__row--courses">
       <courses-card />
     </div>
-    <div class="main-sidebar__row main-sidebar__row--full">
+    <div class="main-sidebar__row main-sidebar__row--categories">
       <category-tile
         mode="elaboration"
         link="/opracowania"
