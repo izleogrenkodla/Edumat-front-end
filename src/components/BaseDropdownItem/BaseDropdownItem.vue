@@ -1,7 +1,10 @@
 <template>
   <li
     class="base-dropdown-item"
-    :class="classes"
+    :class="[
+      ...classes,
+      this.divinder ? 'base-dropdown-item--divinder' : '',
+    ]"
     @click="$emit('click'), handleClick()"
     @blur="$emit('blur')"
   >
@@ -18,6 +21,10 @@ export default {
       required: false,
       default: '',
     },
+    divinder: {
+      type: Boolean,
+      required: false,
+    },
   },
   inject: ['dropdown'],
   methods: {
@@ -28,4 +35,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped src="./BaseDropdownItem.scss" />
+<style lang="scss" src="./BaseDropdownItem.scss" />
