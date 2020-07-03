@@ -1,0 +1,29 @@
+.login-email {
+
+  &__link {
+    color: var(--primary-color);
+  }
+  
+  &__input {
+    margin: 2rem 0 1rem 0;
+  }
+  
+  &__or {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__social {
+    width: 100%;
+    border-color: var(--acent-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+
+    &__icon {
+      margin-right: 0.5rem;
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+}

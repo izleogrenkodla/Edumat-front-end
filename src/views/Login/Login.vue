@@ -2,8 +2,23 @@
   <main class="login__container container container--medium">
     <img src="@/assets/images/mobile-logo.svg" alt="Edumat" class="login__logo--mobile" />
     <div class="login__form__wrapper">
-      <login-form purpose="login" />
-      <router-link to="/" class="login__link">Wróc do strony głownej</router-link>
+      <login-form purpose="login" @click="step += 1">
+        <transition name="fade-form" mode="out-in">
+          <login-email v-if="step === 1" purpose="login"/>
+          <login-password
+            v-else
+            name="Pieseł Piesełowski"
+            nickname="pieselowski"
+            image="https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg"
+          />
+        </transition>
+      </login-form>
+      <router-link to="/" class="login__link" v-if="step === 1"
+        >Wróc do strony głownej</router-link
+      >
+      <base-button v-else @click="step -= 1" text type="primary" class="login__link">
+        Wróć
+      </base-button>
     </div>
     <img src="@/assets/images/logo.svg" alt="Edumat" class="login__logo" />
   </main>
@@ -12,6 +27,9 @@
 <script>
 export default {
   name: 'Login',
+  data: () => ({
+    step: 1,
+  }),
 };
 </script>
 <style lang="scss" scoped src="./Login.scss" />

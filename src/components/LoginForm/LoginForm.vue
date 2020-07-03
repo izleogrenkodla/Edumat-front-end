@@ -1,26 +1,14 @@
 <template>
-  <form class="login-form">
+  <form class="login-form" @submit.prevent>
+    <div>
     <h1 class="login-form__header">{{ header }}</h1>
     <p>
-      {{ text }} <router-link :to="href" class="login-form__link">{{ link }}</router-link>
+      {{text}}
+      <router-link :to="href" class="login-email__link">{{link}}</router-link>
     </p>
-    <base-input
-      v-model="input"
-      placeholder="Podaj adres email"
-      rules="required|email"
-      class="login-form__input"
-      name="email"
-    />
-    <p class="login-form__or">lub</p>
-    <base-button outline class="login-form__social">
-      <img src="@/assets/icons/google.svg" alt="Google" />
-      Użyj konta Google
-    </base-button>
-    <base-button outline class="login-form__social">
-      <img src="@/assets/icons/facebook.svg" alt="Facebook" />
-      Użyj konta Facebook
-    </base-button>
-    <base-button outline class="login-form__submit">
+    </div>
+    <slot></slot>
+    <base-button outline class="login-form__submit" type="button" @click="$emit('click')">
       Dalej
     </base-button>
   </form>

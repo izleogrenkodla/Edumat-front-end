@@ -1,8 +1,7 @@
 .base-tabs {
   border-bottom: 2px solid rgba(#707070, 0.08);
-  display: flex;
+  display: grid;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {

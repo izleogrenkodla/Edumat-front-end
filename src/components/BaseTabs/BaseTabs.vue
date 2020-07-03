@@ -1,12 +1,14 @@
 <template>
-  <div class="base-tabs">
+  <div class="base-tabs" :style="{ gridTemplateColumns: `repeat(${perRow},1fr)` }">
     <base-tab-button
       v-for="(tab, index) in data"
       :key="tab"
       :isActive="activeTab === index"
       :align="align"
-      :style="{ flex: `${100 / perRow}%` }"
       @click="handleClick(index)"
+      :size="size"
+      :bold="bold"
+      :highlightFont="highlightFont"
     >
       {{ tab }}
     </base-tab-button>
@@ -35,6 +37,21 @@ export default {
       type: Number,
       required: false,
       default: 0,
+    },
+    size: {
+      type: String,
+      required: false,
+      default: 'normal',
+    },
+    highlightFont: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    bold: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   methods: {

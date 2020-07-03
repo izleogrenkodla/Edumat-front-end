@@ -1,0 +1,35 @@
+.register-name {
+  &__header {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+
+  &__input {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  &__tabs {
+    button {
+      font-size: 12px;
+    }
+  }
+
+  &__dropdown {
+    width: 100%;
+    margin-bottom: 1rem;
+    &__option {
+      &--default {
+        color: var(--text-color--medium);
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+    border: none;
+    background: none;
+    justify-content: start;
+  }
+}

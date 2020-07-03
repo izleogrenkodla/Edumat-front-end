@@ -8,7 +8,19 @@
   color: var(--acent-color--dark);
   transition: color var(--time);
 
-  &:hover, &:focus {
+  &--small {
+    font-size: 16px;
+  }
+
+  &--big {
+    font-size: 24px;
+  }
+  &--bold {
+    font-weight: 600;
+  }
+
+  &:hover,
+  &:focus {
     color: var(--text-color);
   }
 
@@ -19,7 +31,7 @@
 
   &--left {
     text-align: left;
-    
+
     &::before {
       transform-origin: left;
     }
@@ -49,10 +61,26 @@
       border-radius: 40px;
     }
   }
+
+  &--highlight {
+    color: var(--primary-color);
+
+    &:focus {
+      color: var(--primary-color);
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
   .base-tab-button {
     font-size: 16px;
+
+    &--small {
+      font-size: 12px;
+    }
+
+    &--big {
+      font-size: 20px;
+    }
   }
 }

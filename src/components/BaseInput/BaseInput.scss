@@ -19,6 +19,14 @@
       padding: 0 70px 0 24px;
     }
 
+    &--bold {
+      font-weight: 600;
+
+      &::placeholder {
+        font-weight: 600 !important;
+      }
+    }
+
     &:-webkit-autofill {
       background: none !important;
     }

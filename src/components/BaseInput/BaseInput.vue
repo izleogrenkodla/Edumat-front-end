@@ -1,16 +1,6 @@
 <template>
-  <validation-provider
-    v-slot="{ errors }"
-    :rules="rules"
-    :name="name"
-    tag="div"
-    class="base-input"
-  >
-    <label
-      v-if="label"
-      class="base-input__label"
-      :for="name"
-    >
+  <validation-provider v-slot="{ errors }" :rules="rules" :name="name" tag="div" class="base-input">
+    <label v-if="label" class="base-input__label" :for="name">
       {{ label }}
     </label>
     <input
@@ -23,7 +13,10 @@
       @blur="$emit('blur')"
       @focus="$emit('focus')"
       class="base-input__inner"
-      :class="{ 'base-input__inner--with-icon' : searchIcon }"
+      :class="[
+        searchIcon ? 'base-input__inner--with-icon' : '',
+        bold ? 'base-input__inner--bold' : ''
+      ]"
       :placeholder="placeholder ? placeholder : label"
       autocomplete="off"
     />
@@ -96,6 +89,11 @@ export default {
       required: false,
       default: false,
     },
+    bold: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   methods: {
     updateValue(event) {
@@ -106,15 +104,15 @@ export default {
         case 'password': {
           this.localType = 'text';
           break;
-        };
+        }
         case 'text': {
           this.localType = 'password';
           break;
-        };
+        }
         default: {
           break;
-        };
-      };
+        }
+      }
     },
   },
 };

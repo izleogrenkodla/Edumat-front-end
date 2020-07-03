@@ -12,6 +12,7 @@
       placeholder="Podaj hasło"
       v-model="password"
       type="password"
+      bold
     />
     <div class="login-password__buttons">
       <base-checkbox type="switch" class="login-password__switch" v-model="rememberPassword">
