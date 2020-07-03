@@ -2,7 +2,7 @@
   <main class="login__container container container--medium">
     <img src="@/assets/images/mobile-logo.svg" alt="Edumat" class="login__logo--mobile" />
     <div class="login__form__wrapper">
-      <login-form purpose="login" @click="step += 1">
+      <login-form purpose="login" @click="step += 1" :step="step">
         <transition name="fade-form" mode="out-in">
           <login-email v-if="step === 1" purpose="login"/>
           <login-password

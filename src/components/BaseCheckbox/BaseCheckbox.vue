@@ -11,7 +11,7 @@
       :style="{ flexDirection: type === 'checkbox' ? 'row-reverse' : 'row' }"
     >
       <slot></slot>
-      <div class="base-checkbox__wrapper">
+      <div class="base-checkbox__wrapper" :style="{ margin: type === 'checkbox' ? '0 0.5rem 0 0' : '0 0 0 0.5rem' }">
         <input
           type="checkbox"
           class="base-checkbox__checkbox"

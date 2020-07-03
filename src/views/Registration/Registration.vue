@@ -2,10 +2,12 @@
   <main class="registration__container container container--medium">
     <img src="@/assets/images/mobile-logo.svg" alt="Edumat" class="registration__logo--mobile" />
     <div class="registration__form__wrapper">
-      <login-form @click="step += 1" purpose="registration">
+      <login-form @click="step += 1" purpose="registration" :step="step">
         <transition name="fade-form" mode="out-in">
           <login-email v-if="step === 1" purpose="registration"/>
           <register-name v-else-if="step === 2" />
+          <register-image v-else-if="step === 3" />
+          <register-password v-else-if="step === 4" />
         </transition>
       </login-form>
       <router-link to="/" class="registration__link" v-if="step === 1"

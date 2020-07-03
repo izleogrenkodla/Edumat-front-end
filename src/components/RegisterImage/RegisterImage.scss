@@ -1,0 +1,61 @@
+.register-image {
+  &__file-upload {
+    font-weight: 600;
+    text-align: center;
+    margin: 3rem 0 1rem 0;
+    font-size: 20px;
+
+    &__input {
+      display: none;
+    }
+
+    &__label {
+      color: var(--primary-color);
+    }
+  }
+  &__slider {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    &__inner {
+      position: relative;
+      overflow: hidden;
+      width: 12rem;
+      height: 12rem;
+
+      @media screen and (max-width: 476px) {
+        width: 10rem;
+        height: 10rem;
+      }
+    }
+
+    &__button {
+      background: none;
+      border: none;
+      outline: none;
+
+      &__arrow {
+        &--left {
+          transform: rotate(180deg);
+        }
+      }
+
+      &:focus,
+      &:hover {
+        & > svg {
+          path {
+            stroke: var(--text-color--dark);
+            fill: var(--text-color--dark);
+          }
+        }
+      }
+    }
+
+    &__face {
+      border-radius: 100%;
+      position: absolute;
+      transition: transform var(--time);
+    }
+  }
+}

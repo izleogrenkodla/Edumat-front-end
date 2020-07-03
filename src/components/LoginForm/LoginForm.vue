@@ -1,11 +1,13 @@
 <template>
   <form class="login-form" @submit.prevent>
     <div>
-    <h1 class="login-form__header">{{ header }}</h1>
-    <p>
-      {{text}}
-      <router-link :to="href" class="login-email__link">{{link}}</router-link>
-    </p>
+      <h1 class="login-form__header">{{ header }}</h1>
+      <transition name="fade-form" mode="out-in">
+        <p v-if="step < 2">
+          {{ text }}
+          <router-link :to="href" class="login-form__link">{{ link }}</router-link>
+        </p>
+      </transition>
     </div>
     <slot></slot>
     <base-button outline class="login-form__submit" type="button" @click="$emit('click')">
@@ -23,6 +25,10 @@ export default {
   props: {
     purpose: {
       type: String,
+      required: true,
+    },
+    step: {
+      type: Number,
       required: true,
     },
   },

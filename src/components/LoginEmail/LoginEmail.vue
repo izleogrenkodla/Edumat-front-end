@@ -7,6 +7,7 @@
       class="login-email__input"
       name="email"
       bold
+      id="email"
     />
     <p class="login-email__or">lub</p>
     <base-button outline class="login-email__social">

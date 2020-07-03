@@ -7,6 +7,8 @@
       rules="required"
       class="register-name__input"
       bold
+      id="name"
+      name="name"
     />
     <base-dropdown hasBorder class="register-name__dropdown">
       <template v-slot:header>
