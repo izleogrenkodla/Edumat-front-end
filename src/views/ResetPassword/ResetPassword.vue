@@ -4,8 +4,8 @@
     <div class="reset-password__form__wrapper">
       <login-form @click="step += 1" purpose="resetPassword" :step="step">
         <transition name="fade-form" mode="out-in">
-          <reset-password-email v-if="step === 0" @input="userData.email = $event" />
-          <reset-password-code v-if="step === 1" v-bind="userData" />
+          <reset-password-email v-if="step === 0" @input="user.email = $event" />
+          <reset-password-code v-if="step === 1" v-bind="user" />
         </transition>
       </login-form>
       <router-link to="/" class="reset-password__link" v-if="step === 0">
@@ -24,7 +24,7 @@ export default {
   name: 'ResetPassword',
   data: () => ({
     step: 0,
-    userData: { email: 'asdkjaskl' },
+    user: { email: '' },
   }),
   watch: {
     step(nextStep) {

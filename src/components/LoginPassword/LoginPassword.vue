@@ -4,7 +4,7 @@
       <img :src="image" :alt="`${name} - zdjęcie profilowe`" class="login-password__user__image" />
       <div>
         <p class="login-password__user__name">{{ name }}</p>
-        <p class="login-password__user__nickname">{{ nickname }}</p>
+        <p class="login-password__user__nickname">{{ email }}</p>
       </div>
     </div>
     <base-input
@@ -15,6 +15,7 @@
       bold
       id="password"
       name="password"
+      @blur="$emit('blur', password)"
     />
     <div class="login-password__buttons">
       <base-checkbox type="switch" class="login-password__switch" v-model="rememberPassword">
@@ -43,7 +44,7 @@ export default {
       type: String,
       required: false,
     },
-    nickname: {
+    email: {
       type: String,
       required: true,
     },
