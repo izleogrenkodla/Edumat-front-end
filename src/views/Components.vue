@@ -8,6 +8,7 @@
         placeholder="Adres email default"
         rules="required|email"
         class="components__input"
+        autofocus
       />
       <base-input
         v-model="inputTwo"

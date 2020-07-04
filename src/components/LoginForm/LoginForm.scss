@@ -38,4 +38,16 @@
       bottom: 2rem;
     }
   }
+
+  &__progress {
+    height: 5px;
+    width: calc(100% - 50px);
+    border-radius: 25px;
+    position: absolute;
+    top: 0px;
+    left: 25px;
+    transform-origin: left;
+    transition: transform var(--time) ease-in;
+    background-color: var(--primary-color);
+  }
 }

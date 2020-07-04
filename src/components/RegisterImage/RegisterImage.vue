@@ -9,114 +9,107 @@
         name="image"
         accept="image/png, image/jpeg"
         class="register-image__file-upload__input"
+        @change="handleUpload"
       />
     </h2>
-
-    <div class="register-image__slider">
-      <button @click="changeSlide('previous')" class="register-image__slider__button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="11.147"
-          height="17.137"
-          viewBox="0 0 11.147 17.137"
-          class="register-image__slider__button__arrow register-image__slider__button__arrow--left"
-        >
-          <path
-            id="Path"
-            d="M-12,.959-11.069,0-3.7,7.154l-7.366,7.155L-12,13.35l6.378-6.2Z"
-            transform="translate(13.414 1.414)"
-            fill="var(--acent-color--dark)"
-            stroke="var(--acent-color--dark)"
-            stroke-width="2"
-          />
-        </svg>
-      </button>
-      <ul class="register-image__slider__inner" ref="slider">
-        <li ref="boy">
-          <img
-            src="/img/faces/boy.svg"
-            alt="Domyślne zdjęcie profilowe - chłopak"
-            class="register-image__slider__face"
-            :style="{ transform: `translateX(-${image === 'boy' ? 0 : 100}%)` }"
-          />
-        </li>
-        <li ref="girl">
-          <img
-            src="/img/faces/girl.svg"
-            alt="Domyślne zdjęcie profilowe - dziewczyna"
-            class="register-image__slider__face"
-            :style="{ transform: `translateX(-${image === 'girl' ? 0 : 100}%)` }"
-          />
-        </li>
-      </ul>
-
-      <button @click="changeSlide('next')" class="register-image__slider__button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="11.147"
-          height="17.137"
-          viewBox="0 0 11.147 17.137"
-          class="register-image__slider__button__arrow"
-        >
-          <path
-            id="Path"
-            d="M-12,.959-11.069,0-3.7,7.154l-7.366,7.155L-12,13.35l6.378-6.2Z"
-            transform="translate(13.414 1.414)"
-            fill="var(--acent-color--dark)"
-            stroke="var(--acent-color--dark)"
-            stroke-width="2"
-          />
-        </svg>
-      </button>
-    </div>
+    <hooper
+      infiniteScroll
+      centerMode
+      trimWhiteSpace
+      ref="hooper"
+      @slide="handleSlide"
+      :initialSlide="gender"
+      :wheelControl="false"
+    >
+      <slide>
+        <img
+          src="/img/faces/boy.svg"
+          alt="Domyślne zdjęcie profilowe - chłopak"
+          class="register-image__face"
+        />
+      </slide>
+      <slide>
+        <img
+          src="/img/faces/girl.svg"
+          alt="Domyślne zdjęcie profilowe - dziewczyna"
+          class="register-image__face"
+        />
+      </slide>
+      <slide v-if="userImage">
+        <img :src="userImage" alt="Zdjęcie profilowe użytkownika" class="register-image__face" />
+      </slide>
+      <hooper-navigation slot="hooper-addons"></hooper-navigation>
+    </hooper>
   </div>
 </template>
 
 <script>
+import { Hooper, Slide, Navigation as HooperNavigation } from 'hooper';
+import 'hooper/dist/hooper.css';
+
 export default {
   name: 'RegisterImage',
+  components: {
+    Hooper,
+    Slide,
+    HooperNavigation,
+  },
   data: () => ({
-    slide: 0,
-    isMounted: false,
-    image: 'boy',
+    image: '',
+    userImage: '',
   }),
+  props: {
+    gender: {
+      type: Number,
+      required: true,
+    },
+  },
   methods: {
-    changeSlide(direction) {
-      console.log(this.$refs.slider);
-      this.slide += direction === 'next' ? 1 : -1;
-      const { slider, boy, girl } = this.$refs;
-      if (this.image === 'girl') {
-        const girlPrime = girl.cloneNode(true);
-        if (direction === 'next') {
-          girlPrime.style.transform = 'translate(100%)';
-          slider.appendChild(girlPrime);
-        } else {
-          girlPrime.style.transform = 'translate(-100%)';
-          slider.insertBefore(girlPrime, girl);
+    handleUpload(event) {
+      this.userImage = URL.createObjectURL(event.target.files[0]);
+      this.image = URL.createObjectURL(event.target.files[0]);
+      this.$refs.hooper.slideTo(2);
+      this.$emit('upload', this.image);
+    },
+    handleSlide({ currentSlide }) {
+      if (!this.userImage) {
+        if (currentSlide === 1 || currentSlide === -1) {
+          this.image = '/img/faces/girl.svg';
+        } else if (currentSlide === 0 || currentSlide === 2) {
+          this.image = '/img/faces/boy.svg';
         }
-        this.image = 'boy';
-      } else {
-        const boyPrime = boy.cloneNode(true);
-        if (direction === 'next') {
-          boyPrime.style.transform = 'translate(100%)';
-          slider.appendChild(boyPrime);
-        } else {
-          boyPrime.style.transform = 'translate(-100%)';
-          slider.insertBefore(boyPrime, boy);
-        }
-        this.image = 'girl';
+      } else if (currentSlide === 1) {
+        this.image = '/img/faces/girl.svg';
+      } else if (currentSlide === 3 || currentSlide === 0) {
+        this.image = '/img/faces/boy.svg';
+      } else if (currentSlide === 2 || currentSlide === -1) {
+        this.image = this.userImage;
       }
+      this.$emit('upload', this.image);
     },
-  },
-  computed: {
-    translate() {
-      if (!this.isMounted) return 0;
-      return this.slide;
-    },
-  },
-  mounted() {
-    this.isMounted = true;
   },
 };
 </script>
 <style lang="scss" scoped src="./RegisterImage.scss" />
+<style lang="scss">
+.hooper-navigation {
+  button {
+    outline: none;
+    svg {
+      path:last-child {
+        fill: var(--acent-color--dark);
+        transition: fill var(--time--short);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      svg {
+        path:last-child {
+          fill: var(--text-color);
+        }
+      }
+    }
+  }
+}
+</style>

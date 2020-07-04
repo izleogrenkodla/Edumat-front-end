@@ -8,6 +8,8 @@
       name="email"
       bold
       id="email"
+      @blur="$emit('blur', email)"
+      autofocus
     />
     <p class="login-email__or">lub</p>
     <base-button outline class="login-email__social">
@@ -46,6 +48,12 @@ export default {
     link() {
       return this.purpose === 'login' ? 'Utwórz konto' : 'Zaloguj się';
     },
+  },
+  mounted() {
+    const input = document.querySelector('[autofocus]');
+    if (input) {
+      input.focus();
+    }
   },
 };
 </script>

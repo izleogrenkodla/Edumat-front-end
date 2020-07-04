@@ -1,5 +1,10 @@
 <template>
   <form class="login-form" @submit.prevent>
+    <span
+      v-if="purpose === 'registration'"
+      class="login-form__progress"
+      :style="{ transform: `scaleX(${step * 0.33333})` }"
+    />
     <div>
       <h1 class="login-form__header">{{ header }}</h1>
       <transition name="fade-form" mode="out-in">
@@ -31,6 +36,10 @@ export default {
       type: Number,
       required: true,
     },
+    name: {
+      type: String,
+      required: false,
+    },
   },
   computed: {
     header() {
@@ -38,6 +47,9 @@ export default {
         return 'Zaloguj się';
       }
       if (this.purpose === 'registration') {
+        if (this.step === 3) {
+          return `Witaj, ${this.name}`;
+        }
         return 'Zarejestruj się';
       }
       if (this.purpose === 'resetPassword') {

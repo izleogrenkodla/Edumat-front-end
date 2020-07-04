@@ -19,6 +19,7 @@
       ]"
       :placeholder="placeholder ? placeholder : label"
       autocomplete="off"
+      :autofocus="autofocus"
     />
     <svg
       v-if="searchIcon"
@@ -90,6 +91,11 @@ export default {
       default: false,
     },
     bold: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    autofocus: {
       type: Boolean,
       required: false,
       default: false,

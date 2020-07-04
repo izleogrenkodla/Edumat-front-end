@@ -9,6 +9,8 @@
       bold
       id="name"
       name="name"
+      @blur="$emit('blur', name)"
+      autofocus
     />
     <base-dropdown hasBorder class="register-name__dropdown">
       <template v-slot:header>
@@ -40,10 +42,10 @@
       </template>
     </base-dropdown>
     <base-tabs
-      :data="['Kobieta', 'Mężczyzna', 'Inne']"
+      :data="['Mężczyzna', 'Kobieta', 'Inne']"
       :activeTab="activeTab"
       :perRow="3"
-      @click="activeTab = $event"
+      @click="handleClick"
       class="register-name__tabs"
       size="small"
       highlightFont
@@ -66,6 +68,23 @@ export default {
         ? 'register-name__dropdown__option--default'
         : 'register-name__dropdown__option';
     },
+  },
+  methods: {
+    handleClick(event) {
+      this.activeTab = event;
+      this.$emit('gender', event);
+    },
+  },
+  watch: {
+    school(school) {
+      this.$emit('select', school);
+    },
+  },
+  mounted() {
+    const input = document.querySelector('[autofocus]');
+    if (input) {
+      input.focus();
+    }
   },
 };
 </script>
