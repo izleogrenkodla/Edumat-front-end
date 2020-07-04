@@ -20,7 +20,7 @@
       <base-checkbox type="switch" class="login-password__switch" v-model="rememberPassword">
         Zapamiętaj hasło
       </base-checkbox>
-      <base-button text class="login-password__reset" url="reset-hasla">
+      <base-button text class="login-password__reset" url="odzyskaj-konto">
         Zresetuj hasło
       </base-button>
     </div>

@@ -4,7 +4,7 @@
     <div class="login__form__wrapper">
       <login-form purpose="login" @click="step += 1" :step="step">
         <transition name="fade-form" mode="out-in">
-          <login-email v-if="step === 1" purpose="login"/>
+          <login-email v-if="step === 0" purpose="login"/>
           <login-password
             v-else
             name="Pieseł Piesełowski"
@@ -13,7 +13,7 @@
           />
         </transition>
       </login-form>
-      <router-link to="/" class="login__link" v-if="step === 1"
+      <router-link to="/" class="login__link" v-if="step === 0"
         >Wróc do strony głownej</router-link
       >
       <base-button v-else @click="step -= 1" text type="primary" class="login__link">
@@ -28,7 +28,7 @@
 export default {
   name: 'Login',
   data: () => ({
-    step: 1,
+    step: 0,
   }),
 };
 </script>

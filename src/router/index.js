@@ -53,6 +53,13 @@ const routes = [
     name: 'Registration',
     component: () => import(/* webpackChunkName: "registration-page" */ '../views/Registration/Registration.vue'),
   },
+  {
+    path: '/odzyskaj-konto',
+    name: 'ResetPassword',
+    component: () => import(
+      /* webpackChunkName: "reset-password-page" */ '../views/ResetPassword/ResetPassword.vue'
+    ),
+  },
 ];
 
 const router = new VueRouter({

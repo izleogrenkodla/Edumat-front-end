@@ -3,7 +3,7 @@
     <div>
       <h1 class="login-form__header">{{ header }}</h1>
       <transition name="fade-form" mode="out-in">
-        <p v-if="step < 2">
+        <p v-if="step < 1">
           {{ text }}
           <router-link :to="href" class="login-form__link">{{ link }}</router-link>
         </p>
@@ -34,16 +34,52 @@ export default {
   },
   computed: {
     header() {
-      return this.purpose === 'login' ? 'Zaloguj się' : 'Zarejestruj się';
+      if (this.purpose === 'login') {
+        return 'Zaloguj się';
+      }
+      if (this.purpose === 'registration') {
+        return 'Zarejestruj się';
+      }
+      if (this.purpose === 'resetPassword') {
+        return 'Odzyskaj konto';
+      }
+      return '';
     },
     text() {
-      return this.purpose === 'login' ? 'Nie masz konta?' : 'Masz już konto?';
+      if (this.purpose === 'login') {
+        return 'Nie masz konta?';
+      }
+      if (this.purpose === 'registration') {
+        return 'Masz już konto?';
+      }
+      if (this.purpose === 'resetPassword') {
+        return 'Masz inny problem?';
+      }
+      return '';
     },
     href() {
-      return this.purpose === 'login' ? '/rejestracja' : '/logowanie';
+      if (this.purpose === 'login') {
+        return '/rejestracja';
+      }
+      if (this.purpose === 'registration') {
+        return '/logowanie';
+      }
+      if (this.purpose === 'resetPassword') {
+        return '/kontakt';
+      }
+      return '';
     },
     link() {
-      return this.purpose === 'login' ? 'Utwórz konto' : 'Zaloguj się';
+      if (this.purpose === 'login') {
+        return 'Utwórz konto';
+      }
+      if (this.purpose === 'registration') {
+        return 'Zaloguj się';
+      }
+      if (this.purpose === 'resetPassword') {
+        return 'Napisz do nas!';
+      }
+      return '';
     },
   },
 };
