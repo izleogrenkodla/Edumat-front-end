@@ -43,6 +43,11 @@ const routes = [
       }
     },
   },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: () => import(/* webpackChunkName: "not-found-page" */ '../views/NotFound/NotFound.vue'),
+  }
 ];
 
 const router = new VueRouter({
