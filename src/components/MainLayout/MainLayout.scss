@@ -12,3 +12,17 @@
     max-width: 980px;
   }
 }
+
+// Media
+
+@media screen and (max-width: 1024px) {
+  .main-layout {
+    &__content {
+      max-width: 100%;
+    }
+
+    &__sidebar {
+      display: none;
+    }
+  }
+}
