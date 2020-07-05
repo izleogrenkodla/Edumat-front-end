@@ -37,7 +37,7 @@ const routes = [
         return elaborations.includes(param);
       };
       if (!isValid(to.params.slug)) {
-        next({ name: 'Home' }); // TODO 404 page
+        next({ name: 'NotFound' }); // TODO 404 page
       } else {
         next();
       }
@@ -59,6 +59,11 @@ const routes = [
     component: () => import(
       /* webpackChunkName: "reset-password-page" */ '../views/ResetPassword/ResetPassword.vue'
     ),
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: () => import(/* webpackChunkName: "not-found-page" */ '../views/NotFound/NotFound.vue'),
   },
 ];
 
