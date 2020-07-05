@@ -9,7 +9,7 @@
     @click="$emit('click')"
     @focus="$emit('focus')"
     class="base-button"
-
+    :buttonType="buttonType"
   >
     <p class="base-button__text">
       <slot></slot>
@@ -80,6 +80,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    buttonType: {
+      type: String,
+      required: false,
+      default: 'button',
     },
   },
   computed: {

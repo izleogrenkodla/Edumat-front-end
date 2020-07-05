@@ -10,7 +10,7 @@
     <base-input
       class="login-password__input"
       placeholder="Podaj hasło"
-      v-model="password"
+      v-model.trim="password"
       type="password"
       bold
       autofocus

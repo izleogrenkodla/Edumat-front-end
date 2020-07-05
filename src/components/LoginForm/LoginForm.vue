@@ -19,7 +19,7 @@
       outline
       class="login-form__submit"
       :class="isError ? 'login-form__submit--error' : ''"
-      type="button"
+      buttonType="submit"
       @click="$emit('click')"
     >
       Dalej

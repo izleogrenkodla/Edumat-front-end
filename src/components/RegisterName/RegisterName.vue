@@ -26,10 +26,11 @@
             aria-label="Szkoła podstawowa"
             class="register-name__button"
             text
+            type="button"
           >
             Szkoła podstawowa
-          </base-button></base-dropdown-item
-        >
+          </base-button>
+        </base-dropdown-item>
         <base-dropdown-item>
           <base-button
             @click="school = 'Liceum'"
@@ -37,10 +38,11 @@
             aria-label="Liceum"
             class="register-name__button"
             text
+            type="button"
           >
             Liceum
-          </base-button></base-dropdown-item
-        >
+          </base-button>
+        </base-dropdown-item>
       </template>
     </base-dropdown>
     <base-tabs

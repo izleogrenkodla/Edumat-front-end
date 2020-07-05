@@ -11,7 +11,7 @@
     <base-input
       class="register-password__input"
       placeholder="Podaj hasło"
-      v-model="password"
+      v-model.trim="password"
       type="password"
       rules="required"
       bold
@@ -23,7 +23,7 @@
     <base-input
       class="register-password__input"
       placeholder="Powtórz hasło"
-      v-model="repeatPassword"
+      v-model.trim="repeatPassword"
       type="password"
       rules="required"
       bold

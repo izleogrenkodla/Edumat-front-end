@@ -1,7 +1,7 @@
 <template>
   <div class="login-email">
     <base-input
-      v-model="email"
+      v-model.trim="email"
       placeholder="Podaj adres email"
       rules="required|email"
       class="login-email__input"
