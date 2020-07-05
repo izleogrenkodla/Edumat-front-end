@@ -1,5 +1,5 @@
 <template>
-  <form class="login-form" @submit.prevent>
+  <form class="login-form" @submit.prevent="$emit('submit')">
     <span
       v-if="purpose === 'registration'"
       class="login-form__progress"
@@ -14,8 +14,14 @@
         </p>
       </transition>
     </div>
-    <slot></slot>
-    <base-button outline class="login-form__submit" type="button" @click="$emit('click')">
+    <slot @error="handleError"></slot>
+    <base-button
+      outline
+      class="login-form__submit"
+      :class="isError ? 'login-form__submit--error' : ''"
+      type="button"
+      @click="$emit('click')"
+    >
       Dalej
     </base-button>
   </form>
@@ -39,6 +45,11 @@ export default {
     name: {
       type: String,
       required: false,
+    },
+    isError: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   computed: {
@@ -92,6 +103,11 @@ export default {
         return 'Napisz do nas!';
       }
       return '';
+    },
+  },
+  methods: {
+    handleError(event) {
+      console.log(event);
     },
   },
 };

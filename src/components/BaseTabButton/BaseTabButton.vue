@@ -1,5 +1,6 @@
 <template>
   <button
+    type="button"
     class="base-tab-button"
     :class="[
       isActive ? 'base-tab-button--active' : '',

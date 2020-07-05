@@ -37,7 +37,7 @@
         fill="#d8d8d8"
       />
     </svg>
-    <transition name="fade-form">
+    <transition name="fade-form" @enter="$emit('error')" @leave="$emit('deleteError')">
       <span class="base-input__error" v-if="errors[0]">
         {{ errors[0] }}
       </span>

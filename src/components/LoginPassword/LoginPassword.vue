@@ -13,9 +13,13 @@
       v-model="password"
       type="password"
       bold
+      autofocus
+      rules="required"
       id="password"
       name="password"
-      @blur="$emit('blur', password)"
+      @input="$emit('input', password)"
+      @error="$emit('error')"
+      @deleteError="$emit('deleteError')"
     />
     <div class="login-password__buttons">
       <base-checkbox type="switch" class="login-password__switch" v-model="rememberPassword">
@@ -48,6 +52,12 @@ export default {
       type: String,
       required: true,
     },
+  },
+  mounted() {
+    const input = document.querySelector('[autofocus]');
+    if (input) {
+      input.focus();
+    }
   },
 };
 </script>

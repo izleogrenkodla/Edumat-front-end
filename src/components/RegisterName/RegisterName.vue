@@ -9,7 +9,9 @@
       bold
       id="name"
       name="name"
-      @blur="$emit('blur', name)"
+      @input="$emit('input', name)"
+      @error="$emit('error')"
+      @deleteError="$emit('deleteError')"
       autofocus
     />
     <base-dropdown hasBorder class="register-name__dropdown">

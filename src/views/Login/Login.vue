@@ -2,15 +2,29 @@
   <main class="login__container container container--medium">
     <img src="@/assets/images/mobile-logo.svg" alt="Edumat" class="login__logo--mobile" />
     <div class="login__form__wrapper">
-      <login-form purpose="login" @click="step += 1" :step="step">
+      <login-form
+        purpose="login"
+        @click="handleClick"
+        :step="step"
+        :isError="isError"
+        @submit="handleClick"
+      >
         <transition name="fade-form" mode="out-in">
-          <login-email v-if="step === 0" purpose="login" @blur="user.email = $event" />
+          <login-email
+            v-if="step === 0"
+            purpose="login"
+            @input="user.email = $event"
+            @error="isError = true"
+            @deleteError="isError = false"
+          />
           <login-password
             v-else
             name="Pieseł Piesełowski"
             image="https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg"
-            @blur="user.password = $event"
+            @input="user.password = $event"
             v-bind="user"
+            @error="isError = true"
+            @deleteError="isError = false"
           />
         </transition>
       </login-form>
@@ -32,8 +46,27 @@ export default {
       email: '',
       password: '',
     },
-    error: null,
+    isError: false,
   }),
+  methods: {
+    handleClick() {
+      const { email, password } = this.user;
+      switch (this.step) {
+        case 0:
+          if (email && !this.isError) {
+            this.step += 1;
+          }
+          break;
+        case 1:
+          if (password) {
+            this.step += 1;
+          }
+          break;
+        default:
+          break;
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped src="./Login.scss" />

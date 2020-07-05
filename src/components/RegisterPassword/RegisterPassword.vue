@@ -13,10 +13,11 @@
       placeholder="Podaj hasło"
       v-model="password"
       type="password"
+      rules="required"
       bold
       id="password"
       name="password"
-      @blur="checkPassword"
+      @input="checkPassword"
       autofocus
     />
     <base-input
@@ -24,10 +25,11 @@
       placeholder="Powtórz hasło"
       v-model="repeatPassword"
       type="password"
+      rules="required"
       bold
       id="repeatPassword"
       name="repeatPassword"
-      @blur="checkPassword"
+      @input="checkPassword"
     />
     <base-checkbox type="switch" class="register-password__switch" v-model="rememberPassword">
       Zapamiętaj hasło
@@ -63,9 +65,14 @@ export default {
   },
   methods: {
     checkPassword() {
-      if (this.password === this.repeatPassword) {
-        this.$emit('blur', this.password);
-      } else console.log('object');
+      if (!this.password || !this.repeatPassword) {
+        this.$emit('error');
+      } else if (this.password === this.repeatPassword) {
+        this.$emit('deleteError');
+        this.$emit('input', this.password);
+      } else {
+        this.$emit('error');
+      }
     },
   },
   mounted() {

@@ -2,23 +2,40 @@
   <main class="registration__container container container--medium">
     <img src="@/assets/images/mobile-logo.svg" alt="Edumat" class="registration__logo--mobile" />
     <div class="registration__form__wrapper">
-      <login-form @click="step += 1" purpose="registration" :step="step" v-bind="user">
+      <login-form
+        @click="handleClick"
+        purpose="registration"
+        :step="step"
+        v-bind="user"
+        :isError="isError"
+        @submit="handleClick"
+      >
         <transition name="fade-form" mode="out-in">
           <login-email
             v-if="step === 0"
             purpose="registration"
             v-bind="user"
-            @blur="user.email = $event"
+            @input="user.email = $event"
+            @error="isError = true"
+            @deleteError="isError = false"
           />
           <register-name
             v-else-if="step === 1"
             v-bind="user"
-            @blur="user.name = $event"
+            @input="user.name = $event"
             @select="user.education = $event"
             @gender="user.gender = $event"
+            @error="isError = true"
+            @deleteError="isError = false"
           />
           <register-image v-else-if="step === 2" @upload="user.image = $event" v-bind="user" />
-          <register-password v-else-if="step === 3" v-bind="user" @blur="user.password = $event" />
+          <register-password
+            v-else-if="step === 3"
+            v-bind="user"
+            @input="user.password = $event"
+            @error="isError = true"
+            @deleteError="isError = false"
+          />
         </transition>
       </login-form>
       <router-link to="/" class="registration__link" v-if="step === 0">
@@ -45,7 +62,39 @@ export default {
       education: '',
       image: '',
     },
+    isError: false,
   }),
+  methods: {
+    handleClick() {
+      const {
+        email, name, gender, education, image, password,
+      } = this.user;
+      switch (this.step) {
+        case 0:
+          if (email && !this.isError) {
+            this.step += 1;
+          }
+          break;
+        case 1:
+          if (name && gender !== '' && education) {
+            this.step += 1;
+          }
+          break;
+        case 2:
+          if (image) {
+            this.step += 1;
+          }
+          break;
+        case 3:
+          if (password) {
+            this.step += 1;
+          }
+          break;
+        default:
+          break;
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped src="./Registration.scss" />

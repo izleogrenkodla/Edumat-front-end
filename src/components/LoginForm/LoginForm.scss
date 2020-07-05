@@ -23,6 +23,13 @@
     bottom: 3rem;
     transform: translateX(-50%);
     position: absolute;
+    transition: transform var(--time--short);
+
+    &--error {
+      &:active {
+        transform: translate(-50%, 15%);
+      }
+    }
   }
 
   @media screen and (max-width: 476px) {
