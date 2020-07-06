@@ -18,7 +18,7 @@
       trimWhiteSpace
       ref="hooper"
       @slide="handleSlide"
-      :initialSlide="gender"
+      :initialSlide="initialSlide"
       :wheelControl="false"
     >
       <slide>
@@ -60,8 +60,15 @@ export default {
   }),
   props: {
     gender: {
-      type: Number,
-      required: true,
+      type: String,
+      required: false,
+      default: 'man',
+    },
+  },
+  computed: {
+    initialSlide() {
+      if (this.gender === 'man') return 0;
+      return 1;
     },
   },
   methods: {

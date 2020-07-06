@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import loginUser from '@/helpers/loginUser';
+
 export default {
   name: 'Login',
   data: () => ({
@@ -59,7 +61,7 @@ export default {
           break;
         case 1:
           if (password) {
-            this.step += 1;
+            loginUser(email, password);
           }
           break;
         default:

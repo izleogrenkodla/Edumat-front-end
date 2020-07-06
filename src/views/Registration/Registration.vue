@@ -36,6 +36,13 @@
             @error="isError = true"
             @deleteError="isError = false"
           />
+          <verification-code
+            v-else-if="step === 4"
+            v-bind="user"
+            @input="user.verificationCode = $event"
+            @error="isError = true"
+            @deleteError="isError = false"
+          />
         </transition>
       </login-form>
       <router-link to="/" class="registration__link" v-if="step === 0">
@@ -50,6 +57,9 @@
 </template>
 
 <script>
+import registerUser from '@/helpers/registerUser';
+import confirmUser from '@/helpers/confirmUser';
+
 export default {
   name: 'Registration',
   data: () => ({
@@ -61,13 +71,14 @@ export default {
       gender: '',
       education: '',
       image: '',
+      verificationCode: [],
     },
     isError: false,
   }),
   methods: {
     handleClick() {
       const {
-        email, name, gender, education, image, password,
+        email, name, gender, education, image, password, verificationCode,
       } = this.user;
       switch (this.step) {
         case 0:
@@ -88,6 +99,13 @@ export default {
         case 3:
           if (password) {
             this.step += 1;
+            registerUser(this.user);
+          }
+          break;
+        case 4:
+          if (verificationCode.length === 6) {
+            this.step += 1;
+            confirmUser(this.user);
           }
           break;
         default:

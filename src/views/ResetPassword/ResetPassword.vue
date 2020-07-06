@@ -5,8 +5,8 @@
       <login-form @click="step += 1" purpose="resetPassword" :step="step">
         <transition name="fade-form" mode="out-in">
           <reset-password-email v-if="step === 0" @input="user.email = $event" />
-          <reset-password-code v-if="step === 1" v-bind="user" />
         </transition>
+          <verification-code v-if="step === 1" v-bind="user" />
       </login-form>
       <router-link to="/" class="reset-password__link" v-if="step === 0">
         Wróc do strony głownej

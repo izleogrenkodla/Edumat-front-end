@@ -1,12 +1,9 @@
-import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
+import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-js';
+import poolData from './pollData';
 
 export default ({
-  email, name, school, gender,
+  email, name, education, gender, password,
 }) => {
-  const poolData = {
-    UserPoolId: process.env.COGNITO_USER_POOL_ID,
-    ClientId: process.env.COGNITO_CLIENT_ID,
-  };
   const userPool = new CognitoUserPool(poolData);
 
   const attributeList = [];
@@ -15,30 +12,30 @@ export default ({
     Name: 'email',
     Value: email,
   };
-
   const dataName = {
     Name: 'name',
     Value: name,
-  };
-  const dataSchool = {
-    Name: 'school',
-    Value: school,
   };
   const dataGender = {
     Name: 'gender',
     Value: gender,
   };
+  // const dataEducation = {
+  //   Name: 'education',
+  //   Value: education,
+  // };
+
   const attributeEmail = new CognitoUserAttribute(dataEmail);
   const attributeName = new CognitoUserAttribute(dataName);
-  const attributeSchool = new CognitoUserAttribute(dataSchool);
   const attributeGender = new CognitoUserAttribute(dataGender);
+  // const attributeEducation = new CognitoUserAttribute(dataEducation);
 
   attributeList.push(attributeEmail);
   attributeList.push(attributeName);
-  attributeList.push(attributeSchool);
   attributeList.push(attributeGender);
+  // attributeList.push(attributeEducation);
 
-  userPool.signUp('username', 'password', attributeList, null, (err, result) => {
+  userPool.signUp(email, password, attributeList, null, (err, result) => {
     if (err) {
       console.error(err.message || JSON.stringify(err));
       return;

@@ -76,7 +76,11 @@ export default {
   methods: {
     handleClick(event) {
       this.activeTab = event;
-      this.$emit('gender', event);
+      let gender = '';
+      if (event === 0) gender = 'man';
+      else if (event === 1) gender = 'woman';
+      else gender = 'other';
+      this.$emit('gender', gender);
     },
   },
   watch: {
