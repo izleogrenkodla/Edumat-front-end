@@ -14,47 +14,61 @@
       @deleteError="$emit('deleteError')"
       autofocus
     />
-    <base-dropdown hasBorder class="register-name__dropdown">
-      <template v-slot:header>
-        <span :class="classes">{{ school }}</span>
-      </template>
-      <template v-slot:items>
-        <base-dropdown-item>
-          <base-button
-            @click="school = 'Szkoła podstawowa'"
-            title="Szkoła podstawowa"
-            aria-label="Szkoła podstawowa"
-            class="register-name__button"
-            text
-            type="button"
-          >
-            Szkoła podstawowa
-          </base-button>
-        </base-dropdown-item>
-        <base-dropdown-item>
-          <base-button
-            @click="school = 'Liceum'"
-            title="Liceum"
-            aria-label="Liceum"
-            class="register-name__button"
-            text
-            type="button"
-          >
-            Liceum
-          </base-button>
-        </base-dropdown-item>
-      </template>
-    </base-dropdown>
-    <base-tabs
-      :data="['Mężczyzna', 'Kobieta', 'Inne']"
-      :activeTab="activeTab"
-      :perRow="3"
-      @click="handleClick"
-      class="register-name__tabs"
-      size="small"
-      highlightFont
-      bold
-    />
+    <div class="register-name__dropdown__wrapper">
+      <base-dropdown hasBorder class="register-name__dropdown">
+        <template v-slot:header>
+          <span :class="classes">{{ education }}</span>
+        </template>
+        <template v-slot:items>
+          <base-dropdown-item>
+            <base-button
+              @click="education = 'Szkoła podstawowa'"
+              title="Szkoła podstawowa"
+              aria-label="Szkoła podstawowa"
+              class="register-name__button"
+              text
+              type="button"
+            >
+              Szkoła podstawowa
+            </base-button>
+          </base-dropdown-item>
+          <base-dropdown-item>
+            <base-button
+              @click="education = 'Liceum'"
+              title="Liceum"
+              aria-label="Liceum"
+              class="register-name__button"
+              text
+              type="button"
+            >
+              Liceum
+            </base-button>
+          </base-dropdown-item>
+        </template>
+      </base-dropdown>
+      <transition name="fade-form" @enter="$emit('error')" @leave="$emit('deleteError')">
+        <span class="register-name__error" v-if="educationError && education === 'Szkoła'">
+          Wybierz szkołę
+        </span>
+      </transition>
+    </div>
+    <div class="register-name__tabs__wrapper">
+      <base-tabs
+        :data="['Mężczyzna', 'Kobieta', 'Inne']"
+        :activeTab="activeTab"
+        :perRow="3"
+        @click="handleClick"
+        class="register-name__tabs"
+        size="small"
+        highlightFont
+        bold
+      />
+      <transition name="fade-form" @enter="$emit('error')" @leave="$emit('deleteError')">
+        <span class="register-name__error" v-if="genderError && activeTab === null">
+          Wybierz płeć
+        </span>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -62,13 +76,25 @@
 export default {
   name: 'RegisterName',
   data: () => ({
-    activeTab: null,
     name: '',
-    school: 'Szkoła',
+    education: 'Szkoła',
+    activeTab: null,
   }),
+  props: {
+    educationError: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    genderError: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   computed: {
     classes() {
-      return this.school === 'Szkoła'
+      return this.education === 'Szkoła'
         ? 'register-name__dropdown__option--default'
         : 'register-name__dropdown__option';
     },
@@ -84,8 +110,8 @@ export default {
     },
   },
   watch: {
-    school(school) {
-      this.$emit('select', school);
+    education(education) {
+      this.$emit('select', education);
     },
   },
   mounted() {

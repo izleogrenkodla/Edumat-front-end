@@ -11,7 +11,11 @@
 
   &__dropdown {
     width: 100%;
-    margin-bottom: 1rem;
+    
+    &__wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+    }
 
     &__option {
       &--default {
@@ -20,10 +24,25 @@
     }
   }
 
+  &__tabs {
+    &__wrapper {
+      position: relative;
+    }
+  }
+
   &__button {
     width: 100%;
     border: none;
     background: none;
     justify-content: start;
+  }
+
+  &__error {
+    position: absolute;
+    left: 25px;
+    top: calc(100% + 5px);
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--ui-error);
   }
 }

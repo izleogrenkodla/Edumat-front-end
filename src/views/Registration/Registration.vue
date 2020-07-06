@@ -27,6 +27,8 @@
             @gender="user.gender = $event"
             @error="isError = true"
             @deleteError="isError = false"
+            :educationError="educationError"
+            :genderError="genderError"
           />
           <register-image v-else-if="step === 2" @upload="user.image = $event" v-bind="user" />
           <register-password
@@ -73,6 +75,8 @@ export default {
       image: '',
       verificationCode: [],
     },
+    educationError: false,
+    genderError: false,
     isError: false,
   }),
   methods: {
@@ -89,6 +93,13 @@ export default {
         case 1:
           if (name && gender !== '' && education) {
             this.step += 1;
+          } else {
+            if (gender === '') {
+              this.genderError = true;
+            }
+            if (education === '') {
+              this.educationError = true;
+            }
           }
           break;
         case 2:
