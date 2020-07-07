@@ -9,11 +9,13 @@ export default ({ email, verificationCode }) => {
   };
 
   const cognitoUser = new CognitoUser(userData);
-  cognitoUser.confirmRegistration(verificationCode.join(''), true, (err, result) => {
-    if (err) {
-      console.log(err.message || JSON.stringify(err));
-      return;
-    }
-    console.log(`call result: ${result}`);
+  return new Promise((resolve, reject) => {
+    cognitoUser.confirmRegistration(verificationCode.join(''), true, (err, result) => {
+      if (err) {
+        reject(err.message || JSON.stringify(err));
+      } else {
+        resolve();
+      }
+    });
   });
 };

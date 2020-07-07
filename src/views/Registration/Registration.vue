@@ -117,14 +117,16 @@ export default {
                 this.unauthenticatedUser = user;
               })
               .catch((error) => {
-                this.error = error;
+                this.error = error.message;
               });
           }
           break;
         case 4:
           if (verificationCode.length === 6) {
             this.step += 1;
-            confirmUser(this.user);
+            confirmUser(this.user)
+              .then(() => this.$router.push('logowanie'))
+              .catch((err) => console.log(err));
           }
           break;
         default:

@@ -38,7 +38,8 @@ export default ({
   return new Promise((resolve, reject) => {
     userPool.signUp(email, password, attributeList, null, (err, result) => {
       if (err) {
-        reject(err.message);
+        console.log(err);
+        reject(err);
       } else {
         resolve(result.user);
       }

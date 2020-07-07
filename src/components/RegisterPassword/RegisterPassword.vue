@@ -31,9 +31,6 @@
       name="repeatPassword"
       @input="checkPassword"
     />
-    <base-checkbox type="switch" class="register-password__switch" v-model="rememberPassword">
-      Zapamiętaj hasło
-    </base-checkbox>
     <base-checkbox class="register-password__checkbox" v-model="terms">
       <p class="register-password__terms">
         Oświadczam, że zapoznałem się i akceptuję
@@ -50,7 +47,6 @@ export default {
   data: () => ({
     password: '',
     repeatPassword: '',
-    rememberPassword: false,
     terms: false,
   }),
   props: {

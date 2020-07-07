@@ -61,7 +61,12 @@ export default {
           break;
         case 1:
           if (password) {
-            loginUser(email, password);
+            loginUser(email, password)
+              .then((res) => {
+                console.log(res);
+                this.$router.push('/');
+              })
+              .catch((err) => console.log(err));
           }
           break;
         default:

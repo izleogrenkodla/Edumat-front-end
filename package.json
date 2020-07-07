@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "amazon-cognito-identity-js": "^4.3.2",
-    "aws-sdk": "^2.709.0",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "hooper": "^0.3.4",

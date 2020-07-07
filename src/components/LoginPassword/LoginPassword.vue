@@ -22,9 +22,6 @@
       @deleteError="$emit('deleteError')"
     />
     <div class="login-password__buttons">
-      <base-checkbox type="switch" class="login-password__switch" v-model="rememberPassword">
-        Zapamiętaj hasło
-      </base-checkbox>
       <base-button text class="login-password__reset" url="odzyskaj-konto">
         Zresetuj hasło
       </base-button>
@@ -37,7 +34,6 @@ export default {
   name: 'LoginPassword',
   data: () => ({
     password: '',
-    rememberPassword: false,
   }),
   props: {
     name: {
