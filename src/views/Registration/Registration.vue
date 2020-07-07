@@ -1,6 +1,5 @@
 <template>
   <main class="registration__container container container--medium">
-    <img src="@/assets/images/mobile-logo.svg" alt="Edumat" class="registration__logo--mobile" />
     <div class="registration__form__wrapper">
       <login-form
         @click="handleClick"
@@ -54,7 +53,6 @@
         Wróć
       </base-button>
     </div>
-    <img src="@/assets/images/logo.svg" alt="Edumat" class="registration__logo" />
   </main>
 </template>
 
