@@ -20,27 +20,28 @@ export default ({
     Name: 'gender',
     Value: gender,
   };
-  // const dataEducation = {
-  //   Name: 'education',
-  //   Value: education,
-  // };
+  const dataEducation = {
+    Name: 'custom:education',
+    Value: education,
+  };
 
   const attributeEmail = new CognitoUserAttribute(dataEmail);
   const attributeName = new CognitoUserAttribute(dataName);
   const attributeGender = new CognitoUserAttribute(dataGender);
-  // const attributeEducation = new CognitoUserAttribute(dataEducation);
+  const attributeEducation = new CognitoUserAttribute(dataEducation);
 
   attributeList.push(attributeEmail);
   attributeList.push(attributeName);
   attributeList.push(attributeGender);
-  // attributeList.push(attributeEducation);
+  attributeList.push(attributeEducation);
 
-  userPool.signUp(email, password, attributeList, null, (err, result) => {
-    if (err) {
-      console.error(err.message || JSON.stringify(err));
-      return;
-    }
-    const cognitoUser = result.user;
-    console.log(`user name is ${cognitoUser.getUsername()}`);
+  return new Promise((resolve, reject) => {
+    userPool.signUp(email, password, attributeList, null, (err, result) => {
+      if (err) {
+        reject(err.message);
+      } else {
+        resolve(result.user);
+      }
+    });
   });
 };

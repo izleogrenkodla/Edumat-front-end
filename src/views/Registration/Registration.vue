@@ -75,9 +75,11 @@ export default {
       image: '',
       verificationCode: [],
     },
+    unauthenticatedUser: {},
     educationError: false,
     genderError: false,
     isError: false,
+    error: '',
   }),
   methods: {
     handleClick() {
@@ -110,7 +112,13 @@ export default {
         case 3:
           if (password) {
             this.step += 1;
-            registerUser(this.user);
+            registerUser(this.user)
+              .then((user) => {
+                this.unauthenticatedUser = user;
+              })
+              .catch((error) => {
+                this.error = error;
+              });
           }
           break;
         case 4:
