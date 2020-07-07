@@ -2,7 +2,7 @@
   <div class="register-password">
     <div class="register-password__user">
       <img
-        :src="image"
+        :src="picture"
         alt="Domyślne zdjęcie profilowe - chłopak"
         class="register-password__user__image"
       />
@@ -50,7 +50,7 @@ export default {
     terms: false,
   }),
   props: {
-    image: {
+    picture: {
       type: String,
       required: true,
     },

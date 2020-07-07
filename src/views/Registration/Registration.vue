@@ -30,7 +30,7 @@
             :educationError="educationError"
             :genderError="genderError"
           />
-          <register-image v-else-if="step === 2" @upload="user.image = $event" v-bind="user" />
+          <register-image v-else-if="step === 2" @upload="user.picture = $event" v-bind="user" />
           <register-password
             v-else-if="step === 3"
             v-bind="user"
@@ -72,7 +72,7 @@ export default {
       name: '',
       gender: '',
       education: '',
-      image: '',
+      picture: '',
       verificationCode: [],
     },
     unauthenticatedUser: {},
@@ -84,7 +84,7 @@ export default {
   methods: {
     handleClick() {
       const {
-        email, name, gender, education, image, password, verificationCode,
+        email, name, gender, education, picture, password, verificationCode,
       } = this.user;
       switch (this.step) {
         case 0:
@@ -105,7 +105,7 @@ export default {
           }
           break;
         case 2:
-          if (image) {
+          if (picture) {
             this.step += 1;
           }
           break;
