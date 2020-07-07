@@ -8,30 +8,36 @@
       />
       <p class="register-password__user__name">{{ email }}</p>
     </div>
-    <base-input
-      class="register-password__input"
-      placeholder="Podaj hasło"
-      v-model.trim="password"
-      type="password"
-      rules="required"
-      bold
-      id="password"
-      name="password"
-      @input="checkPassword"
-      autofocus
-    />
-    <base-input
-      class="register-password__input"
-      placeholder="Powtórz hasło"
-      v-model.trim="repeatPassword"
-      type="password"
-      rules="required"
-      bold
-      id="repeatPassword"
-      name="repeatPassword"
-      @input="checkPassword"
-    />
-    <base-checkbox class="register-password__checkbox" v-model="terms">
+    <validation-observer>
+      <base-input
+        class="register-password__input"
+        placeholder="Podaj hasło"
+        v-model.trim="password"
+        type="password"
+        rules="required|confirmed:confirmation|min:6"
+        bold
+        id="password"
+        name="password"
+        @input="$emit('input', password)"
+        @error="$emit('error')"
+        @deleteError="$emit('deleteError')"
+        autofocus
+      />
+      <base-input
+        class="register-password__input"
+        placeholder="Powtórz hasło"
+        v-model.trim="repeatPassword"
+        type="password"
+        bold
+        id="repeatPassword"
+        name="repeatPassword"
+        @input="$emit('input', repeatPassword)"
+        @error="$emit('error')"
+        @deleteError="$emit('deleteError')"
+        vid="confirmation"
+      />
+    </validation-observer>
+    <base-checkbox class="register-password__checkbox" v-model="terms" required>
       <p class="register-password__terms">
         Oświadczam, że zapoznałem się i akceptuję
         <router-link to="/regulamin">Regulamin</router-link> Edumat. Oświadczam, że zapoznałem się z
@@ -57,18 +63,6 @@ export default {
     email: {
       type: String,
       required: true,
-    },
-  },
-  methods: {
-    checkPassword() {
-      if (!this.password || !this.repeatPassword) {
-        this.$emit('error');
-      } else if (this.password === this.repeatPassword) {
-        this.$emit('deleteError');
-        this.$emit('input', this.password);
-      } else {
-        this.$emit('error');
-      }
     },
   },
   mounted() {

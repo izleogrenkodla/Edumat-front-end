@@ -1,5 +1,13 @@
 <template>
-  <validation-provider v-slot="{ errors }" :rules="rules" :name="name" tag="div" class="base-input">
+  <validation-provider
+    v-slot="{ errors }"
+    :rules="rules"
+    :name="name"
+    tag="div"
+    class="base-input"
+    :vid="vid"
+    mode="eager"
+  >
     <label v-if="label" class="base-input__label" :for="name">
       {{ label }}
     </label>
@@ -99,6 +107,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    vid: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
   methods: {

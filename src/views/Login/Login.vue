@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import loginUser from '@/helpers/loginUser';
+import loginUser from '@/API/cognito/loginUser';
 
 export default {
   name: 'Login',
@@ -62,7 +62,8 @@ export default {
             loginUser(email, password)
               .then((res) => {
                 console.log(res);
-                this.$router.push('/');
+                // this.$router.push('/');
+                this.$store.dispatch('auth/login');
               })
               .catch((err) => console.log(err));
           }

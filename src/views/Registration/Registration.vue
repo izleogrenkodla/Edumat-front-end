@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import registerUser from '@/helpers/registerUser';
-import confirmUser from '@/helpers/confirmUser';
+import registerUser from '@/API/cognito/registerUser';
+import confirmUser from '@/API/cognito/confirmUser';
 
 export default {
   name: 'Registration',
@@ -108,7 +108,7 @@ export default {
           }
           break;
         case 3:
-          if (password) {
+          if (password && !this.isError) {
             this.step += 1;
             registerUser(this.user)
               .then((user) => {
