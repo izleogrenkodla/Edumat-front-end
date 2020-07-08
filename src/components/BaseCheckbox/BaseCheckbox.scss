@@ -1,6 +1,7 @@
 .base-checkbox {
   position: relative;
-
+  display: block;
+  
   &__label {
     display: inline-flex;
     align-items: center;
