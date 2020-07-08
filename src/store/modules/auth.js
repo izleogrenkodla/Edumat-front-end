@@ -5,13 +5,10 @@ export default {
     user: null,
   },
   mutations: {
-    LOGIN(state) {
+    LOGIN(state, user) {
       state.isLogged = true;
       state.user = {
-        name: 'Pieseł',
-        lastName: 'Piesełowski',
-        education: 'Liceum',
-        email: 'piesel@gmail.com',
+        ...user,
         rankingPlace: 2,
         lvl: 80,
         points: 1000,
@@ -42,11 +39,11 @@ export default {
     },
   },
   actions: {
-    login({ commit }) {
-      commit('LOGIN');
+    login({ commit }, user) {
+      commit('LOGIN', user);
     },
     logout({ commit }) {
       commit('LOGOUT');
-    }
+    },
   },
 };

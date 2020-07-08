@@ -61,9 +61,17 @@ export default {
           if (password) {
             loginUser(email, password)
               .then((res) => {
-                console.log(res);
-                // this.$router.push('/');
-                this.$store.dispatch('auth/login');
+                const user = res.reduce(
+                  (userAccumulator, attribute) => ({
+                    ...userAccumulator,
+                    [attribute.Name === 'custom:education'
+                      ? 'education'
+                      : attribute.Name]: attribute.Value,
+                  }),
+                  {},
+                );
+                this.$router.push('/');
+                this.$store.dispatch('auth/login', user);
               })
               .catch((err) => console.log(err));
           }
