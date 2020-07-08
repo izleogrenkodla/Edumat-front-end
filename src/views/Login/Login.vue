@@ -1,6 +1,11 @@
 <template>
   <main class="login__container container container--medium">
     <div class="login__form__wrapper">
+      <transition name="fade-form">
+        <p class="login__form__error" v-if="error">
+          {{error}}
+        </p>
+      </transition>
       <login-form
         purpose="login"
         @click="handleClick"
@@ -27,8 +32,16 @@
           />
         </transition>
       </login-form>
-      <router-link to="/" class="login__link" v-if="step === 0">Wróc do strony głownej</router-link>
-      <base-button v-else @click="step -= 1" text type="primary" class="login__link">
+      <router-link to="/" class="login__link" v-if="step === 0"
+        >Wróc do strony głownej</router-link
+      >
+      <base-button
+        v-else
+        @click="step -= 1"
+        text
+        type="primary"
+        class="login__link"
+      >
         Wróć
       </base-button>
     </div>
@@ -48,6 +61,7 @@ export default {
       password: '',
     },
     isError: false,
+    error: '',
   }),
   computed: {
     ...mapState({
@@ -79,7 +93,9 @@ export default {
                 this.$store.dispatch('auth/login', user);
                 this.$router.push('/');
               })
-              .catch((err) => console.log(err));
+              .catch((error) => {
+                this.error = error;
+              });
           }
           break;
         default:

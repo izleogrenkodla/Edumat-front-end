@@ -1,6 +1,11 @@
 <template>
   <main class="registration__container container container--medium">
     <div class="registration__form__wrapper">
+      <transition name="fade-form">
+        <p class="login__form__error" v-if="error">
+          {{ error }}
+        </p>
+      </transition>
       <login-form
         @click="handleClick"
         purpose="registration"
@@ -29,7 +34,11 @@
             :educationError="educationError"
             :genderError="genderError"
           />
-          <register-image v-else-if="step === 2" @upload="user.picture = $event" v-bind="user" />
+          <register-image
+            v-else-if="step === 2"
+            @upload="user.picture = $event"
+            v-bind="user"
+          />
           <register-password
             v-else-if="step === 3"
             v-bind="user"
@@ -49,7 +58,13 @@
       <router-link to="/" class="registration__link" v-if="step === 0">
         Wróc do strony głownej
       </router-link>
-      <base-button v-else @click="step -= 1" text type="primary" class="registration__link">
+      <base-button
+        v-else
+        @click="step -= 1"
+        text
+        type="primary"
+        class="registration__link"
+      >
         Wróć
       </base-button>
     </div>
@@ -88,7 +103,13 @@ export default {
   methods: {
     handleClick() {
       const {
-        email, name, gender, education, picture, password, verificationCode,
+        email,
+        name,
+        gender,
+        education,
+        picture,
+        password,
+        verificationCode,
       } = this.user;
       switch (this.step) {
         case 0:
@@ -130,7 +151,9 @@ export default {
             this.step += 1;
             confirmUser(this.user)
               .then(() => this.$router.push('logowanie'))
-              .catch((err) => console.log(err));
+              .catch((error) => {
+                this.error = error.message;
+              });
           }
           break;
         default:
