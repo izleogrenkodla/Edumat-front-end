@@ -1,14 +1,25 @@
 <template>
-  <div class="base-tabs" :style="{ gridTemplateColumns: `repeat(${perRow},1fr)` }">
+  <div
+    class="base-tabs"
+    :style="{ gridTemplateColumns: `repeat(${perRow},1fr)` }"
+    :role="wrapperRole"
+    @keydown.left="$emit('keyLeft')"
+    @keydown.right="$emit('keyRight')"
+    @keydown.up.prevent="$emit('keyLeft')"
+    @keydown.down.prevent="$emit('keyRight')"
+  >
     <base-tab-button
       v-for="(tab, index) in data"
       :key="tab"
       :isActive="activeTab === index"
       :align="align"
+      :tabindex="index === 0 ? 0 : -1"
       @click="handleClick(index)"
+      @focus="$emit('focus')"
       :size="size"
       :bold="bold"
       :highlightFont="highlightFont"
+      :role="role"
     >
       {{ tab }}
     </base-tab-button>
@@ -52,6 +63,16 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    role: {
+      type: String,
+      required: false,
+      default: 'tab',
+    },
+  },
+  computed: {
+    wrapperRole() {
+      return this.role === 'tab' ? 'tablist' : 'radiogroup';
     },
   },
   methods: {
