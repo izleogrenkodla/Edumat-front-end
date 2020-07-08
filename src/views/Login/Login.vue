@@ -37,6 +37,7 @@
 
 <script>
 import loginUser from '@/API/cognito/loginUser';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Login',
@@ -48,6 +49,11 @@ export default {
     },
     isError: false,
   }),
+  computed: {
+    ...mapState({
+      isLogged: (state) => state.auth.isLogged,
+    }),
+  },
   methods: {
     handleClick() {
       const { email, password } = this.user;
@@ -80,6 +86,15 @@ export default {
           break;
       }
     },
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      if (vm.isLogged) {
+        next('/');
+      } else {
+        next();
+      }
+    });
   },
 };
 </script>

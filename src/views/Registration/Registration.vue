@@ -59,6 +59,7 @@
 <script>
 import registerUser from '@/API/cognito/registerUser';
 import confirmUser from '@/API/cognito/confirmUser';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Registration',
@@ -79,6 +80,11 @@ export default {
     isError: false,
     error: '',
   }),
+  computed: {
+    ...mapState({
+      isLogged: (state) => state.auth.isLogged,
+    }),
+  },
   methods: {
     handleClick() {
       const {
@@ -131,6 +137,15 @@ export default {
           break;
       }
     },
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      if (vm.isLogged) {
+        next('/');
+      } else {
+        next();
+      }
+    });
   },
 };
 </script>
