@@ -70,8 +70,8 @@ export default {
                   }),
                   {},
                 );
-                this.$router.push('/');
                 this.$store.dispatch('auth/login', user);
+                this.$router.push('/');
               })
               .catch((err) => console.log(err));
           }
