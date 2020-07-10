@@ -47,7 +47,7 @@ export default ({
         console.log(err);
         reject(err);
       } else {
-        resolve(result.user);
+        resolve();
       }
     });
   });

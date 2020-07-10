@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import loginUser from '@/API/cognito/loginUser';
 import { mapState } from 'vuex';
 
 export default {
@@ -74,19 +73,19 @@ export default {
 
       switch (this.step) {
         case 0: {
-          email && !this.isError ? this.step += 1 : false;
+          email && !this.isError ? (this.step += 1) : false;
           break;
-        };
+        }
         case 1: {
           if (password) {
             this.$store.dispatch('auth/login', { email, password });
           }
           break;
-        };
+        }
         default: {
           break;
-        };
-      };
+        }
+      }
     },
   },
   beforeRouteEnter(to, from, next) {

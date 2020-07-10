@@ -137,13 +137,14 @@ export default {
         case 3:
           if (password && !this.isError) {
             this.step += 1;
-            registerUser(this.user)
-              .then((user) => {
-                this.unauthenticatedUser = user;
-              })
-              .catch((error) => {
+            const register = async () => {
+              try {
+                await registerUser(this.user);
+              } catch (error) {
                 this.error = error.message;
-              });
+              }
+            };
+            register();
           }
           break;
         case 4:
