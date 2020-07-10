@@ -11,3 +11,16 @@
     </main>
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  name: 'App',
+  computed: {
+    ...mapState({
+      isLogged: (state) => state.auth.isLogged,
+    }),
+  },
+};
+</script>

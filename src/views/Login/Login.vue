@@ -2,8 +2,8 @@
   <main class="login__container container container--medium">
     <div class="login__form__wrapper">
       <transition name="fade-form">
-        <p class="login__form__error" v-if="error">
-          {{error}}
+        <p class="login__form__error" v-if="isError">
+          {{ errorMessage }}
         </p>
       </transition>
       <login-form
@@ -60,47 +60,33 @@ export default {
       email: '',
       password: '',
     },
-    isError: false,
-    error: '',
   }),
   computed: {
     ...mapState({
       isLogged: (state) => state.auth.isLogged,
+      isError: (state) => state.auth.error,
+      errorMessage: (state) => state.auth.errorMessage,
     }),
   },
   methods: {
     handleClick() {
       const { email, password } = this.user;
+
       switch (this.step) {
-        case 0:
-          if (email && !this.isError) {
-            this.step += 1;
-          }
+        case 0: {
+          email && !this.isError ? this.step += 1 : false;
           break;
-        case 1:
+        };
+        case 1: {
           if (password) {
-            loginUser(email, password)
-              .then((res) => {
-                const user = res.reduce(
-                  (userAccumulator, attribute) => ({
-                    ...userAccumulator,
-                    [attribute.Name === 'custom:education'
-                      ? 'education'
-                      : attribute.Name]: attribute.Value,
-                  }),
-                  {},
-                );
-                this.$store.dispatch('auth/login', user);
-                this.$router.push('/');
-              })
-              .catch((error) => {
-                this.error = error;
-              });
+            this.$store.dispatch('auth/login', { email, password });
           }
           break;
-        default:
+        };
+        default: {
           break;
-      }
+        };
+      };
     },
   },
   beforeRouteEnter(to, from, next) {
