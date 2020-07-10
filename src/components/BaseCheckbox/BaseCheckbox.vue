@@ -11,18 +11,20 @@
       :style="{ flexDirection: type === 'checkbox' ? 'row-reverse' : 'row' }"
     >
       <slot></slot>
-      <div class="base-checkbox__wrapper" :style="{ margin: type === 'checkbox' ? '0 0.5rem 0 0' : '0 0 0 0.5rem' }">
+      <div
+        class="base-checkbox__wrapper"
+        :style="{
+          margin: type === 'checkbox' ? '0 0.5rem 0 0' : '0 0 0 0.5rem'
+        }"
+      >
         <input
           type="checkbox"
           class="base-checkbox__checkbox"
           :id="checkboxID"
-          :checked="value"
+          :value="value"
           @change="updateValue($event.target.checked)"
         />
-        <div
-          class="base-checkbox__indicator"
-          :class="classes"
-        ></div>
+        <div class="base-checkbox__indicator" :class="classes"></div>
         <svg
           class="base-checkbox__icon"
           aria-hidden="true"

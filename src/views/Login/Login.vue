@@ -1,6 +1,11 @@
 <template>
   <main class="login__container container container--medium">
     <div class="login__form__wrapper">
+      <transition name="fade-form">
+        <p class="login__form__error" v-if="error">
+          {{error}}
+        </p>
+      </transition>
       <login-form
         purpose="login"
         @click="handleClick"
@@ -27,8 +32,16 @@
           />
         </transition>
       </login-form>
-      <router-link to="/" class="login__link" v-if="step === 0">Wróc do strony głownej</router-link>
-      <base-button v-else @click="step -= 1" text type="primary" class="login__link">
+      <router-link to="/" class="login__link" v-if="step === 0"
+        >Wróc do strony głownej</router-link
+      >
+      <base-button
+        v-else
+        @click="step -= 1"
+        text
+        type="primary"
+        class="login__link"
+      >
         Wróć
       </base-button>
     </div>
@@ -36,7 +49,8 @@
 </template>
 
 <script>
-import loginUser from '@/helpers/loginUser';
+import loginUser from '@/API/cognito/loginUser';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Login',
@@ -47,7 +61,13 @@ export default {
       password: '',
     },
     isError: false,
+    error: '',
   }),
+  computed: {
+    ...mapState({
+      isLogged: (state) => state.auth.isLogged,
+    }),
+  },
   methods: {
     handleClick() {
       const { email, password } = this.user;
@@ -61,16 +81,36 @@ export default {
           if (password) {
             loginUser(email, password)
               .then((res) => {
-                console.log(res);
+                const user = res.reduce(
+                  (userAccumulator, attribute) => ({
+                    ...userAccumulator,
+                    [attribute.Name === 'custom:education'
+                      ? 'education'
+                      : attribute.Name]: attribute.Value,
+                  }),
+                  {},
+                );
+                this.$store.dispatch('auth/login', user);
                 this.$router.push('/');
               })
-              .catch((err) => console.log(err));
+              .catch((error) => {
+                this.error = error;
+              });
           }
           break;
         default:
           break;
       }
     },
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      if (vm.isLogged) {
+        next('/');
+      } else {
+        next();
+      }
+    });
   },
 };
 </script>

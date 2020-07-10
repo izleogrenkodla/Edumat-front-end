@@ -28,13 +28,10 @@
           class="main-navigation__search"
           @keyup.enter.native="searchQuery()"
         />
-        <div
-          class="main-navigation__actions"
-          v-if="!isLogged"
-        >
+        <div class="main-navigation__actions" v-if="!isLogged">
           <base-button
             outline
-            @click="login()"
+            url="/logowanie"
             title="Zaloguj się"
           >
             Zaloguj się
@@ -73,7 +70,7 @@
               </div>
             </template>
             <template slot="items">
-              <base-dropdown-item 
+              <base-dropdown-item
                 class="main-navigation__message"
                 v-for="message in messages"
                 :key="message.id"
@@ -97,7 +94,7 @@
                       {{ message.description }}
                     </p>
                   </div>
-                </router-link>  
+                </router-link>
               </base-dropdown-item>
             </template>
           </base-dropdown>
@@ -110,7 +107,7 @@
                 <img
                   class="main-navigation__user-img"
                   alt=""
-                  src="https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg"
+                  :src="user.picture"
                 />
                 <p class="main-navigation__user-name">
                   {{ user.name }}
@@ -156,7 +153,6 @@ export default {
   name: 'MainNavigation',
   data: () => ({
     search: '',
-    isLogged: false,
     openedMessages: false,
     menu: [
       {
@@ -197,7 +193,7 @@ export default {
         opened: false,
         author: 'Admin Adminowski',
         authorAvatar: 'prof',
-        link: '/'
+        link: '/',
       },
       {
         id: 2,
@@ -208,7 +204,7 @@ export default {
         opened: false,
         author: 'Admin Adminowski',
         authorAvatar: 'prof',
-        link: '/'
+        link: '/',
       },
       {
         id: 3,
@@ -219,28 +215,24 @@ export default {
         opened: false,
         author: 'Admin Adminowski',
         authorAvatar: 'prof',
-        link: '/'
+        link: '/',
       },
     ],
   }),
   computed: {
     ...mapState({
-      user: state => state.auth.user,
+      user: (state) => state.auth.user,
+      isLogged: (state) => state.auth.isLogged,
     }),
   },
   methods: {
     messageHeading(message) {
-      return `${ message.category } | ${ message.title } • ${ message.date }`
+      return `${message.category} | ${message.title} • ${message.date}`;
     },
     searchQuery() {
       this.$router.push('/wyniki-wyszukiwania');
     },
-    login() {
-      this.isLogged = true;
-      this.$store.dispatch('auth/login');
-    },
     logout() {
-      this.isLogged = false;
       this.$store.dispatch('auth/logout');
     },
   },

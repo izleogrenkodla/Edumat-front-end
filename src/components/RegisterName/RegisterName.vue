@@ -46,8 +46,15 @@
           </base-dropdown-item>
         </template>
       </base-dropdown>
-      <transition name="fade-form" @enter="$emit('error')" @leave="$emit('deleteError')">
-        <span class="register-name__error" v-if="educationError && education === 'Szkoła'">
+      <transition
+        name="fade-form"
+        @enter="$emit('error')"
+        @leave="$emit('deleteError')"
+      >
+        <span
+          class="register-name__error"
+          v-if="educationError && education === 'Szkoła'"
+        >
           Wybierz szkołę
         </span>
       </transition>
@@ -58,13 +65,24 @@
         :activeTab="activeTab"
         :perRow="3"
         @click="handleClick"
+        @keyLeft="handleKeyLeft"
+        @keyRight="handleKeyRight"
+        @focus="activeTab = activeTab || 0"
         class="register-name__tabs"
         size="small"
         highlightFont
         bold
+        role="radio"
       />
-      <transition name="fade-form" @enter="$emit('error')" @leave="$emit('deleteError')">
-        <span class="register-name__error" v-if="genderError && activeTab === null">
+      <transition
+        name="fade-form"
+        @enter="$emit('error')"
+        @leave="$emit('deleteError')"
+      >
+        <span
+          class="register-name__error"
+          v-if="genderError && activeTab === null"
+        >
           Wybierz płeć
         </span>
       </transition>
@@ -107,6 +125,20 @@ export default {
       else if (event === 1) gender = 'woman';
       else gender = 'other';
       this.$emit('gender', gender);
+    },
+    handleKeyLeft() {
+      if (this.activeTab <= 0) {
+        this.activeTab = 2;
+      } else {
+        this.activeTab += -1;
+      }
+    },
+    handleKeyRight() {
+      if (this.activeTab >= 2) {
+        this.activeTab = 0;
+      } else {
+        this.activeTab += 1;
+      }
     },
   },
   watch: {

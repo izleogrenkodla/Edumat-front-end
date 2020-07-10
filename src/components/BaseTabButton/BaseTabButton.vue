@@ -2,6 +2,9 @@
   <button
     type="button"
     class="base-tab-button"
+    :role="role"
+    :aria-selected="role === 'tab' && isActive"
+    :aria-checked="role === 'radio' && isActive"
     :class="[
       isActive ? 'base-tab-button--active' : '',
       isActive && highlightFont ? 'base-tab-button--highlight' : '',
@@ -12,6 +15,7 @@
       bold ? 'base-tab-button--bold' : ''
     ]"
     @click="$emit('click')"
+    @focus="$emit('focus')"
   >
     <slot></slot>
   </button>
@@ -44,6 +48,11 @@ export default {
     bold: {
       type: Boolean,
       default: false,
+      required: false,
+    },
+    role: {
+      type: String,
+      default: 'tab',
       required: false,
     },
   },
