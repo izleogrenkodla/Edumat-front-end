@@ -1,5 +1,7 @@
 import loginUser from '@/API/cognito/loginUser';
 import router from '@/router/';
+import autoLoginUser from '../../API/cognito/autoLoginUser';
+import signOut from '../../API/cognito/signOut';
 
 export default {
   namespaced: true,
@@ -65,12 +67,21 @@ export default {
     LOGOUT (state) {
       state.isLogged = false;
       state.user = null;
+      signOut();
     },
   },
   actions: {
     async login ({ commit }, { email, password } = payload) {
       try {
         const response = await loginUser(email, password);
+        commit('SET_USER', response);
+      } catch(err) {
+        commit('SET_ERROR', err);
+      }
+    },
+    async autoLogin ({ commit }) {
+      try {
+        const response = await autoLoginUser();
         commit('SET_USER', response);
       } catch(err) {
         commit('SET_ERROR', err);
