@@ -15,11 +15,11 @@
     />
     <p class="login-email__or">lub</p>
     <base-button outline class="login-email__social">
-      <img src="@/assets/icons/google.svg" alt="Google" class="login-email__social__icon" />
+      <img src="@/assets/icons/google.svg" alt="Google" class="login-email__social-icon" />
       Użyj konta Google
     </base-button>
     <base-button outline class="login-email__social">
-      <img src="@/assets/icons/facebook.svg" alt="Facebook" class="login-email__social__icon" />
+      <img src="@/assets/icons/facebook.svg" alt="Facebook" class="login-email__social-icon" />
       Użyj konta Facebook
     </base-button>
   </div>

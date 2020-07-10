@@ -14,7 +14,7 @@
       @deleteError="$emit('deleteError')"
       autofocus
     />
-    <div class="register-name__dropdown__wrapper">
+    <div class="register-name__dropdown-wrapper">
       <base-dropdown hasBorder class="register-name__dropdown">
         <template v-slot:header>
           <span :class="classes">{{ education }}</span>
@@ -59,7 +59,7 @@
         </span>
       </transition>
     </div>
-    <div class="register-name__tabs__wrapper">
+    <div class="register-name__tabs-wrapper">
       <base-tabs
         :data="['Mężczyzna', 'Kobieta', 'Inne']"
         :activeTab="activeTab"
@@ -113,8 +113,8 @@ export default {
   computed: {
     classes() {
       return this.education === 'Szkoła'
-        ? 'register-name__dropdown__option--default'
-        : 'register-name__dropdown__option';
+        ? 'register-name__option--default'
+        : 'register-name__option';
     },
   },
   methods: {

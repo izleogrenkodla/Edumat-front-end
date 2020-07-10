@@ -2,7 +2,7 @@
   &__input {
     margin: 2rem 0 1.2rem 0;
   }
-  
+
   &__or {
     font-weight: 600;
     text-align: center;
@@ -14,11 +14,11 @@
     border-color: var(--acent-color);
     margin-bottom: 0.5rem;
     font-weight: 600;
-
-    &__icon {
-      margin-right: 0.5rem;
-      width: 1.2rem;
-      height: 1.2rem;
-    }
+  }
+  
+  &__social-icon {
+    margin-right: 0.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
   }
 }

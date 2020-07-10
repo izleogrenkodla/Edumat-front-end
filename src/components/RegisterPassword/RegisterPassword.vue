@@ -4,9 +4,9 @@
       <img
         :src="picture"
         alt="Domyślne zdjęcie profilowe - chłopak"
-        class="register-password__user__image"
+        class="register-password__image"
       />
-      <p class="register-password__user__name">{{ email }}</p>
+      <p class="register-password__name">{{ email }}</p>
     </div>
     <validation-observer>
       <base-input

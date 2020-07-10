@@ -1,10 +1,10 @@
 <template>
   <div class="login-password">
     <div class="login-password__user">
-      <img :src="image" :alt="`${name} - zdjęcie profilowe`" class="login-password__user__image" />
+      <img :src="image" :alt="`${name} - zdjęcie profilowe`" class="login-password__image" />
       <div>
-        <p class="login-password__user__name">{{ name }}</p>
-        <p class="login-password__user__nickname">{{ email }}</p>
+        <p class="login-password__name">{{ name }}</p>
+        <p class="login-password__nickname">{{ email }}</p>
       </div>
     </div>
     <base-input

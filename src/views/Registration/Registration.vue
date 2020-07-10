@@ -1,8 +1,8 @@
 <template>
   <main class="registration__container container container--medium">
-    <div class="registration__form__wrapper">
+    <div class="registration__form-wrapper">
       <transition name="fade-form">
-        <p class="login__form__error" v-if="error">
+        <p class="login__error" v-if="error">
           {{ error }}
         </p>
       </transition>

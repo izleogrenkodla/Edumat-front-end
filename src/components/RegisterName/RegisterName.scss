@@ -11,23 +11,21 @@
 
   &__dropdown {
     width: 100%;
-    
-    &__wrapper {
-      position: relative;
-      margin-bottom: 1rem;
-    }
+  }
 
-    &__option {
-      &--default {
-        color: var(--text-color--medium);
-      }
+  &__dropdown-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  &__option {
+    &--default {
+      color: var(--text-color--medium);
     }
   }
 
-  &__tabs {
-    &__wrapper {
-      position: relative;
-    }
+  &__tabs-wrapper {
+    position: relative;
   }
 
   &__button {

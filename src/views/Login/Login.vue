@@ -1,8 +1,8 @@
 <template>
   <main class="login__container container container--medium">
-    <div class="login__form__wrapper">
+    <div class="login__form-wrapper">
       <transition name="fade-form">
-        <p class="login__form__error" v-if="isError">
+        <p class="login__error" v-if="isError">
           {{ errorMessage }}
         </p>
       </transition>

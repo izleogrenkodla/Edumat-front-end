@@ -9,21 +9,19 @@
     }
   }
 
-  &__form {
-    &__wrapper {
-      position: relative;
-    }
-
-    &__error {
-      position: absolute;
-      z-index: 1;
-      left: 50%;
-      top: 1rem;
-      width: 100%;
-      transform: translateX(-50%);
-      color: var(--ui-error);
-      text-align: center;
-    }
+  &__form-wrapper {
+    position: relative;
+  }
+  
+  &__error {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 1rem;
+    width: 100%;
+    transform: translateX(-50%);
+    color: var(--ui-error);
+    text-align: center;
   }
 
   &__link {
