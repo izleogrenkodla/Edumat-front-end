@@ -17,7 +17,7 @@
     <div class="register-name__dropdown-wrapper">
       <base-dropdown hasBorder class="register-name__dropdown">
         <template v-slot:header>
-          <span :class="classes">{{ education }}</span>
+          <span :class="classes">{{ education || 'Szkoła' }}</span>
         </template>
         <template v-slot:items>
           <base-dropdown-item>
@@ -27,7 +27,6 @@
               aria-label="Szkoła podstawowa"
               class="register-name__button"
               text
-              type="button"
             >
               Szkoła podstawowa
             </base-button>
@@ -39,7 +38,6 @@
               aria-label="Liceum"
               class="register-name__button"
               text
-              type="button"
             >
               Liceum
             </base-button>
@@ -53,7 +51,7 @@
       >
         <span
           class="register-name__error"
-          v-if="educationError && education === 'Szkoła'"
+          v-if="educationError && education === ''"
         >
           Wybierz szkołę
         </span>
@@ -93,11 +91,13 @@
 <script>
 export default {
   name: 'RegisterName',
-  data: () => ({
-    name: '',
-    education: 'Szkoła',
-    activeTab: null,
-  }),
+  data() {
+    return {
+      name: JSON.parse(localStorage.getItem('userRegistration'))?.name || '',
+      education: JSON.parse(localStorage.getItem('userRegistration'))?.education || '',
+      activeTab: this.defaultActiveTab,
+    };
+  },
   props: {
     educationError: {
       type: Boolean,
@@ -112,9 +112,22 @@ export default {
   },
   computed: {
     classes() {
-      return this.education === 'Szkoła'
+      return this.education === ''
         ? 'register-name__option--default'
         : 'register-name__option';
+    },
+    defaultActiveTab() {
+      const gender = JSON.parse(localStorage.getItem('userRegistration'))?.gender;
+      if (gender === 'man') {
+        return 0;
+      }
+      if (gender === 'woman') {
+        return 1;
+      }
+      if (gender === 'other') {
+        return 2;
+      }
+      return null;
     },
   },
   methods: {

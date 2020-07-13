@@ -9,7 +9,7 @@
     @click="$emit('click')"
     @focus="$emit('focus')"
     class="base-button"
-    :buttonType="buttonType"
+    :type="buttonType"
   >
     <p class="base-button__text">
       <slot></slot>

@@ -32,9 +32,9 @@
           />
         </transition>
       </login-form>
-      <router-link to="/" class="login__link" v-if="step === 0"
-        >Wróc do strony głownej</router-link
-      >
+      <router-link to="/" class="login__link" v-if="step === 0">
+        Wróc do strony głownej
+      </router-link>
       <base-button
         v-else
         @click="step -= 1"
@@ -56,7 +56,7 @@ export default {
   data: () => ({
     step: 0,
     user: {
-      email: '',
+      email: JSON.parse(localStorage.getItem('userRegistration')).email || '',
       password: '',
     },
   }),

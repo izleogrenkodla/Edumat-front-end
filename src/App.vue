@@ -11,7 +11,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import autoLoginUser from '@/API/cognito/autoLoginUser';
 
 export default {
   name: 'App',
@@ -21,7 +20,6 @@ export default {
     }),
   },
   mounted() {
-    console.log('object');
     this.$store.dispatch('auth/autoLogin');
   },
 };

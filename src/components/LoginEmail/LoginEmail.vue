@@ -29,7 +29,7 @@
 export default {
   name: 'LoginEmail',
   data: () => ({
-    email: '',
+    email: JSON.parse(localStorage.getItem('userRegistration'))?.email || '',
   }),
   props: {
     purpose: {

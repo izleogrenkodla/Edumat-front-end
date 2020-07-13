@@ -7,7 +7,6 @@
         </p>
       </transition>
       <login-form
-        @click="handleClick"
         purpose="registration"
         :step="step"
         v-bind="user"
@@ -45,6 +44,8 @@
             @input="user.password = $event"
             @error="isError = true"
             @deleteError="isError = false"
+            @checkbox="terms = $event"
+            :value="terms"
           />
           <verification-code
             v-else-if="step === 4"
@@ -60,7 +61,7 @@
       </router-link>
       <base-button
         v-else
-        @click="step -= 1"
+        @click="handleGoBack"
         text
         type="primary"
         class="registration__link"
@@ -78,23 +79,29 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Registration',
-  data: () => ({
-    step: 0,
-    user: {
-      email: '',
-      password: '',
-      name: '',
-      gender: '',
-      education: '',
-      picture: '',
-      verificationCode: [],
-    },
-    unauthenticatedUser: {},
-    educationError: false,
-    genderError: false,
-    isError: false,
-    error: '',
-  }),
+  data: () => {
+    const localStorageUser = JSON.parse(
+      localStorage.getItem('userRegistration'),
+    );
+    return {
+      step: parseInt(localStorage.getItem('registrationStep'), 10) || 0,
+      user: {
+        email: localStorageUser?.email || '',
+        password: '',
+        name: localStorageUser?.name || '',
+        gender: localStorageUser?.gender || '',
+        education: localStorageUser?.education || '',
+        picture: localStorageUser?.picture || '',
+        verificationCode: localStorageUser?.verificationCode || '',
+      },
+      unauthenticatedUser: {},
+      educationError: false,
+      genderError: false,
+      isError: false,
+      terms: false,
+      error: '',
+    };
+  },
   computed: {
     ...mapState({
       isLogged: (state) => state.auth.isLogged,
@@ -111,6 +118,10 @@ export default {
         password,
         verificationCode,
       } = this.user;
+      localStorage.setItem(
+        'userRegistration',
+        JSON.stringify({ ...this.user, password: '' }),
+      );
       switch (this.step) {
         case 0:
           if (email && !this.isError) {
@@ -121,6 +132,7 @@ export default {
           if (name && gender !== '' && education) {
             this.step += 1;
           } else {
+            this.isError = true;
             if (gender === '') {
               this.genderError = true;
             }
@@ -135,31 +147,48 @@ export default {
           }
           break;
         case 3:
-          if (password && !this.isError) {
-            this.step += 1;
+          if (password && !this.isError && this.terms) {
             const register = async () => {
               try {
                 await registerUser(this.user);
+                this.step += 1;
               } catch (error) {
                 this.error = error.message;
               }
             };
             register();
+          } else {
+            this.isError = true;
           }
           break;
         case 4:
           if (verificationCode.length === 6) {
             this.step += 1;
-            confirmUser(this.user)
-              .then(() => this.$router.push('logowanie'))
-              .catch((error) => {
+            const confirm = async () => {
+              try {
+                await confirmUser(this.user);
+                this.$router.push('logowanie');
+              } catch (error) {
                 this.error = error.message;
-              });
+              }
+            };
+            confirm();
+          } else {
+            this.isError = true;
           }
           break;
         default:
           break;
       }
+    },
+    handleGoBack() {
+      this.step -= 1;
+      this.isError = false;
+    },
+  },
+  watch: {
+    step() {
+      localStorage.setItem('registrationStep', this.step);
     },
   },
   beforeRouteEnter(to, from, next) {

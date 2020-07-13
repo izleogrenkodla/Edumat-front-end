@@ -2,7 +2,9 @@
   <div class="register-image">
     <h2 class="register-image__file-upload">
       Wybierz lub
-      <label for="image" class="register-image__file-upload__label">Dodaj fotę</label>
+      <label for="image" class="register-image__file-upload__label">
+        Dodaj fotę
+      </label>
       <input
         type="file"
         id="image"
@@ -36,7 +38,11 @@
         />
       </slide>
       <slide v-if="userImage">
-        <img :src="userImage" alt="Zdjęcie profilowe użytkownika" class="register-image__face" />
+        <img
+          :src="userImage"
+          alt="Zdjęcie profilowe użytkownika"
+          class="register-image__face"
+        />
       </slide>
       <hooper-navigation slot="hooper-addons"></hooper-navigation>
     </hooper>
@@ -54,10 +60,12 @@ export default {
     Slide,
     HooperNavigation,
   },
-  data: () => ({
-    image: '',
-    userImage: '',
-  }),
+  data() {
+    return {
+      image: JSON.parse(localStorage.getItem('userRegistration'))?.picture || '',
+      userImage: '',
+    };
+  },
   props: {
     gender: {
       type: String,
@@ -67,8 +75,21 @@ export default {
   },
   computed: {
     initialSlide() {
-      if (this.gender === 'man') return 0;
-      return 1;
+      const picture = JSON.parse(localStorage.getItem('userRegistration'))?.picture;
+      if (picture) {
+        if (picture === '/img/faces/boy.svg') {
+          return 0;
+        }
+        if (picture === '/img/faces/girl.svg') {
+          return 1;
+        }
+      } else {
+        if (this.gender === 'man') {
+          return 0;
+        }
+        return 1;
+      }
+      return 2;
     },
   },
   methods: {

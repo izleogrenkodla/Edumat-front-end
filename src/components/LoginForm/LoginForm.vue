@@ -20,7 +20,6 @@
       class="login-form__submit"
       :class="isError ? 'login-form__submit--error' : ''"
       buttonType="submit"
-      @click="$emit('click')"
     >
       Dalej
     </base-button>

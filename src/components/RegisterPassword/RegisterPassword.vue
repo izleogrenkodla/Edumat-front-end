@@ -37,11 +37,24 @@
         vid="confirmation"
       />
     </validation-observer>
-    <base-checkbox class="register-password__checkbox" v-model="terms" required>
+    <base-checkbox
+      class="register-password__checkbox"
+      :value="value"
+      @input="$emit('checkbox', $event)"
+      required
+      @error="$emit('error')"
+      @deleteError="$emit('deleteError')"
+    >
       <p class="register-password__terms">
         Oświadczam, że zapoznałem się i akceptuję
-        <router-link to="/regulamin">Regulamin</router-link> Edumat. Oświadczam, że zapoznałem się z
-        <router-link to="/rodo">informacją o danych osobowych w Edumat</router-link>.
+        <router-link to="/regulamin">
+          Regulamin
+        </router-link>
+        Edumat. Oświadczam, że zapoznałem się z
+        <router-link to="/rodo">
+          informacją o danych osobowych w Edumat
+        </router-link>
+        .
       </p>
     </base-checkbox>
   </div>
@@ -56,6 +69,10 @@ export default {
     terms: false,
   }),
   props: {
+    value: {
+      type: Boolean,
+      required: true,
+    },
     picture: {
       type: String,
       required: true,
