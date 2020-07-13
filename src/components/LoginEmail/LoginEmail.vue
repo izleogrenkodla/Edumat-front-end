@@ -10,8 +10,6 @@
       id="email"
       @input="$emit('input', email)"
       autofocus
-      @error="$emit('error')"
-      @deleteError="$emit('deleteError')"
     />
     <p class="login-email__or">lub</p>
     <base-button outline class="login-email__social">

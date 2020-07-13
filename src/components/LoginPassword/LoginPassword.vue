@@ -18,8 +18,6 @@
       id="password"
       name="password"
       @input="$emit('input', password)"
-      @error="$emit('error')"
-      @deleteError="$emit('deleteError')"
     />
     <div class="login-password__buttons">
       <base-button text class="login-password__reset" url="odzyskaj-konto">

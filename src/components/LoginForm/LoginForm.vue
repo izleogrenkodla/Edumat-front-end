@@ -1,29 +1,34 @@
 <template>
-  <form class="login-form" @submit.prevent="$emit('submit')">
-    <span
-      v-if="purpose === 'registration'"
-      class="login-form__progress"
-      :style="{ transform: `scaleX(${step * 0.33333})` }"
-    />
-    <div>
-      <h1 class="login-form__header">{{ header }}</h1>
-      <transition name="fade-form" mode="out-in">
-        <p v-if="step < 1">
-          {{ text }}
-          <router-link :to="href" class="login-form__link">{{ link }}</router-link>
-        </p>
-      </transition>
-    </div>
-    <slot @error="handleError"></slot>
-    <base-button
-      outline
-      class="login-form__submit"
-      :class="isError ? 'login-form__submit--error' : ''"
-      buttonType="submit"
-    >
-      Dalej
-    </base-button>
-  </form>
+  <validation-observer slim v-slot="{ handleSubmit, invalid }">
+    <form class="login-form" @submit.prevent="handleSubmit(onSubmit)">
+      <span
+        v-if="purpose === 'registration'"
+        class="login-form__progress"
+        :style="{ transform: `scaleX(${step * 0.33333})` }"
+      />
+      <div>
+        <h1 class="login-form__header">{{ header }}</h1>
+        <transition name="fade-form" mode="out-in">
+          <p v-if="step < 1">
+            {{ text }}
+            <router-link :to="href" class="login-form__link">{{
+              link
+            }}</router-link>
+          </p>
+        </transition>
+      </div>
+      <slot></slot>
+      <base-button
+        outline
+        class="login-form__submit"
+        :class="invalid ? 'login-form__submit--error' : ''"
+        buttonType="submit"
+        :disabled="invalid"
+      >
+        Dalej
+      </base-button>
+    </form>
+  </validation-observer>
 </template>
 
 <script>
@@ -44,11 +49,6 @@ export default {
     name: {
       type: String,
       required: false,
-    },
-    isError: {
-      type: Boolean,
-      required: false,
-      default: false,
     },
   },
   computed: {
@@ -105,8 +105,8 @@ export default {
     },
   },
   methods: {
-    handleError(event) {
-      console.log(event);
+    onSubmit() {
+      this.$emit('submit');
     },
   },
 };
