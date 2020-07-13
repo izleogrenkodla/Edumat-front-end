@@ -1,5 +1,10 @@
 <template>
-  <div class="base-dropdown" @keyup.esc="close">
+  <div
+    class="base-dropdown"
+    @keyup.esc="close"
+    @keydown.down.prevent="handleKeyDown"
+    @keydown.up.prevent="handleKeyDown"
+  >
     <button
       type="button"
       class="base-dropdown__button"
@@ -9,11 +14,12 @@
         hasBorder ? 'base-dropdown__button--bordered' : '',
         listOnTop && isActive ? 'base-dropdown__button--active--on-top' : ''
       ]"
-      @click="isActive = !isActive, $emit('click')"
+      @click="(isActive = !isActive), $emit('click')"
       aria-controls="base-dropdown__content"
       :aria-label="helpfulText"
       :title="helpfulText"
       :aria-expanded="isActive ? 'true' : 'false'"
+      aria-haspopup="listbox"
     >
       <template v-if="hasHeaderSlot">
         <slot name="header"></slot>
@@ -30,8 +36,18 @@
         :style="{ transform }"
       >
         <g transform="rotate(90 8.472 8.472)" fill="#131330">
-          <rect width="11.661" height="2.29" rx="1.145" transform="rotate(135 3.13 6.393)" />
-          <rect width="11.661" height="2.29" rx="1.145" transform="rotate(45 .81 1.956)" />
+          <rect
+            width="11.661"
+            height="2.29"
+            rx="1.145"
+            transform="rotate(135 3.13 6.393)"
+          />
+          <rect
+            width="11.661"
+            height="2.29"
+            rx="1.145"
+            transform="rotate(45 .81 1.956)"
+          />
         </g>
       </svg>
     </button>
@@ -41,6 +57,8 @@
         :class="listOnTop ? 'base-dropdown__content--on-top' : ''"
         v-if="isActive && hasSlot"
         aria-label="Kontent listy"
+        role="listbox"
+        tabindex="-1"
       >
         <slot name="items"></slot>
       </ul>
@@ -66,7 +84,6 @@ export default {
     };
   },
   data: () => ({
-    activeOption: null,
     isActive: false,
   }),
   props: {
@@ -146,6 +163,13 @@ export default {
 
       if (!isClickInside) {
         this.close();
+      }
+    },
+    handleKeyDown() {
+      if (this.isActive) {
+        this.$emit('keydown');
+      } else {
+        this.isActive = true;
       }
     },
   },

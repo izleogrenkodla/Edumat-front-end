@@ -15,7 +15,11 @@
       autofocus
     />
     <div class="register-name__dropdown-wrapper">
-      <base-dropdown hasBorder class="register-name__dropdown">
+      <base-dropdown
+        hasBorder
+        class="register-name__dropdown"
+        @keydown="handleKeyDown"
+      >
         <template v-slot:header>
           <span :class="classes">{{ education || 'Szkoła' }}</span>
         </template>
@@ -27,6 +31,8 @@
               aria-label="Szkoła podstawowa"
               class="register-name__button"
               text
+              role="option"
+              ref="dropdownItem1"
             >
               Szkoła podstawowa
             </base-button>
@@ -38,6 +44,8 @@
               aria-label="Liceum"
               class="register-name__button"
               text
+              role="option"
+              ref="dropdownItem2"
             >
               Liceum
             </base-button>
@@ -151,6 +159,18 @@ export default {
         this.activeTab = 0;
       } else {
         this.activeTab += 1;
+      }
+    },
+    handleKeyDown() {
+      const dropdownItems = [
+        this.$refs.dropdownItem1.$el,
+        this.$refs.dropdownItem2.$el,
+      ];
+
+      if (document.activeElement === dropdownItems[0]) {
+        dropdownItems[1].focus();
+      } else {
+        dropdownItems[0].focus();
       }
     },
   },
