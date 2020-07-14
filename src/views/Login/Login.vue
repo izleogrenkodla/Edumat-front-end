@@ -11,13 +11,13 @@
           <login-email
             v-if="step === 0"
             purpose="login"
-            @input="user.email = $event"
+            v-model="user.email"
           />
           <login-password
             v-else
             name="Pieseł Piesełowski"
             image="https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg"
-            @input="user.password = $event"
+            v-model="user.password"
             v-bind="user"
           />
         </transition>
@@ -60,13 +60,18 @@ export default {
   methods: {
     handleSubmit() {
       if (this.step === 1) {
-        this.$store.dispatch('auth/login', this.user);
+        this.$store.dispatch('auth/login', this.user).then(() => {
+          if (this.isError) {
+            this.user.password = '';
+          }
+        });
       }
       if (this.step < 1) {
         this.step += 1;
-      }
-      if (this.isError) {
-        this.user.password = '';
+        localStorage.setItem(
+          'userRegistration',
+          JSON.stringify({ email: this.user.email }),
+        );
       }
     },
   },

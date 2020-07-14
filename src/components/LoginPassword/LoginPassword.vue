@@ -1,7 +1,11 @@
 <template>
   <div class="login-password">
     <div class="login-password__user">
-      <img :src="image" :alt="`${name} - zdjęcie profilowe`" class="login-password__image" />
+      <img
+        :src="image"
+        :alt="`${name} - zdjęcie profilowe`"
+        class="login-password__image"
+      />
       <div>
         <p class="login-password__name">{{ name }}</p>
         <p class="login-password__nickname">{{ email }}</p>
@@ -10,16 +14,16 @@
     <base-input
       class="login-password__input"
       placeholder="Podaj hasło"
-      v-model.trim="password"
+      :value="value"
       type="password"
       bold
       autofocus
       rules="required"
       id="password"
       name="password"
-      @input="$emit('input', password)"
+      @input="$emit('input', $event)"
     />
-    <div class="login-password__buttons">
+    <div class="login-password__button">
       <base-button text class="login-password__reset" url="odzyskaj-konto">
         Zresetuj hasło
       </base-button>
@@ -30,10 +34,11 @@
 <script>
 export default {
   name: 'LoginPassword',
-  data: () => ({
-    password: '',
-  }),
   props: {
+    value: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,

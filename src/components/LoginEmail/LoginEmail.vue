@@ -1,14 +1,14 @@
 <template>
   <div class="login-email">
     <base-input
-      v-model.trim="email"
+      :value="value"
       placeholder="Podaj adres email"
       rules="required|email"
       class="login-email__input"
       name="email"
       bold
       id="email"
-      @input="$emit('input', email)"
+      @input="$emit('input', $event)"
       autofocus
     />
     <p class="login-email__or">lub</p>
@@ -26,10 +26,11 @@
 <script>
 export default {
   name: 'LoginEmail',
-  data: () => ({
-    email: JSON.parse(localStorage.getItem('userRegistration'))?.email || '',
-  }),
   props: {
+    value: {
+      type: String,
+      required: true,
+    },
     purpose: {
       type: String,
       required: true,
