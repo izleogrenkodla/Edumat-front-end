@@ -3,14 +3,14 @@
     <div class="verification-code__inputs">
       <div
         class="verification-code__input__wrapper"
-        v-for="(field, index) in fields"
+        v-for="(field, index) in value"
         :key="index"
       >
         <input
           class="verification-code__input"
           maxlength="1"
           type="text"
-          :value="fields[index]"
+          :value="value[index]"
           @input="handleChange($event, index)"
           ref="input"
           @paste="handlePaste"
@@ -18,8 +18,14 @@
       </div>
     </div>
     <p class="verification-code__hint">
-      Tutaj wpisz PIN, który został wysłany Tobie na email {{ email }}. Masz problemy z PINem?
-      <base-button text type="primary" class="verification-code__button" @click="sendMailAgain">
+      Tutaj wpisz PIN, który został wysłany Tobie na email {{ email }}. Masz
+      problemy z PINem?
+      <base-button
+        text
+        type="primary"
+        class="verification-code__button"
+        @click="sendMailAgain"
+      >
         Wyślij jeszcze raz
       </base-button>
     </p>
@@ -29,10 +35,11 @@
 <script>
 export default {
   name: 'VerificationCode',
-  data: () => ({
-    fields: ['', '', '', '', '', ''],
-  }),
   props: {
+    value: {
+      type: Array,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
@@ -40,11 +47,10 @@ export default {
   },
   methods: {
     handleChange(event, index) {
-      this.$set(this.fields, index, event.target.value);
+      this.$emit('input', [...this.value.slice(0, index), event.target.value, ...this.value.slice(index + 1, 6)]);
       if (index < this.$refs.input.length - 1) {
         this.$refs.input[index + 1].focus();
       }
-      this.$emit('input', this.fields);
     },
     sendMailAgain() {
       console.log('mail has been sent');

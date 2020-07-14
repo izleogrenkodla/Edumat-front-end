@@ -37,9 +37,9 @@
           class="register-image__face"
         />
       </slide>
-      <slide v-if="userImage">
+      <slide v-if="userPicture">
         <img
-          :src="userImage"
+          :src="userPicture"
           alt="Zdjęcie profilowe użytkownika"
           class="register-image__face"
         />
@@ -62,11 +62,14 @@ export default {
   },
   data() {
     return {
-      image: JSON.parse(localStorage.getItem('userRegistration'))?.picture || '',
-      userImage: '',
+      userPicture: '',
     };
   },
   props: {
+    value: {
+      type: String,
+      required: true,
+    },
     gender: {
       type: String,
       required: false,
@@ -75,12 +78,11 @@ export default {
   },
   computed: {
     initialSlide() {
-      const picture = JSON.parse(localStorage.getItem('userRegistration'))?.picture;
-      if (picture) {
-        if (picture === '/img/faces/boy.svg') {
+      if (this.picture) {
+        if (this.picture === '/img/faces/boy.svg') {
           return 0;
         }
-        if (picture === '/img/faces/girl.svg') {
+        if (this.picture === '/img/faces/girl.svg') {
           return 1;
         }
       } else {
@@ -94,26 +96,24 @@ export default {
   },
   methods: {
     handleUpload(event) {
-      this.userImage = URL.createObjectURL(event.target.files[0]);
-      this.image = URL.createObjectURL(event.target.files[0]);
+      this.userPicture = URL.createObjectURL(event.target.files[0]);
       this.$refs.hooper.slideTo(2);
-      this.$emit('upload', this.image);
+      this.$emit('input', this.userPicture);
     },
     handleSlide({ currentSlide }) {
-      if (!this.userImage) {
+      if (!this.userPicture) {
         if (currentSlide === 1 || currentSlide === -1) {
-          this.image = '/img/faces/girl.svg';
+          this.$emit('input', '/img/faces/girl.svg');
         } else if (currentSlide === 0 || currentSlide === 2) {
-          this.image = '/img/faces/boy.svg';
+          this.$emit('input', '/img/faces/boy.svg');
         }
       } else if (currentSlide === 1) {
-        this.image = '/img/faces/girl.svg';
+        this.$emit('input', '/img/faces/girl.svg');
       } else if (currentSlide === 3 || currentSlide === 0) {
-        this.image = '/img/faces/boy.svg';
+        this.$emit('input', '/img/faces/boy.svg');
       } else if (currentSlide === 2 || currentSlide === -1) {
-        this.image = this.userImage;
+        this.$emit('input', this.userPicture);
       }
-      this.$emit('upload', this.image);
     },
   },
 };

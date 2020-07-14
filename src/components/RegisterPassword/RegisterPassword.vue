@@ -12,13 +12,13 @@
       <base-input
         class="register-password__input"
         placeholder="Podaj hasło"
-        v-model.trim="password"
+        :value="password"
         type="password"
         rules="required|confirmed:confirmation|min:6"
         bold
         id="password"
         name="password"
-        @input="$emit('input', password)"
+        @input="$emit('password', $event)"
         autofocus
       />
       <base-input
@@ -29,13 +29,12 @@
         bold
         id="repeatPassword"
         name="repeatPassword"
-        @input="$emit('input', repeatPassword)"
         vid="confirmation"
       />
     </validation-observer>
     <base-checkbox
       class="register-password__checkbox"
-      :value="value"
+      :value="terms"
       @input="$emit('checkbox', $event)"
       required
     >
@@ -58,11 +57,10 @@
 export default {
   name: 'RegisterPassword',
   data: () => ({
-    password: '',
     repeatPassword: '',
   }),
   props: {
-    value: {
+    terms: {
       type: Boolean,
       required: true,
     },
@@ -71,6 +69,10 @@ export default {
       required: true,
     },
     email: {
+      type: String,
+      required: true,
+    },
+    password: {
       type: String,
       required: true,
     },

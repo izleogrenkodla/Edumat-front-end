@@ -2,7 +2,7 @@
   <main class="registration__container container container--medium">
     <div class="registration__form-wrapper">
       <transition name="fade-form">
-        <p class="login__error" v-if="error">
+        <p class="registration__error" v-if="error">
           {{ error }}
         </p>
       </transition>
@@ -18,33 +18,33 @@
             v-if="step === 0"
             purpose="registration"
             v-bind="user"
-            @input="user.email = $event"
+            v-model="user.email"
           />
           <register-name
             v-else-if="step === 1"
             v-bind="user"
-            @input="user.name = $event"
-            @select="user.education = $event"
+            @name="user.name = $event"
+            @education="user.education = $event"
             @gender="user.gender = $event"
             :educationError="educationError"
             :genderError="genderError"
           />
           <register-image
             v-else-if="step === 2"
-            @upload="user.picture = $event"
             v-bind="user"
+            v-model="user.picture"
           />
           <register-password
             v-else-if="step === 3"
             v-bind="user"
-            @input="user.password = $event"
+            @password="user.password = $event"
             @checkbox="terms = $event"
-            :value="terms"
+            :terms="terms"
           />
           <verification-code
             v-else-if="step === 4"
             v-bind="user"
-            @input="user.verificationCode = $event"
+            v-model="user.verificationCode"
           />
         </transition>
       </login-form>
@@ -84,7 +84,7 @@ export default {
         gender: localStorageUser?.gender || '',
         education: localStorageUser?.education || '',
         picture: localStorageUser?.picture || '',
-        verificationCode: localStorageUser?.verificationCode || '',
+        verificationCode: localStorageUser?.verificationCode || ['', '', '', '', '', ''],
       },
       unauthenticatedUser: {},
       educationError: false,
@@ -110,11 +110,14 @@ export default {
         const register = async () => {
           try {
             await registerUser(this.user);
+            this.step += 1;
           } catch (error) {
             this.error = error.message;
           }
         };
         register();
+      } else {
+        this.step += 1;
       }
 
       if (this.step === 4 && this.user.verificationCode.length === 6) {
@@ -130,7 +133,7 @@ export default {
       } else {
         this.isError = true;
       }
-      this.step += 1;
+
     },
     handleGoBack() {
       this.step -= 1;

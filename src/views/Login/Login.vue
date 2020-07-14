@@ -58,13 +58,12 @@ export default {
     }),
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       if (this.step === 1) {
-        this.$store.dispatch('auth/login', this.user).then(() => {
-          if (this.isError) {
-            this.user.password = '';
-          }
-        });
+        await this.$store.dispatch('auth/login', this.user);
+        if (this.isError) {
+          this.user.password = '';
+        }
       }
       if (this.step < 1) {
         this.step += 1;

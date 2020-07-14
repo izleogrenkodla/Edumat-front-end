@@ -2,14 +2,14 @@
   <div class="register-name">
     <h2 class="register-name__header">Jak się nazywasz?</h2>
     <base-input
-      v-model="name"
+      :value="name"
       placeholder="Imię"
       rules="required"
       class="register-name__input"
       bold
       id="name"
       name="name"
-      @input="$emit('input', name)"
+      @input="$emit('name', $event)"
       autofocus
     />
     <div class="register-name__dropdown-wrapper">
@@ -24,7 +24,7 @@
         <template v-slot:items>
           <base-dropdown-item>
             <base-button
-              @click="education = 'Szkoła podstawowa'"
+              @click="$emit('education', 'Szkoła podstawowa')"
               title="Szkoła podstawowa"
               aria-label="Szkoła podstawowa"
               class="register-name__button"
@@ -37,7 +37,7 @@
           </base-dropdown-item>
           <base-dropdown-item>
             <base-button
-              @click="education = 'Liceum'"
+              @click="$emit('education', 'Liceum')"
               title="Liceum"
               aria-label="Liceum"
               class="register-name__button"
@@ -91,12 +91,22 @@ export default {
   name: 'RegisterName',
   data() {
     return {
-      name: JSON.parse(localStorage.getItem('userRegistration'))?.name || '',
-      education: JSON.parse(localStorage.getItem('userRegistration'))?.education || '',
       activeTab: this.defaultActiveTab,
     };
   },
   props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    education: {
+      type: String,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
     educationError: {
       type: Boolean,
       required: false,
@@ -115,14 +125,13 @@ export default {
         : 'register-name__option';
     },
     defaultActiveTab() {
-      const gender = JSON.parse(localStorage.getItem('userRegistration'))?.gender;
-      if (gender === 'man') {
+      if (this.gender === 'man') {
         return 0;
       }
-      if (gender === 'woman') {
+      if (this.gender === 'woman') {
         return 1;
       }
-      if (gender === 'other') {
+      if (this.gender === 'other') {
         return 2;
       }
       return null;
@@ -162,11 +171,6 @@ export default {
       } else {
         dropdownItems[0].focus();
       }
-    },
-  },
-  watch: {
-    education(education) {
-      this.$emit('select', education);
     },
   },
   mounted() {
