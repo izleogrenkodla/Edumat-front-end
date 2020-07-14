@@ -60,11 +60,9 @@ export default {
     Slide,
     HooperNavigation,
   },
-  data() {
-    return {
-      userPicture: '',
-    };
-  },
+  data: () => ({
+    userPicture: '',
+  }),
   props: {
     value: {
       type: String,
@@ -78,11 +76,11 @@ export default {
   },
   computed: {
     initialSlide() {
-      if (this.picture) {
-        if (this.picture === '/img/faces/boy.svg') {
+      if (this.value) {
+        if (this.value === '/img/faces/boy.svg') {
           return 0;
         }
-        if (this.picture === '/img/faces/girl.svg') {
+        if (this.value === '/img/faces/girl.svg') {
           return 1;
         }
       } else {

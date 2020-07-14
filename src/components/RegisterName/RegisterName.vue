@@ -62,7 +62,7 @@
     <div class="register-name__tabs-wrapper">
       <base-tabs
         :data="['Mężczyzna', 'Kobieta', 'Inne']"
-        :activeTab="activeTab"
+        :activeTab="activeTab || defaultActiveTab"
         :perRow="3"
         @click="handleClick"
         @keyLeft="handleKeyLeft"
@@ -89,11 +89,9 @@
 <script>
 export default {
   name: 'RegisterName',
-  data() {
-    return {
-      activeTab: this.defaultActiveTab,
-    };
-  },
+  data: () => ({
+    activeTab: null,
+  }),
   props: {
     name: {
       type: String,

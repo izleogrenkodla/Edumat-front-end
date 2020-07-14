@@ -10,7 +10,7 @@
         purpose="registration"
         :step="step"
         v-bind="user"
-        :isError="isError"
+        :isError="genderError || educationError"
         @submit="handleSubmit"
       >
         <transition name="fade-form" mode="out-in">
@@ -105,38 +105,58 @@ export default {
         'userRegistration',
         JSON.stringify({ ...this.user, password: '' }),
       );
-
-      if (this.step === 3) {
-        const register = async () => {
-          try {
-            await registerUser(this.user);
+      switch (this.step) {
+        case 0:
+          this.step += 1;
+          break;
+        case 1: {
+          const { gender, education } = this.user;
+          this.genderError = !gender;
+          this.educationError = !education;
+          if (!this.genderError && !this.educationError) {
             this.step += 1;
-          } catch (error) {
-            this.error = error.message;
           }
-        };
-        register();
-      } else {
-        this.step += 1;
-      }
-
-      if (this.step === 4 && this.user.verificationCode.length === 6) {
-        const confirm = async () => {
-          try {
-            await confirmUser(this.user);
-            this.$router.push('logowanie');
-          } catch (error) {
-            this.error = error.message;
+          break;
+        }
+        case 2:
+          this.step += 1;
+          break;
+        case 3: {
+          const register = async () => {
+            try {
+              await registerUser(this.user);
+              this.error = '';
+              this.step += 1;
+            } catch (error) {
+              this.error = error.message;
+              this.user.password = '';
+            }
+          };
+          register();
+          break;
+        }
+        case 4:
+          if (this.user.verificationCode.length === 6) {
+            const confirm = async () => {
+              try {
+                await confirmUser(this.user);
+                this.$router.push('logowanie');
+              } catch (error) {
+                this.error = error.message;
+              }
+            };
+            confirm();
+          } else {
+            this.isError = true;
           }
-        };
-        confirm();
-      } else {
-        this.isError = true;
+          break;
+        default:
+          break;
       }
-
     },
     handleGoBack() {
       this.step -= 1;
+      this.error = '';
       this.isError = false;
       this.terms = false;
     },

@@ -21,7 +21,7 @@
       <base-button
         outline
         class="login-form__submit"
-        :class="invalid ? 'login-form__submit--error' : ''"
+        :class="invalid || isError ? 'login-form__submit--error' : ''"
         buttonType="submit"
         :disabled="invalid"
       >
@@ -48,6 +48,10 @@ export default {
     },
     name: {
       type: String,
+      required: false,
+    },
+    isError: {
+      type: Boolean,
       required: false,
     },
   },
