@@ -7,13 +7,15 @@
     @keydown.right="$emit('keyRight')"
     @keydown.up.prevent="$emit('keyLeft')"
     @keydown.down.prevent="$emit('keyRight')"
+    @keyup.enter="$emit('submit')"
+    tabindex="0"
   >
     <base-tab-button
       v-for="(tab, index) in data"
       :key="tab"
       :isActive="activeTab === index"
       :align="align"
-      :tabindex="index === 0 ? 0 : -1"
+      :tabindex="-1"
       @click="handleClick(index)"
       @focus="$emit('focus')"
       :size="size"

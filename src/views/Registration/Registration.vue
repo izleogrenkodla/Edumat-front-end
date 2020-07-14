@@ -28,6 +28,7 @@
             @gender="user.gender = $event"
             :educationError="educationError"
             :genderError="genderError"
+            @submit="handleSubmit"
           />
           <register-image
             v-else-if="step === 2"

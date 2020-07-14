@@ -2,6 +2,12 @@
   border-bottom: 2px solid rgba(#707070, 0.08);
   display: grid;
   align-items: center;
+  outline: none;
+  transition: border-bottom-color var(--time);
+  
+  &:focus{
+    border-bottom-color: var(--text-color--dark) ;
+  }
 }
 
 @media screen and (max-width: 768px) {

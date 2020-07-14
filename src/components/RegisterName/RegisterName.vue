@@ -68,6 +68,7 @@
         @keyLeft="handleKeyLeft"
         @keyRight="handleKeyRight"
         @focus="activeTab = activeTab || 0"
+        @submit="$emit('submit')"
         class="register-name__tabs"
         size="small"
         highlightFont
@@ -176,6 +177,11 @@ export default {
     if (input) {
       input.focus();
     }
+  },
+  watch: {
+    activeTab() {
+      this.handleClick(this.activeTab);
+    },
   },
 };
 </script>
