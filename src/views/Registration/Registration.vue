@@ -11,7 +11,7 @@
         :step="step"
         v-bind="user"
         :isError="isError"
-        @submit="handleClick"
+        @submit="handleSubmit"
       >
         <transition name="fade-form" mode="out-in">
           <login-email
@@ -19,8 +19,6 @@
             purpose="registration"
             v-bind="user"
             @input="user.email = $event"
-            @error="isError = true"
-            @deleteError="isError = false"
           />
           <register-name
             v-else-if="step === 1"
@@ -28,8 +26,6 @@
             @input="user.name = $event"
             @select="user.education = $event"
             @gender="user.gender = $event"
-            @error="isError = true"
-            @deleteError="isError = false"
             :educationError="educationError"
             :genderError="genderError"
           />
@@ -42,8 +38,6 @@
             v-else-if="step === 3"
             v-bind="user"
             @input="user.password = $event"
-            @error="isError = true"
-            @deleteError="isError = false"
             @checkbox="terms = $event"
             :value="terms"
           />
@@ -51,8 +45,6 @@
             v-else-if="step === 4"
             v-bind="user"
             @input="user.verificationCode = $event"
-            @error="isError = true"
-            @deleteError="isError = false"
           />
         </transition>
       </login-form>
@@ -108,82 +100,42 @@ export default {
     }),
   },
   methods: {
-    handleClick() {
-      const {
-        email,
-        name,
-        gender,
-        education,
-        picture,
-        password,
-        verificationCode,
-      } = this.user;
+    handleSubmit() {
       localStorage.setItem(
         'userRegistration',
         JSON.stringify({ ...this.user, password: '' }),
       );
-      switch (this.step) {
-        case 0:
-          if (email && !this.isError) {
-            this.step += 1;
+
+      if (this.step === 3) {
+        const register = async () => {
+          try {
+            await registerUser(this.user);
+          } catch (error) {
+            this.error = error.message;
           }
-          break;
-        case 1:
-          if (name && gender !== '' && education) {
-            this.step += 1;
-          } else {
-            this.isError = true;
-            if (gender === '') {
-              this.genderError = true;
-            }
-            if (education === '') {
-              this.educationError = true;
-            }
-          }
-          break;
-        case 2:
-          if (picture) {
-            this.step += 1;
-          }
-          break;
-        case 3:
-          if (password && !this.isError && this.terms) {
-            const register = async () => {
-              try {
-                await registerUser(this.user);
-                this.step += 1;
-              } catch (error) {
-                this.error = error.message;
-              }
-            };
-            register();
-          } else {
-            this.isError = true;
-          }
-          break;
-        case 4:
-          if (verificationCode.length === 6) {
-            this.step += 1;
-            const confirm = async () => {
-              try {
-                await confirmUser(this.user);
-                this.$router.push('logowanie');
-              } catch (error) {
-                this.error = error.message;
-              }
-            };
-            confirm();
-          } else {
-            this.isError = true;
-          }
-          break;
-        default:
-          break;
+        };
+        register();
       }
+
+      if (this.step === 4 && this.user.verificationCode.length === 6) {
+        const confirm = async () => {
+          try {
+            await confirmUser(this.user);
+            this.$router.push('logowanie');
+          } catch (error) {
+            this.error = error.message;
+          }
+        };
+        confirm();
+      } else {
+        this.isError = true;
+      }
+      this.step += 1;
     },
     handleGoBack() {
       this.step -= 1;
       this.isError = false;
+      this.terms = false;
     },
   },
   watch: {

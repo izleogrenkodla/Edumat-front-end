@@ -47,7 +47,7 @@ export default {
     activeTab: {
       type: Number,
       required: false,
-      default: 0,
+      default: null,
     },
     size: {
       type: String,

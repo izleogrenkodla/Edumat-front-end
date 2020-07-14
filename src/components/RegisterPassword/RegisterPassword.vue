@@ -19,8 +19,6 @@
         id="password"
         name="password"
         @input="$emit('input', password)"
-        @error="$emit('error')"
-        @deleteError="$emit('deleteError')"
         autofocus
       />
       <base-input
@@ -32,8 +30,6 @@
         id="repeatPassword"
         name="repeatPassword"
         @input="$emit('input', repeatPassword)"
-        @error="$emit('error')"
-        @deleteError="$emit('deleteError')"
         vid="confirmation"
       />
     </validation-observer>
@@ -42,8 +38,6 @@
       :value="value"
       @input="$emit('checkbox', $event)"
       required
-      @error="$emit('error')"
-      @deleteError="$emit('deleteError')"
     >
       <p class="register-password__terms">
         Oświadczam, że zapoznałem się i akceptuję
@@ -66,7 +60,6 @@ export default {
   data: () => ({
     password: '',
     repeatPassword: '',
-    terms: false,
   }),
   props: {
     value: {

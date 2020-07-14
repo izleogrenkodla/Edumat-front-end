@@ -10,8 +10,6 @@
       id="name"
       name="name"
       @input="$emit('input', name)"
-      @error="$emit('error')"
-      @deleteError="$emit('deleteError')"
       autofocus
     />
     <div class="register-name__dropdown-wrapper">
@@ -52,11 +50,7 @@
           </base-dropdown-item>
         </template>
       </base-dropdown>
-      <transition
-        name="fade-form"
-        @enter="$emit('error')"
-        @leave="$emit('deleteError')"
-      >
+      <transition name="fade-form">
         <span
           class="register-name__error"
           v-if="educationError && education === ''"
@@ -80,11 +74,7 @@
         bold
         role="radio"
       />
-      <transition
-        name="fade-form"
-        @enter="$emit('error')"
-        @leave="$emit('deleteError')"
-      >
+      <transition name="fade-form">
         <span
           class="register-name__error"
           v-if="genderError && activeTab === null"

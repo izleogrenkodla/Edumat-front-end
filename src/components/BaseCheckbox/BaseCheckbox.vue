@@ -41,7 +41,7 @@
         </svg>
       </div>
     </label>
-    <transition name="fade-form" @enter="$emit('error')" @leave="$emit('deleteError')">
+    <transition name="fade-form">
       <span class="base-checkbox__error" v-if="errors[0]">
         {{ errors[0] }}
       </span>

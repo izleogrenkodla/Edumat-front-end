@@ -6,11 +6,7 @@
           {{ errorMessage }}
         </p>
       </transition>
-      <login-form
-        purpose="login"
-        :step="step"
-        @submit="handleSubmit"
-      >
+      <login-form purpose="login" :step="step" @submit="handleSubmit">
         <transition name="fade-form" mode="out-in">
           <login-email
             v-if="step === 0"
@@ -63,11 +59,14 @@ export default {
   },
   methods: {
     handleSubmit() {
-      if (this.step <= 2) {
+      if (this.step === 1) {
+        this.$store.dispatch('auth/login', this.user);
+      }
+      if (this.step < 1) {
         this.step += 1;
       }
-      if (this.step === 2) {
-        this.$store.dispatch('auth/login', this.user);
+      if (this.isError) {
+        this.user.password = '';
       }
     },
   },
