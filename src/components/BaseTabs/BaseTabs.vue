@@ -9,6 +9,7 @@
     @keydown.down.prevent="$emit('keyRight')"
     @keyup.enter="$emit('submit')"
     tabindex="0"
+    @focus="$emit('focus')"
   >
     <base-tab-button
       v-for="(tab, index) in data"

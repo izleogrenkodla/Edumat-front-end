@@ -9,7 +9,7 @@ export default {
     isLogged: false,
     user: null,
     error: false,
-    errorMessage: false,
+    errorMessage: '',
     token: false,
   },
   getters: {

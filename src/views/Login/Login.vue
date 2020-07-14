@@ -1,12 +1,12 @@
 <template>
   <main class="login__container container container--medium">
     <div class="login__form-wrapper">
-      <transition name="fade-form">
-        <p class="login__error" v-if="isError">
-          {{ errorMessage }}
-        </p>
-      </transition>
-      <login-form purpose="login" :step="step" @submit="handleSubmit">
+      <login-form
+        purpose="login"
+        :step="step"
+        @submit="handleSubmit"
+        :error="errorMessage"
+      >
         <transition name="fade-form" mode="out-in">
           <login-email
             v-if="step === 0"
@@ -71,6 +71,7 @@ export default {
           'userRegistration',
           JSON.stringify({ email: this.user.email }),
         );
+        localStorage.removeItem('registrationStep');
       }
     },
   },

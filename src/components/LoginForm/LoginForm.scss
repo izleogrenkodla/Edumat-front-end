@@ -32,18 +32,16 @@
     }
   }
 
-  @media screen and (max-width: 476px) {
-    padding: 3rem 1.5rem;
-    width: calc(100vw - 2rem);
-    height: 500px;
-
-    &__header {
-      font-size: 32px;
-    }
-
-    &__submit {
-      bottom: 2rem;
-    }
+  &__error {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 0.5rem;
+    width: 100%;
+    transform: translateX(-50%);
+    color: var(--ui-error);
+    text-align: center;
+    padding: 0 2rem;
   }
 
   &__progress {
@@ -56,5 +54,24 @@
     transform-origin: left;
     transition: transform var(--time) ease-in;
     background-color: var(--primary-color);
+  }
+
+  @media screen and (max-width: 476px) {
+    padding: 3rem 1.5rem;
+    width: calc(100vw - 2rem);
+    height: 500px;
+
+    &__header {
+      font-size: 32px;
+    }
+
+    &__submit {
+      bottom: 2rem;
+    }
+
+    &__error {
+      padding: 0 1.5rem;
+      font-size: 12px;
+    }
   }
 }

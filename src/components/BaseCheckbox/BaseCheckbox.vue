@@ -8,9 +8,8 @@
     <label
       class="base-checkbox__label"
       :for="checkboxID"
-      :style="{ flexDirection: type === 'checkbox' ? 'row-reverse' : 'row' }"
+      :style="{ flexDirection: type === 'checkbox' ? 'row' : 'row-reverse' }"
     >
-      <slot></slot>
       <div
         class="base-checkbox__wrapper"
         :style="{
@@ -40,6 +39,7 @@
           />
         </svg>
       </div>
+      <slot></slot>
     </label>
     <transition name="fade-form">
       <span class="base-checkbox__error" v-if="errors[0]">

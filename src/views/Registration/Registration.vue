@@ -1,16 +1,12 @@
 <template>
   <main class="registration__container container container--medium">
     <div class="registration__form-wrapper">
-      <transition name="fade-form">
-        <p class="registration__error" v-if="error">
-          {{ error }}
-        </p>
-      </transition>
       <login-form
         purpose="registration"
         :step="step"
         v-bind="user"
         :isError="genderError || educationError"
+        :error="error"
         @submit="handleSubmit"
       >
         <transition name="fade-form" mode="out-in">
@@ -126,7 +122,6 @@ export default {
           const register = async () => {
             try {
               await registerUser(this.user);
-              this.error = '';
               this.step += 1;
             } catch (error) {
               this.error = error.message;
@@ -157,14 +152,14 @@ export default {
     },
     handleGoBack() {
       this.step -= 1;
-      this.error = '';
-      this.isError = false;
-      this.terms = false;
     },
   },
   watch: {
     step() {
       localStorage.setItem('registrationStep', this.step);
+      this.error = '';
+      this.isError = false;
+      this.terms = false;
     },
   },
   beforeRouteEnter(to, from, next) {

@@ -14,7 +14,7 @@
         placeholder="Podaj hasło"
         :value="password"
         type="password"
-        rules="required|confirmed:confirmation|min:6"
+        rules="required|confirmed:confirmation|min:8"
         bold
         id="password"
         name="password"

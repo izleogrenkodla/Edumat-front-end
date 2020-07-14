@@ -27,6 +27,11 @@
       >
         Dalej
       </base-button>
+      <transition name="fade-form">
+        <p class="login-form__error" v-if="error">
+          {{ error }}
+        </p>
+      </transition>
     </form>
   </validation-observer>
 </template>
@@ -53,6 +58,11 @@ export default {
     isError: {
       type: Boolean,
       required: false,
+    },
+    error: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
   computed: {

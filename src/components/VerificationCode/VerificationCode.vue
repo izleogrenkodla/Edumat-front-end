@@ -57,9 +57,7 @@ export default {
     },
     handlePaste(event) {
       const code = event.clipboardData.getData('text').trim();
-      for (let i = 0; i < this.fields.length; i += 1) {
-        this.$set(this.fields, i, code[i]);
-      }
+      this.$emit('input', code.split(''));
     },
   },
 };
