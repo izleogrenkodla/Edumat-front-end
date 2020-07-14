@@ -2,6 +2,8 @@ import loginUser from '@/API/cognito/loginUser';
 import router from '@/router/';
 import autoLoginUser from '../../API/cognito/autoLoginUser';
 import signOut from '../../API/cognito/signOut';
+import registerUser from '../../API/cognito/registerUser';
+import confirmUser from '../../API/cognito/confirmUser';
 
 export default {
   namespaced: true,
@@ -13,21 +15,22 @@ export default {
     token: false,
   },
   getters: {
-    isUserLogged (state) {
+    isUserLogged(state) {
       return state.isLogged;
     },
   },
   mutations: {
-    SET_USER (state, payload) {
-      const user = payload.reduce((userAccumulator, attribute) => ({
-        ...userAccumulator,
+    SET_USER(state, payload) {
+      const user = payload.reduce(
+        (userAccumulator, attribute) => ({
+          ...userAccumulator,
           [attribute.Name === 'custom:education'
             ? 'education'
             : attribute.Name]: attribute.Value,
-        }), {},
+        }),
+        {},
       );
       router.push('/');
-
       state.isLogged = true;
       localStorage.removeItem('userRegistration');
       localStorage.removeItem('registrationStep');
@@ -57,43 +60,87 @@ export default {
         ],
       };
     },
-    SET_ERROR (state, payload) {
+    SET_ERROR(state, payload) {
       state.error = true;
       state.errorMessage = payload;
       console.log(payload);
     },
-    SET_TOKEN (state, payload) {
+    DELETE_ERROR(state) {
+      state.error = false;
+      state.errorMessage = '';
+    },
+    SET_TOKEN(state, payload) {
       state.token = payload;
       localStorage.setItem('token', payload);
     },
-    LOGOUT (state) {
+    LOGOUT(state) {
       state.isLogged = false;
       state.user = null;
       signOut();
     },
+    SET_USER_TO_LOCAL_STORAGE(state, payload) {
+      localStorage.setItem(
+        'userRegistration',
+        JSON.stringify({ ...payload, password: '' }),
+      );
+    },
+    SET_STEP(state, payload) {
+      localStorage.setItem('registrationStep', payload);
+    },
+    DELETE_STEP() {
+      localStorage.removeItem('registrationStep');
+    },
   },
   actions: {
-    async login ({ commit }, { email, password } = payload) {
+    async login({ commit }, { email, password } = payload) {
       try {
         const response = await loginUser(email, password);
         commit('SET_USER', response);
-      } catch(err) {
+      } catch (err) {
         commit('SET_ERROR', err);
       }
     },
-    async autoLogin ({ commit }) {
+    async autoLogin({ commit }) {
       try {
         const response = await autoLoginUser();
         commit('SET_USER', response);
-      } catch(err) {
+      } catch (err) {
         commit('SET_ERROR', err);
       }
     },
-    logout ({ commit }) {
+    async register({ commit }, payload) {
+      console.log(payload.password);
+      try {
+        await registerUser(payload);
+      } catch (err) {
+        commit('SET_ERROR', err.message);
+      }
+    },
+    async confirm({ commit }, payload) {
+      try {
+        await confirmUser(payload);
+        router.push('logowanie');
+      } catch (err) {
+        commit('SET_ERROR', err);
+      }
+    },
+    logout({ commit }) {
       commit('LOGOUT');
     },
-    setToken ({ commit }, payload) {
+    setToken({ commit }, payload) {
       commit('SET_TOKEN', payload);
-    }
+    },
+    deleteError({ commit }) {
+      commit('DELETE_ERROR');
+    },
+    setUserToLocalStorage({ commit }, payload) {
+      commit('SET_USER_TO_LOCAL_STORAGE', payload);
+    },
+    setStep({ commit }, payload) {
+      commit('SET_STEP', payload);
+    },
+    deleteStep({ commit }) {
+      commit('DELETE_STEP');
+    },
   },
 };

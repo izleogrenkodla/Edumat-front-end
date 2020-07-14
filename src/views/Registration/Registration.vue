@@ -6,7 +6,7 @@
         :step="step"
         v-bind="user"
         :isError="genderError || educationError"
-        :error="error"
+        :error="errorMessage"
         @submit="handleSubmit"
       >
         <transition name="fade-form" mode="out-in">
@@ -14,7 +14,7 @@
             v-if="step === 0"
             purpose="registration"
             v-bind="user"
-            v-model="user.email"
+            v-model.trim="user.email"
           />
           <register-name
             v-else-if="step === 1"
@@ -34,7 +34,7 @@
           <register-password
             v-else-if="step === 3"
             v-bind="user"
-            @password="user.password = $event"
+            @password="user.password = $event.trim()"
             @checkbox="terms = $event"
             :terms="terms"
           />
@@ -62,8 +62,6 @@
 </template>
 
 <script>
-import registerUser from '@/API/cognito/registerUser';
-import confirmUser from '@/API/cognito/confirmUser';
 import { mapState } from 'vuex';
 
 export default {
@@ -86,22 +84,19 @@ export default {
       unauthenticatedUser: {},
       educationError: false,
       genderError: false,
-      isError: false,
       terms: false,
-      error: '',
     };
   },
   computed: {
     ...mapState({
       isLogged: (state) => state.auth.isLogged,
+      isError: (state) => state.auth.error,
+      errorMessage: (state) => state.auth.errorMessage,
     }),
   },
   methods: {
-    handleSubmit() {
-      localStorage.setItem(
-        'userRegistration',
-        JSON.stringify({ ...this.user, password: '' }),
-      );
+    async handleSubmit() {
+      this.$store.dispatch('auth/setUserToLocalStorage', this.user);
       switch (this.step) {
         case 0:
           this.step += 1;
@@ -118,33 +113,16 @@ export default {
         case 2:
           this.step += 1;
           break;
-        case 3: {
-          const register = async () => {
-            try {
-              await registerUser(this.user);
-              this.step += 1;
-            } catch (error) {
-              this.error = error.message;
-              this.user.password = '';
-            }
-          };
-          register();
-          break;
-        }
-        case 4:
-          if (this.user.verificationCode.length === 6) {
-            const confirm = async () => {
-              try {
-                await confirmUser(this.user);
-                this.$router.push('logowanie');
-              } catch (error) {
-                this.error = error.message;
-              }
-            };
-            confirm();
+        case 3:
+          await this.$store.dispatch('auth/register', this.user);
+          if (this.isError) {
+            this.user.password = '';
           } else {
-            this.isError = true;
+            this.step += 1;
           }
+          break;
+        case 4:
+          this.$store.dispatch('auth/confirm', this.user);
           break;
         default:
           break;
@@ -156,9 +134,7 @@ export default {
   },
   watch: {
     step() {
-      localStorage.setItem('registrationStep', this.step);
-      this.error = '';
-      this.isError = false;
+      this.$store.dispatch('auth/setStep', this.step);
       this.terms = false;
     },
   },
@@ -167,6 +143,7 @@ export default {
       if (vm.isLogged) {
         next('/');
       } else {
+        vm.$store.dispatch('auth/deleteError');
         next();
       }
     });

@@ -37,11 +37,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'LoginForm',
-  data: () => ({
-    input: '',
-  }),
   props: {
     purpose: {
       type: String,
@@ -59,20 +58,18 @@ export default {
       type: Boolean,
       required: false,
     },
-    error: {
-      type: String,
-      required: false,
-      default: '',
-    },
   },
   computed: {
+    ...mapState({
+      error: (state) => state.auth.errorMessage,
+    }),
     header() {
       if (this.purpose === 'login') {
         return 'Zaloguj się';
       }
       if (this.purpose === 'registration') {
         if (this.step === 3) {
-          return `Witaj, ${this.name}`;
+          return `Witaj, ${this.name.split(' ')[0]}`;
         }
         return 'Zarejestruj się';
       }

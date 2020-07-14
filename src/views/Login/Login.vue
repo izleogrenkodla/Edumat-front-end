@@ -11,13 +11,14 @@
           <login-email
             v-if="step === 0"
             purpose="login"
-            v-model="user.email"
+            :value="user.email.trim().toLowerCase()"
+            @input="user.email = $event"
           />
           <login-password
             v-else
             name="Pieseł Piesełowski"
             image="https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg"
-            v-model="user.password"
+            v-model.trim="user.password"
             v-bind="user"
           />
         </transition>
@@ -67,11 +68,8 @@ export default {
       }
       if (this.step < 1) {
         this.step += 1;
-        localStorage.setItem(
-          'userRegistration',
-          JSON.stringify({ email: this.user.email }),
-        );
-        localStorage.removeItem('registrationStep');
+        this.$store.dispatch('auth/setUserToLocalStorage', { email: this.user.email });
+        this.$store.dispatch('auth/deleteStep');
       }
     },
   },
@@ -80,6 +78,7 @@ export default {
       if (vm.isLogged) {
         next('/');
       } else {
+        vm.$store.dispatch('auth/deleteError');
         next();
       }
     });
