@@ -1,28 +1,30 @@
 <template>
   <div class="reset-password-email">
-    <base-input
-      v-model="email"
-      placeholder="Twój email"
-      rules="required|email"
-      class="reset-password-email__input"
-      name="reset-password-email"
-      bold
-      id="reset-password-email"
-      @input="$emit('input', $event)"
-    />
-    <base-input
-      v-model="repeatEmail"
-      placeholder="Powtórz email"
-      rules="required|email"
-      class="reset-password-email__input"
-      name="repeatEmail"
-      bold
-      id="repeatEmail"
-      @input="$emit('input', $event)"
-    />
+    <validation-observer>
+      <base-input
+        class="reset-password-email__input"
+        placeholder="Twój email"
+        :value="value"
+        rules="required|confirmed:confirmation|email"
+        bold
+        id="email"
+        name="email"
+        @input="$emit('input', $event)"
+        autofocus
+      />
+      <base-input
+        class="reset-password-email__input"
+        placeholder="Powtórz email"
+        v-model.trim="repeatEmail"
+        bold
+        id="repeatEmail"
+        name="repeatEmail"
+        vid="confirmation"
+      />
+    </validation-observer>
     <p class="reset-password-email__hint">
-      Tutaj podaj adres adres e-mail na którym zostało utworzone konto edumat.pl. W razie problemów
-      napisz do nas na pomoc@edumat.pl.
+      Tutaj podaj adres adres e-mail na którym zostało utworzone konto
+      edumat.pl. W razie problemów napisz do nas na pomoc@edumat.pl.
     </p>
   </div>
 </template>
@@ -31,9 +33,14 @@
 export default {
   name: 'ResetPasswordEmail',
   data: () => ({
-    email: '',
     repeatEmail: '',
   }),
+  props: {
+    value: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 <style lang="scss" scoped src="./ResetPasswordEmail.scss" />
