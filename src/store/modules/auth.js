@@ -69,6 +69,7 @@ export default {
     LOGOUT (state) {
       state.isLogged = false;
       state.user = null;
+      localStorage.removeItem('token');
       signOut();
     },
   },
