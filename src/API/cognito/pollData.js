@@ -1,4 +1,4 @@
 export default {
-  UserPoolId: process.env.VUE_APP_COGNITO_USER_POOL_ID, // Your user pool id here
-  ClientId: process.env.VUE_APP_COGNITO_CLIENT_ID, // Your client id here
+  UserPoolId:'eu-central-1_cCm9Sokvp', // Your user pool id here
+  ClientId: '79iv5f6kee2lptjsme9bt128bl', // Your client id here
 };
