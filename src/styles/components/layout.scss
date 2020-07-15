@@ -40,6 +40,13 @@ html {
   margin: 3rem 0;
 }
 
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 3rem 0;
+}
+
 button {
   cursor: pointer;
 }
@@ -62,5 +69,10 @@ button {
   .section {
     margin: 1.5rem 0;
     padding: 1.5rem;
+  }
+
+  .header {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
   }
 }

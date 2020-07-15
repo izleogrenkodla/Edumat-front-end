@@ -70,6 +70,119 @@
     height: 5rem;
   }
 
+  &__filters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 6rem;
+  }
+
+  &__section {
+    position: relative;
+  }
+
+  &__status {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 30px;
+    display: flex;
+  }
+
+  &__time {
+    font-weight: 600;
+    height: 100%;
+    font-size: 12px;
+    width: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+    color: var(--text-color--accent);
+    margin-right: 1rem;
+  }
+
+  &__check {
+    border-radius: 100%;
+    padding: 0.5rem;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(#7ef192, #2dc897);
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+
+    &-name {
+      margin-left: 0.5rem;
+      color: var(--text-color--dark);
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      &::after {
+        content: "•";
+        margin: 0 0.5rem;
+      }
+    }
+  }
+
+  &__date {
+    color: var(--text-color--dark);
+  }
+
+  &__avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+  }
+
+  &__options {
+    width: 1.75rem;
+    height: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+    border: none;
+    padding: 1rem 0;
+    background: none;
+  }
+
+  &__circle {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 100%;
+    background-color: var(--acent-color);
+  }
+
+  &__content {
+    margin: 1.5rem 0 2rem 0;
+  }
+
+  &__topic {
+    display: flex;
+    align-items: center;
+
+    &-image {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.5rem;
+    }
+
+    &-name {
+      font-weight: 600;
+    }
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   @media screen and (max-width: 768px) {
     &__header {
       font-size: 1rem;
@@ -95,6 +208,32 @@
       height: 5rem;
       min-width: 5rem;
       width: 5rem;
+    }
+
+    &__filters {
+      flex-direction: column;
+    }
+
+    &__base-accordion {
+      margin-bottom: 2.5rem;
+    }
+
+    &__topic {
+      display: none;
+    }
+
+    &__author {
+      margin-top: 1.5rem;
+    }
+
+    &__options {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+    }
+
+    &__answer {
+      margin: auto;
     }
   }
 }

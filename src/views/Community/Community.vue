@@ -37,20 +37,119 @@
           />
         </ul>
       </section>
+      <h1 class="header">Ostatnie pytania</h1>
+      <div class="community__filters">
+        <base-accordion
+          v-for="filter in filters"
+          :key="filter.type"
+          class="community__base-accordion"
+          arrowSize="small"
+        >
+          <template slot="header">
+            {{ filter.options[0] }}
+          </template>
+          <template slot="items">
+            <base-accordion-item
+              v-for="option in filter.options"
+              :key="option"
+              class="community__base-accordion-item"
+              @click="changeFilter"
+            >
+              {{ option }}
+            </base-accordion-item>
+          </template>
+        </base-accordion>
+      </div>
+      <section
+        class="section community__section"
+        v-for="lastQuestion in lastQuestions"
+        :key="lastQuestion.id"
+      >
+        <div class="community__status">
+          <span class="community__time">{{ lastQuestion.time }}</span>
+          <img
+            v-if="lastQuestion.checked"
+            class="community__check"
+            src="/img/icons/white-check.svg"
+            alt="Zweryfikowana odpowiedź"
+          />
+        </div>
+        <div class="community__flex">
+          <div class="community__author">
+            <img
+              class="community__avatar"
+              :src="lastQuestion.author.picture"
+              alt="Avatar użytkownika"
+              :title="lastQuestion.author.name"
+            />
+            <p class="community__author-name">{{ lastQuestion.author.name }}</p>
+            <p class="community__date">{{ lastQuestion.date }}</p>
+          </div>
+          <button class="community__options">
+            <span class="community__circle"></span>
+            <span class="community__circle"></span>
+            <span class="community__circle"></span>
+          </button>
+        </div>
+        <p v-katex:auto class="community__content">
+          {{ lastQuestion.content }}
+        </p>
+        <div class="community__flex">
+          <div class="community__topic">
+            <img
+              :src="lastQuestion.topic.image"
+              :alt="lastQuestion.topic.name"
+              class="community__topic-image"
+            />
+            <p class="community__topic-name">{{ lastQuestion.topic.name }}</p>
+          </div>
+          <base-button outline class="community__answer">
+            Odpowiedź
+          </base-button>
+        </div>
+      </section>
     </main-layout>
   </main>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import Vue from 'vue';
+import VueKatex from 'vue-katex';
+import 'katex/dist/katex.min.css';
+
+Vue.use(VueKatex);
 
 export default {
   name: 'Community',
+  data: () => ({
+    filters: [
+      {
+        type: 'level',
+        options: ['Wszystkie poziomy', 'Szkoła podstawowa', 'Liceum'],
+      },
+      {
+        type: 'category',
+        options: ['Każda kategoria', 'Wielomiany', 'Ułamki', 'Całki'],
+      },
+      {
+        type: 'something',
+        options: ['Wszystkie', 'Wszystkie2', 'Wszystkie3'],
+      },
+    ],
+    activeFilters: [],
+  }),
   computed: {
     ...mapState({
       user: (state) => state.auth.user,
       isLogged: (state) => state.auth.isLogged,
+      lastQuestions: (state) => state.community.lastQuestions,
     }),
+  },
+  methods: {
+    changeFilter() {
+      console.log('filter has changed');
+    },
   },
 };
 </script>

@@ -2,7 +2,6 @@
   <li
     class="base-dropdown-item"
     :class="[
-      ...classes,
       this.divinder ? 'base-dropdown-item--divinder' : '',
     ]"
     @click="$emit('click'), handleClick()"
@@ -16,11 +15,6 @@
 export default {
   name: 'BaseDropdownItem',
   props: {
-    classes: {
-      type: [String, Array],
-      required: false,
-      default: '',
-    },
     divinder: {
       type: Boolean,
       required: false,

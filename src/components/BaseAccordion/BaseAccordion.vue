@@ -21,6 +21,7 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16.944 9.865"
         class="base-accordion__arrow"
+        :class="arrowSize === 'small' ? 'base-accordion__arrow--small' : ''"
         :style="{ transform }"
       >
         <g transform="rotate(90 8.472 8.472)" fill="#131330">
@@ -75,6 +76,11 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+    arrowSize: {
+      type: String,
+      required: false,
+      default: 'big',
     },
     helpfulText: {
       type: String,

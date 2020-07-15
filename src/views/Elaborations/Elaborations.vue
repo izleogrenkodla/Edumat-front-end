@@ -5,7 +5,7 @@
         header="Miło Cię widzieć!"
         subHeader="Zaraz wszystko ogarniesz!"
       />
-      <h1 class="elaborations__header">
+      <h1 class="header">
         Opracowania
       </h1>
       <div class="elaborations__content">
@@ -21,7 +21,7 @@
             <base-accordion-item
               v-for="lesson in topic.lessons"
               :key="lesson"
-              classes="elaborations__base-accordion-item"
+              class="elaborations__base-accordion-item"
               @click="$router.push(`/opracowanie/${lesson}`)"
             >
               {{ lesson }}

@@ -13,7 +13,7 @@
     overflow: hidden;
     transition: all var(--time) ease-in-out;
     padding: 0;
-    
+
     &--active {
       padding: 35px 0 0 0;
     }
@@ -23,8 +23,16 @@
     transition: transform var(--time);
     width: 2rem;
 
+    &--small {
+      width: 1rem;
+    }
+
     @media screen and (max-width: 480px) {
       width: 1.5rem;
+    }
+    
+    &--small {
+      width: 1rem;
     }
   }
 
