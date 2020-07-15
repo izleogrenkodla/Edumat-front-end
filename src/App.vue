@@ -3,7 +3,7 @@
     <main-navigation />
     <main class="app-page">
       <transition name="page-fade" mode="out-in">
-        <router-view  v-if="dataReady"/>
+        <router-view v-if="!isLogged || dataReady" />
       </transition>
     </main>
   </div>
@@ -25,8 +25,11 @@ export default {
     }),
   },
   async mounted() {
-    await this.$store.dispatch('auth/autoLogin');
-    this.dataReady = true;
+    try {
+      await this.$store.dispatch('auth/autoLogin');
+    } finally {
+      this.dataReady = true;
+    }
   },
 };
 </script>
