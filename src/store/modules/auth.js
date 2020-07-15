@@ -13,6 +13,7 @@ export default {
     error: false,
     errorMessage: '',
     token: false,
+    loading: false,
   },
   getters: {
     isUserLogged(state) {
@@ -91,14 +92,25 @@ export default {
     DELETE_STEP() {
       localStorage.removeItem('registrationStep');
     },
+    START_LOADING(state) {
+      state.loading = true;
+      state.error = false;
+      state.errorMessage = '';
+    },
+    END_LOADING(state) {
+      state.loading = false;
+    },
   },
   actions: {
     async login({ commit }, { email, password } = payload) {
       try {
+        commit('START_LOADING');
         const response = await loginUser(email, password);
         commit('SET_USER', response);
       } catch (err) {
         commit('SET_ERROR', err);
+      } finally {
+        commit('END_LOADING');
       }
     },
     async autoLogin({ commit }) {
@@ -110,19 +122,24 @@ export default {
       }
     },
     async register({ commit }, payload) {
-      console.log(payload.password);
       try {
+        commit('START_LOADING');
         await registerUser(payload);
       } catch (err) {
         commit('SET_ERROR', err.message);
+      } finally {
+        commit('END_LOADING');
       }
     },
     async confirm({ commit }, payload) {
       try {
+        commit('START_LOADING');
         await confirmUser(payload);
         router.push('logowanie');
       } catch (err) {
         commit('SET_ERROR', err);
+      } finally {
+        commit('END_LOADING');
       }
     },
     logout({ commit }) {

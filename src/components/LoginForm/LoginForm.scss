@@ -32,16 +32,23 @@
     }
   }
 
-  &__error {
+  &__error, &__loading {
     position: absolute;
     z-index: 1;
     left: 50%;
     top: 0.5rem;
     width: 100%;
     transform: translateX(-50%);
-    color: var(--ui-error);
     text-align: center;
     padding: 0 2rem;
+  }
+  
+  &__error {
+    color: var(--ui-error);
+  }
+  
+  &__loading {
+    color: var(--text--color);
   }
 
   &__progress {

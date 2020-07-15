@@ -6,6 +6,14 @@
         class="login-form__progress"
         :style="{ transform: `scaleX(${step * 0.33333})` }"
       />
+      <transition name="fade-form">
+        <p class="login-form__error" v-if="error">
+          {{ error }}
+        </p>
+        <p class="login-form__loading" v-if="loading">
+          Ładowanie
+        </p>
+      </transition>
       <div>
         <h1 class="login-form__header">{{ header }}</h1>
         <transition name="fade-form" mode="out-in">
@@ -27,11 +35,6 @@
       >
         Dalej
       </base-button>
-      <transition name="fade-form">
-        <p class="login-form__error" v-if="error">
-          {{ error }}
-        </p>
-      </transition>
     </form>
   </validation-observer>
 </template>
@@ -62,6 +65,7 @@ export default {
   computed: {
     ...mapState({
       error: (state) => state.auth.errorMessage,
+      loading: (state) => state.auth.loading,
     }),
     header() {
       if (this.purpose === 'login') {
