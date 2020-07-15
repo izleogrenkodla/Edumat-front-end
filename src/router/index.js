@@ -22,6 +22,13 @@ const routes = [
     ),
   },
   {
+    path: '/generator',
+    name: 'Generator',
+    component: () => import(
+      /* webpackChunkName: "generator-page" */ '../views/Generator/Generator.vue'
+    ),
+  },
+  {
     path: '/opracowania',
     name: 'Elaborations',
     component: () => import(/* webpackChunkName: "elaborations-page" */ '../views/Elaborations/Elaborations.vue'),

@@ -113,7 +113,11 @@
     border-bottom: 1px solid rgba(#707070, 0.19);
     border-radius: 0;
     padding: 1.2rem 0;
+  }
 
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.5;
   }
 
   &__icon {

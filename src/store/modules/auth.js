@@ -76,6 +76,7 @@ export default {
     LOGOUT(state) {
       state.isLogged = false;
       state.user = null;
+      localStorage.removeItem('token');
       signOut();
     },
     SET_USER_TO_LOCAL_STORAGE(state, payload) {
