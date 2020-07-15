@@ -64,6 +64,8 @@ export default {
         await this.$store.dispatch('auth/login', this.user);
         if (this.isError) {
           this.user.password = '';
+        } else {
+          this.$router.push('/');
         }
       }
       if (this.step < 1) {

@@ -31,7 +31,6 @@ export default {
         }),
         {},
       );
-      router.push('/');
       state.isLogged = true;
       localStorage.removeItem('userRegistration');
       localStorage.removeItem('registrationStep');
