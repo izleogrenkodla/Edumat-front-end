@@ -29,6 +29,13 @@ const routes = [
     ),
   },
   {
+    path: '/spolecznosc',
+    name: 'Community',
+    component: () => import(
+      /* webpackChunkName: "community-page" */ '../views/Community/Community.vue'
+    ),
+  },
+  {
     path: '/opracowania',
     name: 'Elaborations',
     component: () => import(/* webpackChunkName: "elaborations-page" */ '../views/Elaborations/Elaborations.vue'),

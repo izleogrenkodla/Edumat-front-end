@@ -8,8 +8,10 @@
       white
       @click="$router.go(-1)"
       v-if="$route.path !== '/'"
-      >{{ textButton }}</base-button
+      :url="url"
     >
+      {{ textButton }}
+    </base-button>
   </header>
 </template>
 
@@ -29,6 +31,11 @@ export default {
       type: String,
       required: false,
       default: 'Wróć',
+    },
+    url: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
 };

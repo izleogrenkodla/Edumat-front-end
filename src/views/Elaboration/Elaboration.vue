@@ -6,7 +6,7 @@
         Wróć
       </base-button>
     </div>
-    <section class="elaboration__section elaboration__in-brief">
+    <section class="elaboration__section section elaboration__in-brief">
       <h2 class="elaboration__section__header">
         <img
           src="@/assets/icons/clock.svg"
@@ -17,7 +17,7 @@
       </h2>
       <component :is="`${slug}-in-brief`" />
     </section>
-    <section class="elaboration__section elaboration__info">
+    <section class="elaboration__section section elaboration__info">
       <h2 class="elaboration__section__header">
         <img
           src="@/assets/icons/info.svg"
@@ -28,7 +28,7 @@
       </h2>
       <component :is="`${slug}-info`" />
     </section>
-    <section class="elaboration__section elaboration__test">
+    <section class="elaboration__section section elaboration__test">
       <div class="elaboration__section__header__wrapper">
         <h2 class="elaboration__section__header">
           <img

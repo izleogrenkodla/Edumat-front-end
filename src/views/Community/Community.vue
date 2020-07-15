@@ -7,11 +7,13 @@
         textButton="Zadaj pytanie"
         url="pytania"
       />
-      <section class="community__badges section">
+      <section class="community__badges section" v-if="isLogged">
         <div class="community__progress">
           <base-badge :badge="user.nextBadge" class="community__badge" />
           <div class="community__wrapper">
-            <h1 class="community__header">Odznaka "{{ user.nextBadge.name }}"</h1>
+            <h1 class="community__header">
+              Odznaka "{{ user.nextBadge.name }}"
+            </h1>
             <div class="community__progress-description">
               <p>{{ user.nextBadge.description }}</p>
               <p>{{ user.nextBadge.progress }}%</p>
@@ -26,6 +28,14 @@
             </div>
           </div>
         </div>
+        <ul class="community__coming-badges">
+          <base-badge
+            v-for="badge in user.badges"
+            :key="badge.id"
+            :badge="badge"
+            class="community__badge community__coming-badge"
+          />
+        </ul>
       </section>
     </main-layout>
   </main>
@@ -36,13 +46,12 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Community',
-  data: () => ({}),
   computed: {
     ...mapState({
       user: (state) => state.auth.user,
+      isLogged: (state) => state.auth.isLogged,
     }),
   },
-  methods: {},
 };
 </script>
 <style lang="scss" scoped src="./Community.scss" />
