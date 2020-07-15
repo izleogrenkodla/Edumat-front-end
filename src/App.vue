@@ -3,7 +3,7 @@
     <main-navigation />
     <main class="app-page">
       <transition name="page-fade" mode="out-in">
-        <router-view v-if="!isLogged || dataReady" />
+        <router-view  v-if="!loading"/>
       </transition>
     </main>
   </div>
@@ -14,22 +14,13 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'App',
-  data() {
-    return {
-      dataReady: false,
-    };
-  },
   computed: {
     ...mapState({
-      isLogged: (state) => state.auth.isLogged,
+      loading: (state) => state.auth.loading,
     }),
   },
-  async mounted() {
-    try {
-      await this.$store.dispatch('auth/autoLogin');
-    } finally {
-      this.dataReady = true;
-    }
+  mounted() {
+    this.$store.dispatch('auth/autoLogin');
   },
 };
 </script>

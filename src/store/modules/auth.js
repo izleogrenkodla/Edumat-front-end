@@ -114,10 +114,13 @@ export default {
     },
     async autoLogin({ commit }) {
       try {
+        commit('START_LOADING');
         const response = await autoLoginUser();
         commit('SET_USER', response);
       } catch (err) {
         commit('SET_ERROR', err);
+      } finally {
+        commit('END_LOADING');
       }
     },
     async register({ commit }, payload) {
