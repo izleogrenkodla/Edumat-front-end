@@ -21,7 +21,7 @@
       background-color: #e5eaf6;
       margin-top: 1.5rem;
       position: relative;
-      
+
       &--inner {
         transition: width var(--time) ease-out;
         background-color: var(--primary-color);
@@ -129,6 +129,7 @@
     width: 30px;
     height: 100%;
     background: linear-gradient(#7ef192, #2dc897);
+    box-shadow: 0 0 30px rgba(#68e693, 0.36);
   }
 
   &__author {

@@ -117,6 +117,9 @@
           </base-button>
         </div>
       </section>
+      <base-button outline @click="$store.dispatch('community/loadMore')">
+        Pokaż więcej
+      </base-button>
     </main-layout>
   </main>
 </template>
@@ -143,14 +146,14 @@ export default {
           options: ['Każda kategoria', 'Wielomiany', 'Ułamki', 'Całki'],
         },
         {
-          type: 'something',
-          options: ['Wszystkie', 'Wszystkie2', 'Wszystkie3'],
+          type: 'answer',
+          options: ['Wszystkie', 'Z odpowiedzią', 'Bez odpowiedzi'],
         },
       ],
       activeFilters: {
         level: 'Wszystkie poziomy',
         category: 'Każda kategoria',
-        something: 'Wszystkie',
+        answer: 'Wszystkie',
       },
       activeBadge: {},
     };

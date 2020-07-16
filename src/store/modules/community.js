@@ -49,11 +49,13 @@ export default {
             'https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg',
         },
         content:
-          'Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy:\n A. v(x)=x5+x4+3x3-3x2+7,\nB.v(x)=x5+x4+3x3-3x2+4x+10\nC.v(x)=x6-x4+3x3-3x2+4x+10 \n D.v(x)=x5+x4+3x3-7x2+4x+10',
+          'Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy: A. v(x)=x5+x4+3x3-3x2+7,B.v(x)=x5+x4+3x3-3x2+4x+10C.v(x)=x6-x4+3x3-3x2+4x+10  D.v(x)=x5+x4+3x3-7x2+4x+10',
         topic: {
           name: 'Graniastosłupy',
           image: '/img/math-symbols/całka.svg',
         },
+        level: 'Szkoła podstawowa',
+        answer: 'Z odpowiedzią',
         checked: true,
       },
       {
@@ -66,11 +68,13 @@ export default {
             'https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg',
         },
         content:
-          'Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy:\nA. v(x)=x5+x4+3x3-3x2+7,\nB.v(x)=x5+x4+3x3-3x2+4x+10\nC.v(x)=x6-x4+3x3-3x2+4x+10 \n D.v(x)=x5+x4+3x3-7x2+4x+10',
+          'Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy:A. v(x)=x5+x4+3x3-3x2+7,B.v(x)=x5+x4+3x3-3x2+4x+10C.v(x)=x6-x4+3x3-3x2+4x+10  D.v(x)=x5+x4+3x3-7x2+4x+10',
         topic: {
           name: 'Graniastosłupy',
           image: '/img/math-symbols/całka.svg',
         },
+        level: 'Liceum',
+        answer: 'Bez odpowiedzi',
       },
       {
         id: 3,
@@ -82,11 +86,13 @@ export default {
             'https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg',
         },
         content:
-          'Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy:\nA. v(x)=x5+x4+3x3-3x2+7,\nB.v(x)=x5+x4+3x3-3x2+4x+10\nC.v(x)=x6-x4+3x3-3x2+4x+10 \n D.v(x)=x5+x4+3x3-7x2+4x+10',
+          'Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy:A. v(x)=x5+x4+3x3-3x2+7,B.v(x)=x5+x4+3x3-3x2+4x+10C.v(x)=x6-x4+3x3-3x2+4x+10  D.v(x)=x5+x4+3x3-7x2+4x+10',
         topic: {
           name: 'Graniastosłupy',
           image: '/img/math-symbols/całka.svg',
         },
+        level: 'Szkoła podstawowa',
+        answer: 'Z odpowiedzią',
       },
     ],
   },
