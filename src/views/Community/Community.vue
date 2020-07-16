@@ -55,14 +55,14 @@
           arrowSize="small"
         >
           <template slot="header">
-            {{ filter.options[0] }}
+            {{ activeFilters[filter.type] }}
           </template>
           <template slot="items">
             <base-accordion-item
               v-for="option in filter.options"
               :key="option"
               class="community__base-accordion-item"
-              @click="changeFilter"
+              @click="changeFilter(filter.type, option)"
             >
               {{ option }}
             </base-accordion-item>
@@ -147,7 +147,11 @@ export default {
           options: ['Wszystkie', 'Wszystkie2', 'Wszystkie3'],
         },
       ],
-      activeFilters: [],
+      activeFilters: {
+        level: 'Wszystkie poziomy',
+        category: 'Każda kategoria',
+        something: 'Wszystkie',
+      },
       activeBadge: {},
     };
   },
@@ -160,8 +164,8 @@ export default {
     }),
   },
   methods: {
-    changeFilter() {
-      console.log('filter has changed');
+    changeFilter(filter, option) {
+      this.activeFilters[filter] = option;
     },
     setActiveBadge(id) {
       [this.activeBadge] = this.comingBadges.filter((badge) => badge.id === id);

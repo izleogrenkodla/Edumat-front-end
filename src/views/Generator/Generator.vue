@@ -4,6 +4,7 @@
       <user-header
         header="Miło Cię widzieć!"
         subHeader="Zaraz wszystko ogarniesz!"
+        page="generator"
       />
       <h1 class="generator__header">
         Generator matury

@@ -4,6 +4,7 @@
       <user-header
         header="Miło Cię widzieć!"
         subHeader="Zaraz wszystko ogarniesz!"
+        page="elaborations"
       />
       <h1 class="header">
         Opracowania

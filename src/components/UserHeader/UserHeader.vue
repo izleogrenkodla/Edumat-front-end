@@ -1,5 +1,8 @@
 <template>
-  <header class="user-header">
+  <header
+    class="user-header"
+    :class="`user-header--${page}`"
+  >
     <h1 class="user-header__text">{{ header }}</h1>
     <h2 class="user-header__subtext">{{ subHeader }}</h2>
     <base-button
@@ -36,6 +39,11 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+    page: {
+      type: String,
+      required: false,
+      default: 'home-page',
     },
   },
 };

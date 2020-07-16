@@ -1,12 +1,60 @@
 .user-header {
-  background: url('/img/layout/Header_Opracowania.svg')  no-repeat;
+  background: no-repeat bottom;
   background-size: cover;
-  background-position: bottom;
   color: var(--background--accent);
   border-radius: 1.5rem;
-  padding: 3rem;
-  
-  @media screen and (max-width: 500px) {
+  padding: 2rem 4rem;
+
+  &--home-page {
+    background-image: url("/img/layout/headers/home-page.svg");
+
+    @media screen and (max-width: 476px) {
+      background-image: url("/img/layout/headers/home-page-mob.svg");
+    }
+  }
+
+  &--elaborations {
+    background-image: url("/img/layout/headers/elaborations.svg");
+
+    @media screen and (max-width: 476px) {
+      background-image: url("/img/layout/headers/elaborations-mob.svg");
+    }
+  }
+
+  &--formulas {
+    background-image: url("/img/layout/headers/formulas.svg");
+
+    @media screen and (max-width: 476px) {
+      background-image: url("/img/layout/headers/formulas-mob.svg");
+    }
+  }
+
+  &--generator {
+    background-image: url("/img/layout/headers/generator.svg");
+
+    @media screen and (max-width: 476px) {
+      background-image: url("/img/layout/headers/generator-mob.svg");
+    }
+  }
+
+  &--leaderboard {
+    background-image: url("/img/layout/headers/leaderboard.svg");
+
+    @media screen and (max-width: 476px) {
+      background-image: url("/img/layout/headers/leaderboard-mob.svg");
+    }
+  }
+
+  &--profile {
+    background-image: url("/img/layout/headers/profile.svg");
+
+    @media screen and (max-width: 476px) {
+      background-image: url("/img/layout/headers/profile-mob.svg");
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
     padding: 2rem;
     &__subtext {
       margin-bottom: 1rem;
@@ -16,7 +64,6 @@
   &__text,
   &__subtext {
     font-size: 2rem;
-    margin-bottom: 1rem;
     @media screen and (max-width: 768px) {
       font-size: 1.5rem;
     }
@@ -27,6 +74,6 @@
   }
 
   &__subtext {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 }
