@@ -59,19 +59,23 @@ export default {
     }),
   },
   methods: {
-    async handleSubmit() {
-      if (this.step === 1) {
-        await this.$store.dispatch('auth/login', this.user);
-        if (this.isError) {
-          this.user.password = '';
-        } else {
-          this.$router.push('/');
+    async handleSubmit(invalid) {
+      if (!invalid) {
+        if (this.step === 1) {
+          await this.$store.dispatch('auth/login', this.user);
+          if (this.isError) {
+            this.user.password = '';
+          } else {
+            this.$router.push('/');
+          }
         }
-      }
-      if (this.step < 1) {
-        this.step += 1;
-        this.$store.dispatch('auth/setUserToLocalStorage', { email: this.user.email });
-        this.$store.dispatch('auth/deleteStep');
+        if (this.step < 1) {
+          this.step += 1;
+          this.$store.dispatch('auth/setUserToLocalStorage', {
+            email: this.user.email,
+          });
+          this.$store.dispatch('auth/deleteStep');
+        }
       }
     },
   },

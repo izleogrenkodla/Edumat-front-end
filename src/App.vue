@@ -3,7 +3,7 @@
     <main-navigation />
     <main class="app-page">
       <transition name="page-fade" mode="out-in">
-        <router-view  v-if="!loading"/>
+        <router-view v-if="!loading" />
       </transition>
     </main>
   </div>

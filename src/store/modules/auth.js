@@ -50,7 +50,7 @@ export default {
           {
             id: 2,
             name: 'Vip',
-            icon: 'vip',
+            icon: 'test',
           },
           {
             id: 3,
@@ -60,7 +60,7 @@ export default {
         ],
         nextBadge: {
           name: 'Pomocny na 5!',
-          icon: 'student2',
+          icon: 'test',
           description: 'Udziel 30 odpowiedzi na pytania innych użytkowników.',
           progress: 80,
         },

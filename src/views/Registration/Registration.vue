@@ -95,37 +95,39 @@ export default {
     }),
   },
   methods: {
-    async handleSubmit() {
+    async handleSubmit(invalid) {
       this.$store.dispatch('auth/setUserToLocalStorage', this.user);
-      switch (this.step) {
-        case 0:
-          this.step += 1;
-          break;
-        case 1: {
-          const { gender, education } = this.user;
-          this.genderError = !gender;
-          this.educationError = !education;
-          if (!this.genderError && !this.educationError) {
+      if (!invalid) {
+        switch (this.step) {
+          case 0:
             this.step += 1;
+            break;
+          case 1: {
+            const { gender, education } = this.user;
+            this.genderError = !gender;
+            this.educationError = !education;
+            if (!this.genderError && !this.educationError) {
+              this.step += 1;
+            }
+            break;
           }
-          break;
+          case 2:
+            this.step += 1;
+            break;
+          case 3:
+            await this.$store.dispatch('auth/register', this.user);
+            if (this.isError) {
+              this.user.password = '';
+            } else {
+              this.step += 1;
+            }
+            break;
+          case 4:
+            this.$store.dispatch('auth/confirm', this.user);
+            break;
+          default:
+            break;
         }
-        case 2:
-          this.step += 1;
-          break;
-        case 3:
-          await this.$store.dispatch('auth/register', this.user);
-          if (this.isError) {
-            this.user.password = '';
-          } else {
-            this.step += 1;
-          }
-          break;
-        case 4:
-          this.$store.dispatch('auth/confirm', this.user);
-          break;
-        default:
-          break;
       }
     },
     handleGoBack() {
@@ -135,7 +137,6 @@ export default {
   watch: {
     step() {
       this.$store.dispatch('auth/setStep', this.step);
-      this.terms = false;
     },
   },
   beforeRouteEnter(to, from, next) {

@@ -1,6 +1,6 @@
 <template>
   <validation-observer slim v-slot="{ handleSubmit, invalid }">
-    <form class="login-form" @submit.prevent="handleSubmit(onSubmit)">
+    <form class="login-form" @submit.prevent="handleSubmit(onSubmit(invalid))">
       <span
         v-if="purpose === 'registration'"
         class="login-form__progress"
@@ -31,7 +31,6 @@
         class="login-form__submit"
         :class="invalid || isError ? 'login-form__submit--error' : ''"
         buttonType="submit"
-        :disabled="invalid"
       >
         Dalej
       </base-button>
@@ -120,8 +119,8 @@ export default {
     },
   },
   methods: {
-    onSubmit() {
-      this.$emit('submit');
+    onSubmit(invalid) {
+      this.$emit('submit', invalid);
     },
   },
 };

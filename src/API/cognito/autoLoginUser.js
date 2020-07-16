@@ -4,8 +4,7 @@ import poolData from './pollData';
 export default () => new Promise((resolve, reject) => {
   const userPool = new CognitoUserPool(poolData);
   const cognitoUser = userPool.getCurrentUser();
-
-  if (cognitoUser != null) {
+  if (cognitoUser !== null) {
     cognitoUser.getSession((err, session) => {
       if (err) {
         console.log(err);
@@ -22,5 +21,5 @@ export default () => new Promise((resolve, reject) => {
         }
       });
     });
-  }
+  } else reject();
 });
