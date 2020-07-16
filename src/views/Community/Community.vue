@@ -9,32 +9,41 @@
       />
       <section class="community__badges section" v-if="isLogged">
         <div class="community__progress">
-          <base-badge :badge="user.nextBadge" class="community__badge" />
+          <base-badge :badge="activeBadge" class="community__badge" />
           <div class="community__wrapper">
-            <h1 class="community__header">
-              Odznaka "{{ user.nextBadge.name }}"
-            </h1>
+            <h1 class="community__header">Odznaka "{{ activeBadge.name }}"</h1>
             <div class="community__progress-description">
-              <p>{{ user.nextBadge.description }}</p>
-              <p>{{ user.nextBadge.progress }}%</p>
+              <p>{{ activeBadge.description }}</p>
+              <p>{{ activeBadge.progress }}%</p>
             </div>
             <div class="community__progress-bar">
               <span
                 class="community__progress-bar community__progress-bar--inner"
                 :style="{
-                  width: `${user.nextBadge.progress}%`
+                  width: `${activeBadge.progress}%`
                 }"
               />
             </div>
           </div>
         </div>
         <ul class="community__coming-badges">
-          <base-badge
-            v-for="badge in user.badges"
+          <button
+            v-for="badge in comingBadges"
             :key="badge.id"
-            :badge="badge"
-            class="community__badge community__coming-badge"
-          />
+            @click="setActiveBadge(badge.id)"
+            :title="badge.name"
+            class="community__coming-badge"
+            :class="
+              badge.id === activeBadge.id
+                ? 'community__coming-badge--active'
+                : ''"
+          >
+            <img
+              class="community__icon"
+              alt=""
+              :src="`/img/badges/${badge.icon}.svg`"
+            />
+          </button>
         </ul>
       </section>
       <h1 class="header">Ostatnie pytania</h1>
@@ -122,27 +131,31 @@ Vue.use(VueKatex);
 
 export default {
   name: 'Community',
-  data: () => ({
-    filters: [
-      {
-        type: 'level',
-        options: ['Wszystkie poziomy', 'Szkoła podstawowa', 'Liceum'],
-      },
-      {
-        type: 'category',
-        options: ['Każda kategoria', 'Wielomiany', 'Ułamki', 'Całki'],
-      },
-      {
-        type: 'something',
-        options: ['Wszystkie', 'Wszystkie2', 'Wszystkie3'],
-      },
-    ],
-    activeFilters: [],
-  }),
+  data() {
+    return {
+      filters: [
+        {
+          type: 'level',
+          options: ['Wszystkie poziomy', 'Szkoła podstawowa', 'Liceum'],
+        },
+        {
+          type: 'category',
+          options: ['Każda kategoria', 'Wielomiany', 'Ułamki', 'Całki'],
+        },
+        {
+          type: 'something',
+          options: ['Wszystkie', 'Wszystkie2', 'Wszystkie3'],
+        },
+      ],
+      activeFilters: [],
+      activeBadge: {},
+    };
+  },
   computed: {
     ...mapState({
       user: (state) => state.auth.user,
       isLogged: (state) => state.auth.isLogged,
+      comingBadges: (state) => state.community.comingBadges,
       lastQuestions: (state) => state.community.lastQuestions,
     }),
   },
@@ -150,6 +163,13 @@ export default {
     changeFilter() {
       console.log('filter has changed');
     },
+    setActiveBadge(id) {
+      [this.activeBadge] = this.comingBadges.filter((badge) => badge.id === id);
+    },
+  },
+
+  mounted() {
+    [this.activeBadge] = this.comingBadges;
   },
 };
 </script>

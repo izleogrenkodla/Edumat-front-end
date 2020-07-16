@@ -58,12 +58,6 @@ export default {
             icon: 'crown',
           },
         ],
-        nextBadge: {
-          name: 'Pomocny na 5!',
-          icon: 'test',
-          description: 'Udziel 30 odpowiedzi na pytania innych użytkowników.',
-          progress: 80,
-        },
       };
     },
     SET_ERROR(state, payload) {
