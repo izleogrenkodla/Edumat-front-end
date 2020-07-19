@@ -58,6 +58,12 @@ const routes = [
     },
   },
   {
+    path: '/pytania/:slug',
+    name: 'question',
+    component: () => import(/* webpackChunkName: "question-page" */ '../views/Question/Question.vue'),
+    props: true,
+  },
+  {
     path: '/logowanie',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login-page" */ '../views/Login/Login.vue'),

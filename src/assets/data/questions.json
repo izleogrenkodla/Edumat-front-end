@@ -1,0 +1,42 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "authorId": "1",
+      "authorName": "Pieseł Piesełowski",
+      "authorPicture": "https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg",
+      "content": "Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy: A. v(x)=x5+x4+3x3-3x2+7,B.v(x)=x5+x4+3x3-3x2+4x+10C.v(x)=x6-x4+3x3-3x2+4x+10  D.v(x)=x5+x4+3x3-7x2+4x+10",
+      "category": "Wielomiany",
+      "educationalStage": "Liceum",
+      "date": "21.03.2020",
+      "images": ["S", "S"],
+      "verified": true,
+      "answers": ["s", "s", "s"]
+    },
+    {
+      "id": 2,
+      "authorId": "1",
+      "authorName": "Pieseł Piesełowski",
+      "authorPicture": "https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg",
+      "content": "Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy: A. v(x)=x5+x4+3x3-3x2+7,B.v(x)=x5+x4+3x3-3x2+4x+10C.v(x)=x6-x4+3x3-3x2+4x+10  D.v(x)=x5+x4+3x3-7x2+4x+10",
+      "category": "Całki",
+      "educationalStage": "Liceum",
+      "date": "21.03.2019",
+      "images": ["S", "S"],
+      "answers": ["s", "s", "s"]
+    },
+    {
+      "id": 3,
+      "authorId": "1",
+      "authorName": "Pieseł Piesełowski",
+      "authorPicture": "https://i.pinimg.com/originals/4f/e7/49/4fe7498b1c04a14f6493504d50251750.jpg",
+      "content": "Iloczyn wielomianow u(x) =x3-x2+2 i w(x) =x2+2x+5 jest równy: A. v(x)=x5+x4+3x3-3x2+7,B.v(x)=x5+x4+3x3-3x2+4x+10C.v(x)=x6-x4+3x3-3x2+4x+10  D.v(x)=x5+x4+3x3-7x2+4x+10",
+      "category": "Funkcja kwadratowa",
+      "educationalStage": "Liceum",
+      "date": "11.07.2020",
+      "images": ["S", "S"],
+      "verified": true,
+      "answers": ["s", "s", "s"]
+    }
+  ]
+}

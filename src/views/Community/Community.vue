@@ -36,7 +36,8 @@
             :class="
               badge.id === activeBadge.id
                 ? 'community__coming-badge--active'
-                : ''"
+                : ''
+            "
           >
             <img
               class="community__icon"
@@ -69,55 +70,17 @@
           </template>
         </base-accordion>
       </div>
-      <section
-        class="section community__section"
-        v-for="lastQuestion in lastQuestions"
-        :key="lastQuestion.id"
+      <user-post
+        v-for="question in questions"
+        :key="question.id"
+        :post="question"
+        purpose="social"
+      />
+      <base-button
+        outline
+        @click="$store.dispatch('community/loadMore')"
+        class="community__show-more"
       >
-        <div class="community__status">
-          <span class="community__time">{{ lastQuestion.time }}</span>
-          <img
-            v-if="lastQuestion.checked"
-            class="community__check"
-            src="/img/icons/white-check.svg"
-            alt="Zweryfikowana odpowiedź"
-          />
-        </div>
-        <div class="community__flex">
-          <div class="community__author">
-            <img
-              class="community__avatar"
-              :src="lastQuestion.author.picture"
-              alt="Avatar użytkownika"
-              :title="lastQuestion.author.name"
-            />
-            <p class="community__author-name">{{ lastQuestion.author.name }}</p>
-            <p class="community__date">{{ lastQuestion.date }}</p>
-          </div>
-          <button class="community__options">
-            <span class="community__circle"></span>
-            <span class="community__circle"></span>
-            <span class="community__circle"></span>
-          </button>
-        </div>
-        <p v-katex:auto class="community__content">
-          {{ lastQuestion.content }}
-        </p>
-        <div class="community__flex">
-          <div class="community__topic">
-            <img
-              :src="lastQuestion.topic.image"
-              :alt="lastQuestion.topic.name"
-              class="community__topic-image"
-            />
-            <p class="community__topic-name">{{ lastQuestion.topic.name }}</p>
-          </div>
-          <base-button outline class="community__answer">
-            Odpowiedź
-          </base-button>
-        </div>
-      </section>
-      <base-button outline @click="$store.dispatch('community/loadMore')">
         Pokaż więcej
       </base-button>
     </main-layout>
@@ -126,11 +89,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import Vue from 'vue';
-import VueKatex from 'vue-katex';
-import 'katex/dist/katex.min.css';
-
-Vue.use(VueKatex);
+import { questions } from '@/assets/data/questions.json';
 
 export default {
   name: 'Community',
@@ -156,6 +115,7 @@ export default {
         answer: 'Wszystkie',
       },
       activeBadge: {},
+      questions,
     };
   },
   computed: {
@@ -163,7 +123,6 @@ export default {
       user: (state) => state.auth.user,
       isLogged: (state) => state.auth.isLogged,
       comingBadges: (state) => state.community.comingBadges,
-      lastQuestions: (state) => state.community.lastQuestions,
     }),
   },
   methods: {
