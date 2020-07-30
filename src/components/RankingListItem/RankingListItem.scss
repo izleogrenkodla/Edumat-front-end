@@ -1,0 +1,107 @@
+.ranking-list-item {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &__place {
+    background-color: var(--acent-color);
+    border-radius: 12px;
+    margin-right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__wrapper {
+    padding: 1rem;
+    border: 1px solid var(--acent-color);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--text-color);
+    transition: background-color var(--time);
+    
+    &:hover,
+    &:focus {
+      background-color: var(--acent-color--light);
+    }
+  }
+
+  &__user-data {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+  }
+
+  &__name {
+    margin-left: 1rem;
+    font-weight: 600;
+  }
+
+  &__line {
+    width: 1px;
+    border: 1px solid var(--acent-color);
+    height: 2rem;
+    margin: 0 1rem;
+  }
+
+  &__badges {
+    display: flex;
+    margin: 0 0.5rem;
+  }
+
+  &__badge {
+    width: 2.5rem;
+    padding: 0;
+    margin: 0 0.25rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+
+    &__wrapper {
+      padding: 0.5rem;
+    }
+
+    &__button {
+      display: none;
+    }
+
+    &__image {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &__badge {
+      width: 1.5rem;
+    }
+
+    &__place {
+      background-color: transparent;
+      margin-right: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 476px) {
+    &__badge {
+      display: none;
+    }
+
+    &__badges {
+      li:first-child {
+        display: block;
+      }
+    }
+  }
+}

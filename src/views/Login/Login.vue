@@ -66,7 +66,7 @@ export default {
           if (this.isError) {
             this.user.password = '';
           } else {
-            this.$router.push('/');
+            this.$router.push('spolecznosc');
           }
         }
         if (this.step < 1) {

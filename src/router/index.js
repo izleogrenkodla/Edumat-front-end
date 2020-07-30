@@ -81,6 +81,13 @@ const routes = [
     ),
   },
   {
+    path: '/ranking',
+    name: 'Ranking',
+    component: () => import(
+      /* webpackChunkName: "reset-password-page" */ '../views/Ranking/Ranking.vue'
+    ),
+  },
+  {
     path: '*',
     name: 'NotFound',
     component: () => import(/* webpackChunkName: "not-found-page" */ '../views/NotFound/NotFound.vue'),
